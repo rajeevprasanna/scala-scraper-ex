@@ -1,0 +1,1780 @@
+Set((JsoupElement(<div class="country-selector"> 
+ <ul> 
+  <li> <h4> <a class="country-selector-link" href="#country-selector"><img src="/medias/sys_master/8822141091870/Flag_US_25x25.png" width="25" height="25" alt="United States"> <strong>United States</strong> </a> </h4> </li> 
+ </ul> 
+ <div id="country-selector-outer" style="position: relative"> 
+  <div id="country-selector" class="country-selector-inner"> 
+   <a id="country-btn-close" class="btn-close" href="#">Close Window</a> 
+   <h4> Select Your Location </h4> 
+   <div class="col"> 
+    <h5>Americas</h5> 
+    <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+     <ul> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div class="col"> 
+    <h5>Europe, Middle East &amp; Africa</h5> 
+    <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+     <ul> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+     </ul> 
+    </div> 
+    <div style="display:inline-block; vertical-align: top;"> 
+     <ul> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div class="col"> 
+    <h5>Asia Pacific</h5> 
+    <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+     <ul> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+     </ul> 
+    </div> 
+    <div style="display:inline-block; vertical-align: top;"> 
+     <ul> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+      <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div>),29), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Collections</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Collections/c/Apple-Collection/" name="Apple Collection" target=""> Apple Collection</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Collections/c/Mobile-Collection/" name="Mobile Collection" target=""> Mobile Collection</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Collections/c/Mix-It-Up" name="MIXIT↑" target=""> MIXIT↑</a> </li> 
+  <li class="view-all-link"><a href="/us/c/Collections" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),18), (JsoupElement(<div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+ <ul> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+ </ul> 
+</div>),28), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Our Bestsellers</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/p/P-F7U027/  " name="BOOST↑UP™ Wireless Charging Pad for iPhone X, iPhone 8 Plus, iPhone 8" target=""> BOOST↑UP™ Wireless Charging Pad for iPhone X, iPhone 8 Plus, iPhone 8</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/p/P-F8J212/" name="3.5 mm Audio + Charge RockStar™" target=""> 3.5 mm Audio + Charge RockStar™</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/p/p-f8j200" name="PowerHouse™ Charge Dock for Apple Watch + iPhone" target=""> PowerHouse™ Charge Dock for Apple Watch + iPhone</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/p/P-F5L904/" name="QODE™ Ultimate Lite Keyboard Case for iPad 5th Generation (2017)" target=""> QODE™ Ultimate Lite Keyboard Case for iPad 5th Generation (2017)</a> </li> 
+  <li class="view-all-link"><a href="/us/best-sellers/" title="View All >" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),14), (JsoupElement(<div class="global-footer-sub-content-change-region"> 
+ <div class="country-selector"> 
+  <ul> 
+   <li> <h4> <a class="country-selector-link" href="#country-selector"><img src="/medias/sys_master/8822141091870/Flag_US_25x25.png" width="25" height="25" alt="United States"> <strong>United States</strong> </a> </h4> </li> 
+  </ul> 
+  <div id="country-selector-outer" style="position: relative"> 
+   <div id="country-selector" class="country-selector-inner"> 
+    <a id="country-btn-close" class="btn-close" href="#">Close Window</a> 
+    <h4> Select Your Location </h4> 
+    <div class="col"> 
+     <h5>Americas</h5> 
+     <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+      <ul> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="col"> 
+     <h5>Europe, Middle East &amp; Africa</h5> 
+     <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+      <ul> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+      </ul> 
+     </div> 
+     <div style="display:inline-block; vertical-align: top;"> 
+      <ul> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="col"> 
+     <h5>Asia Pacific</h5> 
+     <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+      <ul> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+      </ul> 
+     </div> 
+     <div style="display:inline-block; vertical-align: top;"> 
+      <ul> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+       <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+ <div class="copyright">
+  <span>© 2018 Belkin International, Inc.</span>
+ </div> 
+</div>),45), (JsoupElement(<div class="global-footer-content"> 
+ <div class="global-footer-belkin-logo-tagline">
+  <img src="/_ui/belkin/img/framework/belkin-logo-tagline.svg" alt="Belkin: People Inspired Products">
+ </div> 
+ <div class="global-footer-right-col-content"> 
+  <h5>CONNECT WITH US</h5> 
+  <div class="footer-signup"> 
+   <input id="footer-signup-input" type="email" name="footer-connect-with-belkin" placeholder="Sign up for exclusive deals &amp; more">
+   <button id="footer-signup-btn" type="submit" class="btn-pill-primary">SIGN UP &gt;</button> 
+   <div id="footer-signup-error" class="footer-signup-error" style="display:none;">
+    Please enter a valid email address.
+   </div> 
+   <a href="#email-signup1" class="email-signup emailModal">&nbsp;</a> 
+   <div id="email-signup1" class="default-modal"> 
+    <div class="email-signup-modal"> 
+     <h2>EMAIL SIGN-UP</h2> 
+     <p class="email-modal-copy">Sign up today for the latest news and product updates from Belkin.</p> 
+     <hr> 
+     <label for="email">Email</label> 
+     <input type="text" name="email" id="email"> 
+     <span class="error-msg" id="requrefield" style="display: none">This is a required field.</span> 
+     <span class="error-msg" id="emailvalidation" style="display: none">Email id is invalid.</span> 
+     <hr> 
+     <p class="email-modal-copy">Which products are you most interested in (Check all that apply).</p> 
+     <fieldset id="body"> 
+      <!-- Exact Target Email Changes Start --> 
+      <input type="hidden" id="emailGroupsUID" name="emailGroupsUID"> 
+      <ul class="checkbox-list" id="emailCheckboxList"> 
+       <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615">Please select one of below options</label> </li> 
+       <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615"></label> </li> 
+       <li> <input type="checkbox" id="blk_Apple_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Apple Device Accessories</label> </li> 
+       <li> <input type="checkbox" id="blk_Android_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Samsung and Android Device Accessories</label> </li> 
+       <li> <input type="checkbox" id="blk_Automation" class="footer form-checkbox"> <label for="edit-product-notifications">Home Automation</label> </li> 
+       <li> <input type="checkbox" id="blk_Networking" class="footer form-checkbox"> <label for="edit-product-notifications">Networking</label> </li> 
+       <li> <input type="checkbox" id="blk_Fitness" class="footer form-checkbox"> <label for="edit-product-notifications">Active and Fitness</label> </li> 
+       <li> <input type="checkbox" id="blk_Offers" class="footer form-checkbox"> <label for="edit-product-notifications">Exclusive Offers</label> </li> 
+       <li> <input type="checkbox" id="blk_Business" class="footer form-checkbox"> <label for="edit-product-notifications">Small Business</label> </li> 
+       <li> <input type="checkbox" id="blk_New_Products" class="footer form-checkbox"> <label for="edit-product-notifications">New Products, Updates and Tips</label> </li> 
+       <li> 
+        <hr> <input type="checkbox" id="subscribe_all" class="footer form-checkbox"> <label for="edit-product-notifications">Stay in the know- send me news, updates and special promotions (Select All)</label> </li> 
+      </ul> 
+      <a class="btn-pill-secondary" onclick="submitEmail(this,false)" id="emailsignup2">Submit</a> 
+      <!-- Exact Target Email Changes END--> 
+     </fieldset> 
+     <hr> 
+     <p class="disclaimer">Belkin will not sell or rent your email address. Check out our <a href="/us/privacypolicy" target="_blank"><u>Privacy policy</u></a> if you'd like to learn more.</p> 
+    </div> 
+    <!-- /section --> 
+   </div> 
+   <!-- /email-signup / default-modal --> 
+  </div> 
+  <ul class="footer-social"> 
+   <li> <a href="http://www.facebook.com/belkin" target=""> <i class="facebook fa fa-facebook" aria-hidden="true"></i> </a> </li> 
+   <li> <a href="http://www.twitter.com/belkin" target=""> <i class="twitter fa fa-twitter" aria-hidden="true"></i> </a> </li> 
+   <li> <a href="http://www.instagram.com/belkin" target=""> <i class="instagram fa fa-instagram" aria-hidden="true"></i> </a> </li> 
+   <li> <a href="https://www.youtube.com/user/belkin" target=""> <i class="youtube fa fa-youtube" aria-hidden="true"></i> </a> </li> 
+  </ul> 
+ </div> 
+ <div class="global-footer-left-col-content"> 
+  <div class="col"> 
+   <h5>Products</h5> 
+   <ul> 
+    <li> <a href="/us/products" name="Products" target=""> Products</a> </li> 
+    <li> <a href="/us/devices" name="My Device" target=""> My Device</a> </li> 
+    <li> <a href="http://www.belkinbusiness.com/" name="For Business" target=""> For Business</a> </li> 
+    <li> <a href="/us/my-account" name="My Account" target=""> My Account</a> </li> 
+   </ul> 
+  </div> 
+  <div class="col"> 
+   <h5>Support</h5> 
+   <ul> 
+    <li> <a href="/us/support/" name="Support" target=""> Support</a> </li> 
+    <li> <a href="/us/support-article?articleNum=80153" name="Online Order Help" target=""> Online Order Help</a> </li> 
+    <li> <a href="/us/register-product" name="Register a Product" target=""> Register a Product</a> </li> 
+    <li> <a href="/us/support/returns" name="Returns &amp; Claims" target=""> Returns &amp; Claims</a> </li> 
+    <li> <a href="/us/counterfeits/" name="Identify Counterfeits" target=""> Identify Counterfeits</a> </li> 
+    <li> <a href="/us/patents" name="Patents" target=""> Patents</a> </li> 
+   </ul> 
+  </div> 
+  <div class="col"> 
+   <h5>About Belkin</h5> 
+   <ul> 
+    <li> <a href="/us/aboutUs" name="About Belkin" target=""> About Belkin</a> </li> 
+    <li> <a href="/us/contactus/support/" name="Contact Us" target=""> Contact Us</a> </li> 
+    <li> <a href="/us/pressroompage" name="Press Room" target=""> Press Room</a> </li> 
+    <li> <a href="/us/affiliate-program" name="Affiliate Program" target=""> Affiliate Program</a> </li> 
+    <li> <a href="https://belkin.wd5.myworkdayjobs.com/Belkin_Careers/jobs" name="Careers" target=""> Careers</a> </li> 
+    <li> <a href="/us/wheretobuy/" name="Where To Buy" target=""> Where To Buy</a> </li> 
+    <li> <a href="/us/belkin-good" name="Belkin Good" target=""> Belkin Good</a> </li> 
+    <li> <a href="/us/Supply-Chain-Responsibility/" name="Supplier Responsibility" target=""> Supplier Responsibility</a> </li> 
+    <li> <a href="/us/support-article?articleNum=211573" name="Accessibility Commitment" target=""> Accessibility Commitment</a> </li> 
+   </ul> 
+  </div> 
+ </div> 
+ <div style="clear: both;"></div> 
+ <script type="text/javascript">
+
+var userCountry = 'us'
+var zipCodeLabel = 'Zip Code*';
+var postalCodeLabel = 'Postal Code* ';
+var stateLabel = 'State*';
+var stateLabelForAccount = 'State*';
+var stateUS = 'State*';
+var provinceCanada = 'Province*';
+//var thankyouMsg = 'Thank you, your email has been sent.';
+var thankyouMsg = '<div><div class="email-popup"><h2>Thank you!<h2><p>Your selection has been submitted.</p></div></div>';
+var submittingMsg = 'Submitting...';
+var submittedMsg = 'Submitted.';
+var emailIdVal ;
+
+function submitEmail(obj,cancel) 
+{
+	var allowSubmit = true;
+	var emailInputObj = $(obj).parent().parent().find("#email");
+	emailIdVal = $(emailInputObj).val(); 
+	if(!cancel) 
+	{
+		findSelPrefs();
+
+		if (!emailInputObj.val()) {
+			$(emailInputObj).parent().parent().find("#requrefield").show();
+			$(emailInputObj).parent().parent().find("#emailvalidation").hide();
+			allowSubmit = false;
+		} else {
+			var emailRegex = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+			var email = emailRegex.test(emailInputObj.val());
+			if (!email) {
+				$(emailInputObj).parent().parent().find("#emailvalidation").show();
+				$(emailInputObj).parent().parent().find("#requrefield").hide();
+				allowSubmit = false;
+			}
+		}
+		
+		if($("#emailGroupsUID").val().length <= 1 ) {
+			//$(".error-msg-emailgroup").css("display",'block');
+			$(".error-msg-emailgroup").fadeIn();
+			allowSubmit = false;
+		}
+	}
+
+	if (allowSubmit) {
+		//Disable submit button
+		$('.pp_content_container fieldset#body #emailsignup2').after( '<p class="submit-msg">'+submittingMsg+'</p>');
+     	$('.pp_content_container fieldset#body #emailsignup2').css('display', 'none');
+
+		var strUrl = ('https:' == document.location.protocol ? 'https://'
+				: 'http://')
+				+ document.location.hostname
+				+(document.location.port ? ':'+document.location.port: '')
+				+ '/us/emailsignup/etemailsignupform';
+				
+		if(!cancel){
+			var dat = {emailId : emailIdVal ,subscriptionItems : $("#emailGroupsUID").val().split(";")};
+		}
+		else{
+			var dat = {emailId : emailIdVal ,subscriptionItems :["Cancel"]};
+		}
+
+		dat = JSON.stringify(dat);
+
+		$.ajax({
+			//url : "/us/emailsignup/etemailsignupform",
+			url: strUrl,
+			type : 'POST',
+			headers: { 
+				 'Accept': 'application/json',
+				 'Content-Type': 'application/json' 
+			},
+			data : dat,
+			success : function(data) {
+				$('.submit-msg').css('display', 'none');
+				$('.pp_content_container fieldset#body #emailsignup2').css('display', 'inline');
+
+				if(!cancel) {
+					$("#email-signup").html($(".pp_content_container").html());
+					if (data.success){
+						$(".pp_content_container").html("<H2>" + thankyouMsg + "</H2>");
+					}
+					else {
+						$(".pp_content_container").html("<H2>" + thankyouMsg + "</H2>");
+					}
+					resizeContainer();
+				}
+			}
+		});
+	}
+	return false;
+}
+
+function findSelPrefs(){
+	var allCodes = "";
+	var firstEle = true;
+	$("input[type=checkbox][class='footer form-checkbox']").each(function(index) {
+		var code = $(this).attr("id");
+		if($(this).is(":checked") && (code!='subscribe_all')){
+			if(firstEle) {
+				allCodes = code;
+				firstEle = false;
+			} else {
+				allCodes = allCodes + ";" + code;
+			}
+		}
+	});
+
+	$("#emailGroupsUID").val(allCodes);
+}
+
+function cleanup(){
+	$(".checkbox-list li").find("input[type=checkbox][class=footer]").each(function(){
+			$(this).removeAttr("checked");
+	});
+	$(".error-msg-emailgroup").hide();
+	$(".error-msg").hide();
+	$("#emailGroupsUID").val("");
+}
+
+function resizeContainer(){
+	$(".pp_content_container").height("70px");
+	setTimeout(function(){
+		$.prettyPhoto.close();
+	},2000);
+	cleanup();
+}
+
+function getAllGroups(){
+	var groups="";
+	$("#emailCheckboxList").find("li").each(function(){
+		var idVal = $(this).find("input").attr("id");
+		if(idVal != undefined && idVal != "" && idVal != "unsubscribe"){
+			if(groups == ""){
+				groups=idVal;
+			}else{
+				groups = groups + ";" + idVal;
+			}
+		}
+	});
+	return groups
+}
+
+function callCancel(){
+	// Don't submit on cancel the window
+	//submitEmail(this,true);
+}
+
+$(document).on('click','#pp_full_res .footer.form-checkbox', function(){
+	if($(this).is(":checked")) {
+		if($(this).attr('id') == 'subscribe_all') {
+			$('#pp_full_res .footer.form-checkbox').attr("value", 'True').prop("checked", true);
+		}
+	} else{
+		$('#pp_full_res #subscribe_all').attr("value", 'False').prop("checked", false);
+	}
+});
+
+</script> 
+ <div class="global-footer-sub-content-container"> 
+  <div class="global-footer-sub-content-legal"> 
+   <ul> 
+    <li> <a href="/us/sitemap" name="Site Map" target=""> Site Map</a> </li> 
+    <li> <a href="/us/privacypolicy/" name="Privacy Policy" target=""> Privacy Policy</a> </li> 
+    <li> <a href="/us/cookie-policy/" name="Cookie Policy" target=""> Cookie Policy</a> </li> 
+    <li> <a href="/us/end-user-license-agreement/" name="End-User License Agreement" target=""> End-User License Agreement</a> </li> 
+    <li> <a href="/us/security/" name="Security" target=""> Security</a> </li> 
+    <li> <a href="/us/terms-of-use/" name="Terms of Use" target=""> Terms of Use</a> </li> 
+    <li> <a href="/us/support-article?articleNum=51238" name="GPL Center" target=""> GPL Center</a> </li> 
+   </ul> 
+  </div> 
+  <!-- /footer-sub-links --> 
+  <div class="global-footer-sub-content-change-region"> 
+   <div class="country-selector"> 
+    <ul> 
+     <li> <h4> <a class="country-selector-link" href="#country-selector"><img src="/medias/sys_master/8822141091870/Flag_US_25x25.png" width="25" height="25" alt="United States"> <strong>United States</strong> </a> </h4> </li> 
+    </ul> 
+    <div id="country-selector-outer" style="position: relative"> 
+     <div id="country-selector" class="country-selector-inner"> 
+      <a id="country-btn-close" class="btn-close" href="#">Close Window</a> 
+      <h4> Select Your Location </h4> 
+      <div class="col"> 
+       <h5>Americas</h5> 
+       <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+        <ul> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+        </ul> 
+       </div> 
+      </div> 
+      <div class="col"> 
+       <h5>Europe, Middle East &amp; Africa</h5> 
+       <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+        <ul> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+        </ul> 
+       </div> 
+       <div style="display:inline-block; vertical-align: top;"> 
+        <ul> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+        </ul> 
+       </div> 
+      </div> 
+      <div class="col"> 
+       <h5>Asia Pacific</h5> 
+       <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+        <ul> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+        </ul> 
+       </div> 
+       <div style="display:inline-block; vertical-align: top;"> 
+        <ul> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+         <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="copyright">
+    <span>© 2018 Belkin International, Inc.</span>
+   </div> 
+  </div> 
+ </div> 
+</div>),62), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Networking</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Network-Accessories/c/WSNTWLS" name="Network Accessories" target=""> Network Accessories</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Network-Accessories/c/WSNTWRD" name="Wired" target=""> Wired</a> </li> 
+  <li class="view-all-link"><a href="/us/c/WSNT" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),68), (JsoupElement(<div style="display: none">
+ <a href="/v1/uat_assets" rel="nofollow" style="display: none" aria-hidden="true">https://hqhqjch1kd.execute-api.us-east-1.amazonaws.com/ProdStage</a>
+</div>),15), (JsoupElement(<div class="copyright">
+ <span>© 2018 Belkin International, Inc.</span>
+</div>),33), (JsoupElement(<div id="footer-signup-error" class="footer-signup-error" style="display:none;">
+ Please enter a valid email address.
+</div>),8), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Power</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRBBUPS/" name="Battery Backup - UPS" target=""> Battery Backup - UPS</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/Charging/c/portable-chargers-and-battery-packs/" name="Battery Packs" target=""> Battery Packs</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRCHRG/" name="Chargers" target=""> Chargers</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRCSR/" name="Power Conservation Solutions" target=""> Power Conservation Solutions</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRSP/" name="Surge Protection &amp; Power Strips" target=""> Surge Protection &amp; Power Strips</a> </li> 
+  <li class="view-all-link"><a href="/us/c/WSPWR" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),50), (JsoupElement(<div class="masthead" style="background: transparent url('/medias/sys_master/h79/ha5/9381596659742/logo-black.gif') no-repeat scroll 0 0;"> 
+ <a class="hover-image" style=":hover{background: transparent url('/medias/sys_master/8822065233950/logo-green-glow.gif') no-repeat scroll 0 0}" href="/us/"> <img src="/medias/sys_master/h79/ha5/9381596659742/logo-black.gif" width="145" height="42" alt=""> </a> 
+</div>),26), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Mobile Accessories</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/WSSTAEA/" name="App-Enabled Accessories" target=""> App-Enabled Accessories</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/WSSTCRGCBL" name="Chargers &amp; Cables" target=""> Chargers &amp; Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/docks-and-stands" name="Docks &amp; Stands" target=""> Docks &amp; Stands</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/screen-protection" name="Screen Protectors" target=""> Screen Protectors</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/WSSTOTHA/" name="More Accessories" target=""> More Accessories</a> </li> 
+  <li class="view-all-link"><a href="/us/c/mobile-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),59), (JsoupElement(<div class="global-footer-right-col-content"> 
+ <h5>CONNECT WITH US</h5> 
+ <div class="footer-signup"> 
+  <input id="footer-signup-input" type="email" name="footer-connect-with-belkin" placeholder="Sign up for exclusive deals &amp; more">
+  <button id="footer-signup-btn" type="submit" class="btn-pill-primary">SIGN UP &gt;</button> 
+  <div id="footer-signup-error" class="footer-signup-error" style="display:none;">
+   Please enter a valid email address.
+  </div> 
+  <a href="#email-signup1" class="email-signup emailModal">&nbsp;</a> 
+  <div id="email-signup1" class="default-modal"> 
+   <div class="email-signup-modal"> 
+    <h2>EMAIL SIGN-UP</h2> 
+    <p class="email-modal-copy">Sign up today for the latest news and product updates from Belkin.</p> 
+    <hr> 
+    <label for="email">Email</label> 
+    <input type="text" name="email" id="email"> 
+    <span class="error-msg" id="requrefield" style="display: none">This is a required field.</span> 
+    <span class="error-msg" id="emailvalidation" style="display: none">Email id is invalid.</span> 
+    <hr> 
+    <p class="email-modal-copy">Which products are you most interested in (Check all that apply).</p> 
+    <fieldset id="body"> 
+     <!-- Exact Target Email Changes Start --> 
+     <input type="hidden" id="emailGroupsUID" name="emailGroupsUID"> 
+     <ul class="checkbox-list" id="emailCheckboxList"> 
+      <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615">Please select one of below options</label> </li> 
+      <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615"></label> </li> 
+      <li> <input type="checkbox" id="blk_Apple_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Apple Device Accessories</label> </li> 
+      <li> <input type="checkbox" id="blk_Android_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Samsung and Android Device Accessories</label> </li> 
+      <li> <input type="checkbox" id="blk_Automation" class="footer form-checkbox"> <label for="edit-product-notifications">Home Automation</label> </li> 
+      <li> <input type="checkbox" id="blk_Networking" class="footer form-checkbox"> <label for="edit-product-notifications">Networking</label> </li> 
+      <li> <input type="checkbox" id="blk_Fitness" class="footer form-checkbox"> <label for="edit-product-notifications">Active and Fitness</label> </li> 
+      <li> <input type="checkbox" id="blk_Offers" class="footer form-checkbox"> <label for="edit-product-notifications">Exclusive Offers</label> </li> 
+      <li> <input type="checkbox" id="blk_Business" class="footer form-checkbox"> <label for="edit-product-notifications">Small Business</label> </li> 
+      <li> <input type="checkbox" id="blk_New_Products" class="footer form-checkbox"> <label for="edit-product-notifications">New Products, Updates and Tips</label> </li> 
+      <li> 
+       <hr> <input type="checkbox" id="subscribe_all" class="footer form-checkbox"> <label for="edit-product-notifications">Stay in the know- send me news, updates and special promotions (Select All)</label> </li> 
+     </ul> 
+     <a class="btn-pill-secondary" onclick="submitEmail(this,false)" id="emailsignup2">Submit</a> 
+     <!-- Exact Target Email Changes END--> 
+    </fieldset> 
+    <hr> 
+    <p class="disclaimer">Belkin will not sell or rent your email address. Check out our <a href="/us/privacypolicy" target="_blank"><u>Privacy policy</u></a> if you'd like to learn more.</p> 
+   </div> 
+   <!-- /section --> 
+  </div> 
+  <!-- /email-signup / default-modal --> 
+ </div> 
+ <ul class="footer-social"> 
+  <li> <a href="http://www.facebook.com/belkin" target=""> <i class="facebook fa fa-facebook" aria-hidden="true"></i> </a> </li> 
+  <li> <a href="http://www.twitter.com/belkin" target=""> <i class="twitter fa fa-twitter" aria-hidden="true"></i> </a> </li> 
+  <li> <a href="http://www.instagram.com/belkin" target=""> <i class="instagram fa fa-instagram" aria-hidden="true"></i> </a> </li> 
+  <li> <a href="https://www.youtube.com/user/belkin" target=""> <i class="youtube fa fa-youtube" aria-hidden="true"></i> </a> </li> 
+ </ul> 
+</div>),7), (JsoupElement(<div class="hdr-msg"></div>),41), (JsoupElement(<div id="mobile-cart">
+ <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</div>),54), (JsoupElement(<div class="global-footer-belkin-logo-tagline">
+ <img src="/_ui/belkin/img/framework/belkin-logo-tagline.svg" alt="Belkin: People Inspired Products">
+</div>),13), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Entertainment</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Entertainment/c/Audio/" name="Audio Accessories" target=""> Audio Accessories</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Entertainment/c/Home-Theater/" name="Home Theater Accessories" target=""> Home Theater Accessories</a> </li> 
+  <li class="view-all-link"><a href="/us/c/Entertainment" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),30), (JsoupElement(<div class="global-footer-left-col-content"> 
+ <div class="col"> 
+  <h5>Products</h5> 
+  <ul> 
+   <li> <a href="/us/products" name="Products" target=""> Products</a> </li> 
+   <li> <a href="/us/devices" name="My Device" target=""> My Device</a> </li> 
+   <li> <a href="http://www.belkinbusiness.com/" name="For Business" target=""> For Business</a> </li> 
+   <li> <a href="/us/my-account" name="My Account" target=""> My Account</a> </li> 
+  </ul> 
+ </div> 
+ <div class="col"> 
+  <h5>Support</h5> 
+  <ul> 
+   <li> <a href="/us/support/" name="Support" target=""> Support</a> </li> 
+   <li> <a href="/us/support-article?articleNum=80153" name="Online Order Help" target=""> Online Order Help</a> </li> 
+   <li> <a href="/us/register-product" name="Register a Product" target=""> Register a Product</a> </li> 
+   <li> <a href="/us/support/returns" name="Returns &amp; Claims" target=""> Returns &amp; Claims</a> </li> 
+   <li> <a href="/us/counterfeits/" name="Identify Counterfeits" target=""> Identify Counterfeits</a> </li> 
+   <li> <a href="/us/patents" name="Patents" target=""> Patents</a> </li> 
+  </ul> 
+ </div> 
+ <div class="col"> 
+  <h5>About Belkin</h5> 
+  <ul> 
+   <li> <a href="/us/aboutUs" name="About Belkin" target=""> About Belkin</a> </li> 
+   <li> <a href="/us/contactus/support/" name="Contact Us" target=""> Contact Us</a> </li> 
+   <li> <a href="/us/pressroompage" name="Press Room" target=""> Press Room</a> </li> 
+   <li> <a href="/us/affiliate-program" name="Affiliate Program" target=""> Affiliate Program</a> </li> 
+   <li> <a href="https://belkin.wd5.myworkdayjobs.com/Belkin_Careers/jobs" name="Careers" target=""> Careers</a> </li> 
+   <li> <a href="/us/wheretobuy/" name="Where To Buy" target=""> Where To Buy</a> </li> 
+   <li> <a href="/us/belkin-good" name="Belkin Good" target=""> Belkin Good</a> </li> 
+   <li> <a href="/us/Supply-Chain-Responsibility/" name="Supplier Responsibility" target=""> Supplier Responsibility</a> </li> 
+   <li> <a href="/us/support-article?articleNum=211573" name="Accessibility Commitment" target=""> Accessibility Commitment</a> </li> 
+  </ul> 
+ </div> 
+</div>),21), (JsoupElement(<div class="global-subnav"> 
+ <ul class="global-subnav-section"> 
+  <li><a href="/us/contactus/support/">Contact Support</a></li> 
+  <li><a href="/us/support/returns">Returns &amp; Claims</a></li> 
+  <li><a href="/us/support-article?articleNum=80153">Online Order Help</a></li> 
+  <li><a href="/us/community/">Belkin Community</a></li> 
+  <li><a href="/us/register-product/">Register a Product</a></li> 
+  <li><a href="/us/counterfeits/">Spot Counterfeits</a></li> 
+ </ul> 
+</div>),1), (JsoupElement(<div class="model-number-sticker-container">
+ <div class="model-number-instructions">
+  <p>Your product's model number and version can usually be found on a sticker located on the product like this example. For a router, the sticker will be on the bottom.<br> <br> For more examples, <a href="/us/support-article?articleNum=8064" target="_blank">click here</a>.</p>
+ </div> 
+ <div class="model-number-sticker">
+  <img width="283" height="114" alt="Temp Img Version Sticker" src="/us/_ui/belkin/img/content/temp-img-version-sticker.jpg">
+ </div>
+</div>),3), (JsoupElement(<div class="model-number-instructions">
+ <p>Your product's model number and version can usually be found on a sticker located on the product like this example. For a router, the sticker will be on the bottom.<br> <br> For more examples, <a href="/us/support-article?articleNum=8064" target="_blank">click here</a>.</p>
+</div>),34), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">In-Car</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/In-Car/c/WSICHF" name="Hands-Free Car Accessories" target=""> Hands-Free Car Accessories</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/In-Car/c/WSICCM" name="Car Chargers &amp; Mounts" target=""> Car Chargers &amp; Mounts</a> </li> 
+  <li class="view-all-link"><a href="/us/c/In-Car" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),23), (JsoupElement(<div id="mobNav"> 
+ <ul class="panl-top"> 
+  <li class="nav-top-level"> 
+   <!-- Product, Support, For Business --> <a href="/us/products">Shop</a> 
+   <ul class="panl-second"> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/c/smartwatch-chargers/">Charge your smartwatch</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/c/WSPWRCHRG/">Charge your mobile device</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/c/screen-protection/">Protect your phone</a> </li> 
+    <li class="nav-second-level  nav-node"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/Cables/c/usb-c-cables/">USB-C™ Accessories</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/lightning-accessories/">Lightning Accessories</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/lightning-accessories/c/WSLTCBLS/">Lightning Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/lightning-accessories/c/WSLTCRG">Lightning Chargers</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/lightning-accessories/c/WSLTDAS/">Lightning Docks &amp; Stands</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/lightning-accessories/c/WSLTIC/">Lightning In-Car Accessories</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/lightning-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/mobile-accessories/Chargers-&amp;-Cables/Chargers/c/wireless-chargers/">Wireless Chargers</a> </li> 
+    <li class="nav-second-level  nav-node"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/Collections/">Collections</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/Collections/c/Apple-Collection/">Apple Collection</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Collections/c/Mobile-Collection/">Mobile Collection</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Collections/c/Mix-It-Up">MIXIT↑</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/Collections" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/c/Cables/">Cables</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/Cables/c/smartphone-and-tablet-cables/">Smartphone &amp; Tablet</a></li> 
+      <li class="nav-third-level"><a href="/us/products/Cables/c/cable-adapters/">Cable Adapters</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Cables/c/macbook-and-pc-cables/">Macbook &amp; PC</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Cables/c/audio-video-cables/">Audio Video</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Cables/c/usb-c-cables">USB-C Cables</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/Cables" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/Cases-and-Armbands">Cases &amp; Armbands</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/Active-and-Armband-Cases">Armbands</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Cases-and-Armbands/c/WSCAPSPC/">Smartphone Cases</a></li> 
+      <li class="nav-third-level"><a href="/us/c/iPod-Cases">iPod Cases</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/Cases-and-Armbands" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/WSMACPC">Computer Accessories</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/WSMACPCHUBS">Hubs &amp; Docks</a></li> 
+      <li class="nav-third-level"><a href="/us/c/WSMACPCCAC">Laptop Cooling &amp; Comfort</a></li> 
+      <li class="nav-third-level"><a href="/us/c/WSMACPCCAB">Laptop Covers &amp; Bags</a></li> 
+      <li class="nav-third-level"><a href="/us/c/Cables-and-Other-Accessories">More Computer Accessories</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/WSMACPC" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/Entertainment">Entertainment</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/Entertainment/c/Audio/">Audio Accessories</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Entertainment/c/Home-Theater/">Home Theater Accessories</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/Entertainment" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/WSSTIC/">In-Car</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/In-Car/c/WSICHF">Hands-Free Car Accessories</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/In-Car/c/WSICCM">Car Chargers &amp; Mounts</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/In-Car" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/WSST">Mobile Accessories</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/mobile-accessories/c/WSSTAEA/">App-Enabled Accessories</a></li> 
+      <li class="nav-third-level"><a href="/us/c/WSSTCRGCBL">Chargers &amp; Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/c/docks-and-stands">Docks &amp; Stands</a></li> 
+      <li class="nav-third-level"><a href="/us/c/screen-protection">Screen Protectors</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/mobile-accessories/c/WSSTOTHA/">More Accessories</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/mobile-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/WSPWR">Power</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/Products/Power/c/WSPWRBBUPS/">Battery Backup - UPS</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Power/Charging/c/portable-chargers-and-battery-packs/">Battery Packs</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Power/c/WSPWRCHRG/">Chargers</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Power/c/WSPWRCSR/">Power Conservation Solutions</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/Power/c/WSPWRSP/">Surge Protection &amp; Power Strips</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/WSPWR" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/c/Tablet-Keyboards-and-Cases/">Tablet Keyboards &amp; Cases</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/Tablet-Cases">Tablet Cases</a></li> 
+      <li class="nav-third-level"><a href="/us/c/Tablet-Keyboard-Cases">Keyboard Cases</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/Tablet-Keyboards-and-Cases" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/c/smartwatch-accessories/">Smartwatch Accessories</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/smartwatch-bands">Smartwatch Bands</a></li> 
+      <li class="nav-third-level"><a href="/us/c/smartwatch-chargers">Smartwatch Chargers</a></li> 
+      <li class="nav-third-level"><a href="/us/c/smartwatch-screen-protectors">Smartwatch Screen Protectors</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/smartwatch-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/home-automation">WeMo</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/wemo-home-automation">Home Automation</a></li> 
+      <li class="nav-third-level"><a href="/us/c/netcam">NetCam</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/home-automation" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level  nav-node"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/business/">Business</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/audio-video-adapters">Audio/Video Adapters</a></li> 
+      <li class="nav-third-level"><a href="/us/c/audio-video-cables-business/">Audio/Video Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/c/bulk-copper-cables/">Bulk Copper Cable</a></li> 
+      <li class="nav-third-level"><a href="/us/c/smartphone-cables/">Charging Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/c/network-copper-cables/">Copper Network Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/c/network-fiber-cables/">Fiber Network Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/c/hubs-and-docks-for-business/">Hubs &amp; Docks</a></li> 
+      <li class="nav-third-level"><a href="/us/c/keyboards-and-mice-for-business/">Keyboards &amp; Mice</a></li> 
+      <li class="nav-third-level"><a href="/us/Products/business/c/cybersecurity-secure-kvm/">KVM - Secure</a></li> 
+      <li class="nav-third-level"><a href="/us/c/standard-kvm/">KVM - Standard</a></li> 
+      <li class="nav-third-level"><a href="/us/c/smartphone-accessories-business/">Phone Accessories</a></li> 
+      <li class="nav-third-level"><a href="/us/c/racks-and-enclosures/">Racks and Enclosures</a></li> 
+      <li class="nav-third-level"><a href="/us/c/power-for-business/">Surge Protection &amp; Power Strips</a></li> 
+      <li class="nav-third-level"><a href="/us/c/tablet-accessories-business/">Tablet Accessories</a></li> 
+      <li class="nav-third-level"><a href="/us/c/usb-and-firewire-cables/">USB &amp; FireWire Cables</a></li> 
+      <li class="nav-third-level"><a href="/us/belkinbusiness">Explore Business Solutions</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/Education/c/accessories/">Classroom Accessories</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Products/c/WSNT/">Networking</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/c/WSNTWLS">Network Accessories</a></li> 
+      <li class="nav-third-level"><a href="/us/c/WSNTWRD">Wired</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/c/WSNT" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level  nav-node"> 
+     <!-- Wemo, etc. --> <a href="/us/best-sellers/">Our Bestsellers</a> 
+     <ul class="panl-third"> 
+      <li class="nav-third-level"><a href="/us/p/P-F7U027/  ">BOOST↑UP™ Wireless Charging Pad for iPhone X, iPhone 8 Plus, iPhone 8</a></li> 
+      <li class="nav-third-level"><a href="/us/p/P-F8J212/">3.5 mm Audio + Charge RockStar™</a></li> 
+      <li class="nav-third-level"><a href="/us/p/p-f8j200">PowerHouse™ Charge Dock for Apple Watch + iPhone</a></li> 
+      <li class="nav-third-level"><a href="/us/p/P-F5L904/">QODE™ Ultimate Lite Keyboard Case for iPad 5th Generation (2017)</a></li> 
+      <li class="nav-third-level view-all-link"><a href="/us/best-sellers/" title="View All >" class="ga-navChildCategory view-all-link">View All</a></li> 
+     </ul> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/factory-store">Sale</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/studentdiscount/">Student Discount</a> </li> 
+   </ul> </li> 
+  <li class="nav-top-level"> 
+   <!-- Product, Support, For Business --> <a href="/us/learn/">Learn</a> 
+   <ul class="panl-second"> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Resource-Center/Wireless-Charging/">Wireless Charging</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Resource-Center/USB-C/">USB-C™</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Resource-Center/Thunderbolt/">Thunderbolt™ Technology</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Resource-Center/Portable-Charging/">Portable Charging</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Resource-Center/Power-Delivery/">USB Power Delivery</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Resource-Center/Cybersecurity">Cybersecurity &amp; KVM </a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/Learn/">Visit the Resource Center</a> </li> 
+    <li class="nav-second-level  nav-node"> 
+     <!-- Wemo, etc. --> <a href="/us/AboutUs/">About Us</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/contactus/locations/">Contact Us</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/belkinbusiness">For Business</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/affiliate-program/">Become an Affiliate</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/careerspage/">Careers</a> </li> 
+    <li class="nav-second-level"> 
+     <!-- Wemo, etc. --> <a href="/us/pressroompage/">Press Room</a> </li> 
+   </ul> </li> 
+  <li class="nav-top-level"> 
+   <!-- Product, Support, For Business --> <a href="/us/support/">Support</a> 
+   <ul class="panl-second"> 
+    <li class="nav-second-level"><a href="/us/contactus/support/">Contact Support</a></li> 
+    <li class="nav-second-level"><a href="/us/support/returns">Returns &amp; Claims</a></li> 
+    <li class="nav-second-level"><a href="/us/support-article?articleNum=80153">Online Order Help</a></li> 
+    <li class="nav-second-level"><a href="/us/community/">Belkin Community</a></li> 
+    <li class="nav-second-level"><a href="/us/register-product/">Register a Product</a></li> 
+    <li class="nav-second-level"><a href="/us/counterfeits/">Spot Counterfeits</a></li> 
+   </ul> </li> 
+  <li id="signin-zone"></li> 
+ </ul> 
+</div>),6), (JsoupElement(<div id="global-utilities"> 
+ <div class="srch-acc-nav"> 
+  <div id="global-search"> 
+   <form name="search_form" method="GET" action="/us/search"> 
+    <label class="" for="search"><i class="fa fa-search" aria-hidden="true"></i></label> 
+    <input id="search" class="input-text belkin-search-modal idleField" type="text" name="text" value="Search" autocomplete="off"> 
+   </form> 
+  </div> 
+  <div class="acc-lnks"> 
+   <ul> 
+    <li class="login-link"><a href="/us/login" id="loginButton">Sign In</a></li> 
+    <li><a href="/us/cart" class="icon-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a><span class="item-number">0</span> items</li> 
+    <script type="text/javascript">
+ var checkoutEnabled='true'
+</script> 
+   </ul> 
+  </div> 
+ </div> 
+</div>),12), (JsoupElement(<div style="display:inline-block; vertical-align: top;"> 
+ <ul> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+ </ul> 
+</div>),69), (JsoupElement(<div class="col"> 
+ <h5>About Belkin</h5> 
+ <ul> 
+  <li> <a href="/us/aboutUs" name="About Belkin" target=""> About Belkin</a> </li> 
+  <li> <a href="/us/contactus/support/" name="Contact Us" target=""> Contact Us</a> </li> 
+  <li> <a href="/us/pressroompage" name="Press Room" target=""> Press Room</a> </li> 
+  <li> <a href="/us/affiliate-program" name="Affiliate Program" target=""> Affiliate Program</a> </li> 
+  <li> <a href="https://belkin.wd5.myworkdayjobs.com/Belkin_Careers/jobs" name="Careers" target=""> Careers</a> </li> 
+  <li> <a href="/us/wheretobuy/" name="Where To Buy" target=""> Where To Buy</a> </li> 
+  <li> <a href="/us/belkin-good" name="Belkin Good" target=""> Belkin Good</a> </li> 
+  <li> <a href="/us/Supply-Chain-Responsibility/" name="Supplier Responsibility" target=""> Supplier Responsibility</a> </li> 
+  <li> <a href="/us/support-article?articleNum=211573" name="Accessibility Commitment" target=""> Accessibility Commitment</a> </li> 
+ </ul> 
+</div>),16), (JsoupElement(<div id="country-selector-outer" style="position: relative"> 
+ <div id="country-selector" class="country-selector-inner"> 
+  <a id="country-btn-close" class="btn-close" href="#">Close Window</a> 
+  <h4> Select Your Location </h4> 
+  <div class="col"> 
+   <h5>Americas</h5> 
+   <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+    <ul> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="col"> 
+   <h5>Europe, Middle East &amp; Africa</h5> 
+   <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+    <ul> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+    </ul> 
+   </div> 
+   <div style="display:inline-block; vertical-align: top;"> 
+    <ul> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="col"> 
+   <h5>Asia Pacific</h5> 
+   <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+    <ul> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+    </ul> 
+   </div> 
+   <div style="display:inline-block; vertical-align: top;"> 
+    <ul> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+     <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+    </ul> 
+   </div> 
+  </div> 
+ </div> 
+</div>),48), (JsoupElement(<div id="mobile-logo">
+ <a href="/us/"> <img src="/_ui/belkin/img/framework/belkin-logo-mobile.svg" title="" alt="belkin logo"> </a>
+</div>),42), (JsoupElement(<div id="country-selector" class="country-selector-inner"> 
+ <a id="country-btn-close" class="btn-close" href="#">Close Window</a> 
+ <h4> Select Your Location </h4> 
+ <div class="col"> 
+  <h5>Americas</h5> 
+  <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+   <ul> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+   </ul> 
+  </div> 
+ </div> 
+ <div class="col"> 
+  <h5>Europe, Middle East &amp; Africa</h5> 
+  <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+   <ul> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+   </ul> 
+  </div> 
+  <div style="display:inline-block; vertical-align: top;"> 
+   <ul> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+   </ul> 
+  </div> 
+ </div> 
+ <div class="col"> 
+  <h5>Asia Pacific</h5> 
+  <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+   <ul> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+   </ul> 
+  </div> 
+  <div style="display:inline-block; vertical-align: top;"> 
+   <ul> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+    <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+   </ul> 
+  </div> 
+ </div> 
+</div>),27), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Cables</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/smartphone-and-tablet-cables/" name="Smartphone &amp; Tablet" target=""> Smartphone &amp; Tablet</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/products/Cables/c/cable-adapters/" name="Cable Adapters" target=""> Cable Adapters</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/macbook-and-pc-cables/" name="Macbook &amp; PC" target=""> Macbook &amp; PC</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/audio-video-cables/" name="Audio Video" target=""> Audio Video</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/usb-c-cables" name="USB-C Cables" target=""> USB-C Cables</a> </li> 
+  <li class="view-all-link"><a href="/us/c/Cables" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),56), (JsoupElement(<div id="mobileheader"> 
+ <button id="mobileIcon" class="hb-icon hb-icon--stand" type="button"> <span class="hb-icon-box"> <span class="hb-icon-inner"></span> </span> </button> 
+ <div id="mobile-logo">
+  <a href="/us/"> <img src="/_ui/belkin/img/framework/belkin-logo-mobile.svg" title="" alt="belkin logo"> </a>
+ </div> 
+ <div id="mobile-search">
+  <i class="fa fa-search" aria-hidden="true"></i>
+ </div> 
+ <div id="mobile-cart">
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+ </div> 
+ <div id="mobile-search-panel"> 
+  <div class="close-icon"></div> 
+  <form name="search_form" method="GET" action="/us/search"> 
+   <label class="" for="search"><i class="fa fa-search" aria-hidden="true"></i></label> 
+   <input id="mob-search" class="input-text belkin-search-modal idleField" type="search" name="text" placeholder="Search" autocomplete="off"> 
+  </form> 
+ </div> 
+</div>),46), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Business</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/audio-video-adapters" name="Audio/Video Adapters" target=""> Audio/Video Adapters</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/audio-video-cables-business/" name="Audio/Video Cables" target=""> Audio/Video Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/bulk-copper-cables/" name="Bulk Copper Cable" target=""> Bulk Copper Cable</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/smartphone-cables/" name="Charging Cables" target=""> Charging Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/network-copper-cables/" name="Copper Network Cables" target=""> Copper Network Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/network-fiber-cables/" name="Fiber Network Cables" target=""> Fiber Network Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/hubs-and-docks-for-business/" name="Hubs &amp; Docks" target=""> Hubs &amp; Docks</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/keyboards-and-mice-for-business/" name="Keyboards &amp; Mice" target=""> Keyboards &amp; Mice</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/business/c/cybersecurity-secure-kvm/" name="KVM - Secure" target=""> KVM - Secure</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/standard-kvm/" name="KVM - Standard" target=""> KVM - Standard</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/smartphone-accessories-business/" name="Phone Accessories" target=""> Phone Accessories</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/racks-and-enclosures/" name="Racks and Enclosures" target=""> Racks and Enclosures</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/power-for-business/" name="Surge Protection &amp; Power Strips" target=""> Surge Protection &amp; Power Strips</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/tablet-accessories-business/" name="Tablet Accessories" target=""> Tablet Accessories</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/usb-and-firewire-cables/" name="USB &amp; FireWire Cables" target=""> USB &amp; FireWire Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/belkinbusiness" name="Explore Business Solutions" target=""> Explore Business Solutions</a> </li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),36), (JsoupElement(<div class="global-footer-sub-content-legal"> 
+ <ul> 
+  <li> <a href="/us/sitemap" name="Site Map" target=""> Site Map</a> </li> 
+  <li> <a href="/us/privacypolicy/" name="Privacy Policy" target=""> Privacy Policy</a> </li> 
+  <li> <a href="/us/cookie-policy/" name="Cookie Policy" target=""> Cookie Policy</a> </li> 
+  <li> <a href="/us/end-user-license-agreement/" name="End-User License Agreement" target=""> End-User License Agreement</a> </li> 
+  <li> <a href="/us/security/" name="Security" target=""> Security</a> </li> 
+  <li> <a href="/us/terms-of-use/" name="Terms of Use" target=""> Terms of Use</a> </li> 
+  <li> <a href="/us/support-article?articleNum=51238" name="GPL Center" target=""> GPL Center</a> </li> 
+ </ul> 
+</div>),65), (JsoupElement(<div>
+ <script type="text/javascript"> $(function() {$(".hdr-msg").html('<div class="free-shipping"><span>Free Ground Shipping</span> on Orders of $50 or More &mdash; <a href="#freeshipping-disclaimer" class="offer-details defaultModal">Details <i class="fa fa-angle-right" aria-hidden="true"></i></a></div><div id="freeshipping-disclaimer" class="default-modal"><section class="content-page"><h2 class="emailH2"><b>FREE GROUND SHIPPING ON ANY PURCHASE $50 AND OVER</b></h2><p style="line-height:1.5em;"><br>Free Ground Shipping is valid in the U.S. only (excluding Puerto Rico) on qualifying purchases of $50 or more in the same order placed prior to the applicable deadline. PLEASE NOTE that belkin.com will not be responsible for delivery delays due to unforeseen circumstances outside our reasonable control such as delays due to severe weather, natural disasters or strikes. Taxes and prior purchases do not qualify toward the minimum purchase requirement and offer cannot be applied to such items. Offer is good for the order\'s first \"ship-to\" address anywhere in the U.S. (excluding Puerto Rico). If you choose another shipping option, additional charges will apply. Oversized or heavy items are not included in this offer. Zip codes in areas considered \"BEYOND CHARGE–NON INTERCHANGE POINT\" will also be subject to a sur-charge. Contact customer service for more details. No adjustments on previous purchases. Offer is non-transferable and subject to change without notice.<br><br><br><br></p></section></div>');});</script>
+</div>),66), (JsoupElement(<div id="mobile-search-panel"> 
+ <div class="close-icon"></div> 
+ <form name="search_form" method="GET" action="/us/search"> 
+  <label class="" for="search"><i class="fa fa-search" aria-hidden="true"></i></label> 
+  <input id="mob-search" class="input-text belkin-search-modal idleField" type="search" name="text" placeholder="Search" autocomplete="off"> 
+ </form> 
+</div>),49), (JsoupElement(<div class="model-number-sticker">
+ <img width="283" height="114" alt="Temp Img Version Sticker" src="/us/_ui/belkin/img/content/temp-img-version-sticker.jpg">
+</div>),22), (JsoupElement(<div class="srch-acc-nav"> 
+ <div id="global-search"> 
+  <form name="search_form" method="GET" action="/us/search"> 
+   <label class="" for="search"><i class="fa fa-search" aria-hidden="true"></i></label> 
+   <input id="search" class="input-text belkin-search-modal idleField" type="text" name="text" value="Search" autocomplete="off"> 
+  </form> 
+ </div> 
+ <div class="acc-lnks"> 
+  <ul> 
+   <li class="login-link"><a href="/us/login" id="loginButton">Sign In</a></li> 
+   <li><a href="/us/cart" class="icon-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a><span class="item-number">0</span> items</li> 
+   <script type="text/javascript">
+ var checkoutEnabled='true'
+</script> 
+  </ul> 
+ </div> 
+</div>),60), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">WeMo</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/home-automation/c/wemo-home-automation" name="Home Automation" target=""> Home Automation</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/home-automation/c/netcam" name="NetCam" target=""> NetCam</a> </li> 
+  <li class="view-all-link"><a href="/us/c/home-automation" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),67), (JsoupElement(<div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+ <ul> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+ </ul> 
+</div>),0), (JsoupElement(<div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+ <ul> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+ </ul> 
+</div>),35), (JsoupElement(<div class="clear"></div>),43), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Lightning Accessories</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTCBLS/" name="Lightning Cables" target=""> Lightning Cables</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTCRG" name="Lightning Chargers" target=""> Lightning Chargers</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTDAS/" name="Lightning Docks &amp; Stands" target=""> Lightning Docks &amp; Stands</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTIC/" name="Lightning In-Car Accessories" target=""> Lightning In-Car Accessories</a> </li> 
+  <li class="view-all-link"><a href="/us/c/lightning-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),5), (JsoupElement(<div class="global-subnav"> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Resource-Center/Wireless-Charging/" title="Wireless Charging" class="ga-navSubCategory ">Wireless Charging </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Resource-Center/USB-C/" title="USB-C™" class="ga-navSubCategory ">USB-C™ </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Resource-Center/Thunderbolt/" title="Thunderbolt™ Technology" class="ga-navSubCategory ">Thunderbolt™ Technology </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Resource-Center/Portable-Charging/" title="Portable Charging" class="ga-navSubCategory ">Portable Charging </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Resource-Center/Power-Delivery/" title="USB Power Delivery" class="ga-navSubCategory ">USB Power Delivery </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Resource-Center/Cybersecurity" title="Cybersecurity &amp; KVM " class="ga-navSubCategory ">Cybersecurity &amp; KVM </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Learn/" title="Visit the Resource Center" class="ga-navSubCategory ">Visit the Resource Center </a> </li> 
+ </ul> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/AboutUs/" title="About Us" class="ga-navSubCategory ">About Us </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/contactus/locations/" title="Contact Us" class="ga-navSubCategory ">Contact Us </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/belkinbusiness" title="For Business" class="ga-navSubCategory ">For Business </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/affiliate-program/" title="Become an Affiliate" class="ga-navSubCategory ">Become an Affiliate </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/careerspage/" title="Careers" class="ga-navSubCategory ">Careers </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/pressroompage/" title="Press Room" class="ga-navSubCategory ">Press Room </a> </li> 
+ </ul> 
+</div>),20), (JsoupElement(<div class="email-signup-modal"> 
+ <h2>EMAIL SIGN-UP</h2> 
+ <p class="email-modal-copy">Sign up today for the latest news and product updates from Belkin.</p> 
+ <hr> 
+ <label for="email">Email</label> 
+ <input type="text" name="email" id="email"> 
+ <span class="error-msg" id="requrefield" style="display: none">This is a required field.</span> 
+ <span class="error-msg" id="emailvalidation" style="display: none">Email id is invalid.</span> 
+ <hr> 
+ <p class="email-modal-copy">Which products are you most interested in (Check all that apply).</p> 
+ <fieldset id="body"> 
+  <!-- Exact Target Email Changes Start --> 
+  <input type="hidden" id="emailGroupsUID" name="emailGroupsUID"> 
+  <ul class="checkbox-list" id="emailCheckboxList"> 
+   <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615">Please select one of below options</label> </li> 
+   <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615"></label> </li> 
+   <li> <input type="checkbox" id="blk_Apple_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Apple Device Accessories</label> </li> 
+   <li> <input type="checkbox" id="blk_Android_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Samsung and Android Device Accessories</label> </li> 
+   <li> <input type="checkbox" id="blk_Automation" class="footer form-checkbox"> <label for="edit-product-notifications">Home Automation</label> </li> 
+   <li> <input type="checkbox" id="blk_Networking" class="footer form-checkbox"> <label for="edit-product-notifications">Networking</label> </li> 
+   <li> <input type="checkbox" id="blk_Fitness" class="footer form-checkbox"> <label for="edit-product-notifications">Active and Fitness</label> </li> 
+   <li> <input type="checkbox" id="blk_Offers" class="footer form-checkbox"> <label for="edit-product-notifications">Exclusive Offers</label> </li> 
+   <li> <input type="checkbox" id="blk_Business" class="footer form-checkbox"> <label for="edit-product-notifications">Small Business</label> </li> 
+   <li> <input type="checkbox" id="blk_New_Products" class="footer form-checkbox"> <label for="edit-product-notifications">New Products, Updates and Tips</label> </li> 
+   <li> 
+    <hr> <input type="checkbox" id="subscribe_all" class="footer form-checkbox"> <label for="edit-product-notifications">Stay in the know- send me news, updates and special promotions (Select All)</label> </li> 
+  </ul> 
+  <a class="btn-pill-secondary" onclick="submitEmail(this,false)" id="emailsignup2">Submit</a> 
+  <!-- Exact Target Email Changes END--> 
+ </fieldset> 
+ <hr> 
+ <p class="disclaimer">Belkin will not sell or rent your email address. Check out our <a href="/us/privacypolicy" target="_blank"><u>Privacy policy</u></a> if you'd like to learn more.</p> 
+</div>),44), (JsoupElement(<div class="col"> 
+ <h5>Asia Pacific</h5> 
+ <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+  <ul> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+  </ul> 
+ </div> 
+ <div style="display:inline-block; vertical-align: top;"> 
+  <ul> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+  </ul> 
+ </div> 
+</div>),32), (JsoupElement(<div id="mobile-search">
+ <i class="fa fa-search" aria-hidden="true"></i>
+</div>),31), (JsoupElement(<div style="display:inline-block; vertical-align: top;"> 
+ <ul> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+  <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+ </ul> 
+</div>),52), (JsoupElement(<div id="support-nav-model-number-modal" class="modal support-nav-model-number-container"> 
+ <!-- Start Product Version Modal --> 
+ <p><a id="model-btn-close" class="btn-close" href="#">Close Window</a></p> 
+ <h4>Where is my model number?</h4> 
+ <div class="model-number-sticker-container">
+  <div class="model-number-instructions">
+   <p>Your product's model number and version can usually be found on a sticker located on the product like this example. For a router, the sticker will be on the bottom.<br> <br> For more examples, <a href="/us/support-article?articleNum=8064" target="_blank">click here</a>.</p>
+  </div> 
+  <div class="model-number-sticker">
+   <img width="283" height="114" alt="Temp Img Version Sticker" src="/us/_ui/belkin/img/content/temp-img-version-sticker.jpg">
+  </div>
+ </div> 
+</div>),61), (JsoupElement(<div class="col"> 
+ <h5>Americas</h5> 
+ <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+  <ul> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+  </ul> 
+ </div> 
+</div>),11), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Computer Accessories</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/WSMACPCHUBS" name="Hubs &amp; Docks" target=""> Hubs &amp; Docks</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/WSMACPCCAC" name="Laptop Cooling &amp; Comfort" target=""> Laptop Cooling &amp; Comfort</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/WSMACPCCAB" name="Laptop Covers &amp; Bags" target=""> Laptop Covers &amp; Bags</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/Cables-and-Other-Accessories" name="More Computer Accessories" target=""> More Computer Accessories</a> </li> 
+  <li class="view-all-link"><a href="/us/c/WSMACPC" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),51), (JsoupElement(<div class="col"> 
+ <h5>Europe, Middle East &amp; Africa</h5> 
+ <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+  <ul> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+  </ul> 
+ </div> 
+ <div style="display:inline-block; vertical-align: top;"> 
+  <ul> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+   <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+  </ul> 
+ </div> 
+</div>),10), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Tablet Keyboards &amp; Cases</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/Tablet-Cases" name="Tablet Cases" target=""> Tablet Cases</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/Tablet-Keyboard-Cases" name="Keyboard Cases" target=""> Keyboard Cases</a> </li> 
+  <li class="view-all-link"><a href="/us/c/Tablet-Keyboards-and-Cases" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),19), (JsoupElement(<div id="pagebanner"> 
+</div>),64), (JsoupElement(<div class="col"> 
+ <h5>Products</h5> 
+ <ul> 
+  <li> <a href="/us/products" name="Products" target=""> Products</a> </li> 
+  <li> <a href="/us/devices" name="My Device" target=""> My Device</a> </li> 
+  <li> <a href="http://www.belkinbusiness.com/" name="For Business" target=""> For Business</a> </li> 
+  <li> <a href="/us/my-account" name="My Account" target=""> My Account</a> </li> 
+ </ul> 
+</div>),2), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Smartwatch Accessories</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/smartwatch-bands" name="Smartwatch Bands" target=""> Smartwatch Bands</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/smartwatch-chargers" name="Smartwatch Chargers" target=""> Smartwatch Chargers</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/c/smartwatch-screen-protectors" name="Smartwatch Screen Protectors" target=""> Smartwatch Screen Protectors</a> </li> 
+  <li class="view-all-link"><a href="/us/c/smartwatch-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),58), (JsoupElement(<div>
+ <style type="text/css">
+.narrow-left-rail h3{padding: 0 24px 0px 0;}
+#footer-signup-input{text-overflow: ellipsis;}
+</style>
+</div>),9), (JsoupElement(<div class="global-subnav"> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/c/smartwatch-chargers/" title="Charge your smartwatch" class="ga-navSubCategory ">Charge your smartwatch </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/c/WSPWRCHRG/" title="Charge your mobile device" class="ga-navSubCategory ">Charge your mobile device </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/c/screen-protection/" title="Protect your phone" class="ga-navSubCategory ">Protect your phone </a> </li> 
+ </ul> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/Cables/c/usb-c-cables/" title="USB-C™ Accessories" class="ga-navSubCategory ">USB-C™ Accessories </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/lightning-accessories/" title="Lightning Accessories" class="ga-navSubCategory has-sub">Lightning Accessories <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Lightning Accessories</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTCBLS/" name="Lightning Cables" target=""> Lightning Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTCRG" name="Lightning Chargers" target=""> Lightning Chargers</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTDAS/" name="Lightning Docks &amp; Stands" target=""> Lightning Docks &amp; Stands</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/lightning-accessories/c/WSLTIC/" name="Lightning In-Car Accessories" target=""> Lightning In-Car Accessories</a> </li> 
+     <li class="view-all-link"><a href="/us/c/lightning-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/mobile-accessories/Chargers-&amp;-Cables/Chargers/c/wireless-chargers/" title="Wireless Chargers" class="ga-navSubCategory ">Wireless Chargers </a> </li> 
+ </ul> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/Collections/" title="Collections" class="ga-navSubCategory has-sub">Collections <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Collections</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Collections/c/Apple-Collection/" name="Apple Collection" target=""> Apple Collection</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Collections/c/Mobile-Collection/" name="Mobile Collection" target=""> Mobile Collection</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Collections/c/Mix-It-Up" name="MIXIT↑" target=""> MIXIT↑</a> </li> 
+     <li class="view-all-link"><a href="/us/c/Collections" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/c/Cables/" title="Cables" class="ga-navSubCategory has-sub">Cables <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Cables</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/smartphone-and-tablet-cables/" name="Smartphone &amp; Tablet" target=""> Smartphone &amp; Tablet</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/products/Cables/c/cable-adapters/" name="Cable Adapters" target=""> Cable Adapters</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/macbook-and-pc-cables/" name="Macbook &amp; PC" target=""> Macbook &amp; PC</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/audio-video-cables/" name="Audio Video" target=""> Audio Video</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cables/c/usb-c-cables" name="USB-C Cables" target=""> USB-C Cables</a> </li> 
+     <li class="view-all-link"><a href="/us/c/Cables" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/Cases-and-Armbands" title="Cases &amp; Armbands" class="ga-navSubCategory has-sub">Cases &amp; Armbands <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Cases &amp; Armbands</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cases-and-Armbands/c/Active-and-Armband-Cases" name="Armbands" target=""> Armbands</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cases-and-Armbands/c/WSCAPSPC/" name="Smartphone Cases" target=""> Smartphone Cases</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Cases-and-Armbands/c/iPod-Cases" name="iPod Cases" target=""> iPod Cases</a> </li> 
+     <li class="view-all-link"><a href="/us/c/Cases-and-Armbands" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/WSMACPC" title="Computer Accessories" class="ga-navSubCategory has-sub">Computer Accessories <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Computer Accessories</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/WSMACPCHUBS" name="Hubs &amp; Docks" target=""> Hubs &amp; Docks</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/WSMACPCCAC" name="Laptop Cooling &amp; Comfort" target=""> Laptop Cooling &amp; Comfort</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/WSMACPCCAB" name="Laptop Covers &amp; Bags" target=""> Laptop Covers &amp; Bags</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Computer-Accessories/c/Cables-and-Other-Accessories" name="More Computer Accessories" target=""> More Computer Accessories</a> </li> 
+     <li class="view-all-link"><a href="/us/c/WSMACPC" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/Entertainment" title="Entertainment" class="ga-navSubCategory has-sub">Entertainment <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Entertainment</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Entertainment/c/Audio/" name="Audio Accessories" target=""> Audio Accessories</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Entertainment/c/Home-Theater/" name="Home Theater Accessories" target=""> Home Theater Accessories</a> </li> 
+     <li class="view-all-link"><a href="/us/c/Entertainment" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/WSSTIC/" title="In-Car" class="ga-navSubCategory has-sub">In-Car <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">In-Car</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/In-Car/c/WSICHF" name="Hands-Free Car Accessories" target=""> Hands-Free Car Accessories</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/In-Car/c/WSICCM" name="Car Chargers &amp; Mounts" target=""> Car Chargers &amp; Mounts</a> </li> 
+     <li class="view-all-link"><a href="/us/c/In-Car" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/WSST" title="Mobile Accessories" class="ga-navSubCategory has-sub">Mobile Accessories <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Mobile Accessories</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/WSSTAEA/" name="App-Enabled Accessories" target=""> App-Enabled Accessories</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/WSSTCRGCBL" name="Chargers &amp; Cables" target=""> Chargers &amp; Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/docks-and-stands" name="Docks &amp; Stands" target=""> Docks &amp; Stands</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/screen-protection" name="Screen Protectors" target=""> Screen Protectors</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/mobile-accessories/c/WSSTOTHA/" name="More Accessories" target=""> More Accessories</a> </li> 
+     <li class="view-all-link"><a href="/us/c/mobile-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/WSPWR" title="Power" class="ga-navSubCategory has-sub">Power <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Power</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRBBUPS/" name="Battery Backup - UPS" target=""> Battery Backup - UPS</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/Charging/c/portable-chargers-and-battery-packs/" name="Battery Packs" target=""> Battery Packs</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRCHRG/" name="Chargers" target=""> Chargers</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRCSR/" name="Power Conservation Solutions" target=""> Power Conservation Solutions</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Power/c/WSPWRSP/" name="Surge Protection &amp; Power Strips" target=""> Surge Protection &amp; Power Strips</a> </li> 
+     <li class="view-all-link"><a href="/us/c/WSPWR" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/c/Tablet-Keyboards-and-Cases/" title="Tablet Keyboards &amp; Cases" class="ga-navSubCategory has-sub">Tablet Keyboards &amp; Cases <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Tablet Keyboards &amp; Cases</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/Tablet-Cases" name="Tablet Cases" target=""> Tablet Cases</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/Tablet-Keyboard-Cases" name="Keyboard Cases" target=""> Keyboard Cases</a> </li> 
+     <li class="view-all-link"><a href="/us/c/Tablet-Keyboards-and-Cases" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/c/smartwatch-accessories/" title="Smartwatch Accessories" class="ga-navSubCategory has-sub">Smartwatch Accessories <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Smartwatch Accessories</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/smartwatch-bands" name="Smartwatch Bands" target=""> Smartwatch Bands</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/smartwatch-chargers" name="Smartwatch Chargers" target=""> Smartwatch Chargers</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/smartwatch-screen-protectors" name="Smartwatch Screen Protectors" target=""> Smartwatch Screen Protectors</a> </li> 
+     <li class="view-all-link"><a href="/us/c/smartwatch-accessories" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/home-automation" title="WeMo" class="ga-navSubCategory has-sub">WeMo <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">WeMo</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/home-automation/c/wemo-home-automation" name="Home Automation" target=""> Home Automation</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/home-automation/c/netcam" name="NetCam" target=""> NetCam</a> </li> 
+     <li class="view-all-link"><a href="/us/c/home-automation" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+ </ul> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/business/" title="Business" class="ga-navSubCategory has-sub">Business <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Business</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/audio-video-adapters" name="Audio/Video Adapters" target=""> Audio/Video Adapters</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/audio-video-cables-business/" name="Audio/Video Cables" target=""> Audio/Video Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/bulk-copper-cables/" name="Bulk Copper Cable" target=""> Bulk Copper Cable</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/smartphone-cables/" name="Charging Cables" target=""> Charging Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/network-copper-cables/" name="Copper Network Cables" target=""> Copper Network Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/network-fiber-cables/" name="Fiber Network Cables" target=""> Fiber Network Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/hubs-and-docks-for-business/" name="Hubs &amp; Docks" target=""> Hubs &amp; Docks</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/keyboards-and-mice-for-business/" name="Keyboards &amp; Mice" target=""> Keyboards &amp; Mice</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/business/c/cybersecurity-secure-kvm/" name="KVM - Secure" target=""> KVM - Secure</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/standard-kvm/" name="KVM - Standard" target=""> KVM - Standard</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/smartphone-accessories-business/" name="Phone Accessories" target=""> Phone Accessories</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/racks-and-enclosures/" name="Racks and Enclosures" target=""> Racks and Enclosures</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/power-for-business/" name="Surge Protection &amp; Power Strips" target=""> Surge Protection &amp; Power Strips</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/tablet-accessories-business/" name="Tablet Accessories" target=""> Tablet Accessories</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/c/usb-and-firewire-cables/" name="USB &amp; FireWire Cables" target=""> USB &amp; FireWire Cables</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/belkinbusiness" name="Explore Business Solutions" target=""> Explore Business Solutions</a> </li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/Education/c/accessories/" title="Classroom Accessories" class="ga-navSubCategory ">Classroom Accessories </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/Products/c/WSNT/" title="Networking" class="ga-navSubCategory has-sub">Networking <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Networking</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Network-Accessories/c/WSNTWLS" name="Network Accessories" target=""> Network Accessories</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/Products/Network-Accessories/c/WSNTWRD" name="Wired" target=""> Wired</a> </li> 
+     <li class="view-all-link"><a href="/us/c/WSNT" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+ </ul> 
+ <ul class="global-subnav-section"> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/best-sellers/" title="Our Bestsellers" class="ga-navSubCategory has-sub">Our Bestsellers <i class="fa fa-chevron-right" aria-hidden="true"></i> </a> 
+   <div class="global-childnav"> 
+    <ul class="global-childnav-section"> 
+     <li class="childnav-header">Our Bestsellers</li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/p/P-F7U027/  " name="BOOST↑UP™ Wireless Charging Pad for iPhone X, iPhone 8 Plus, iPhone 8" target=""> BOOST↑UP™ Wireless Charging Pad for iPhone X, iPhone 8 Plus, iPhone 8</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/p/P-F8J212/" name="3.5 mm Audio + Charge RockStar™" target=""> 3.5 mm Audio + Charge RockStar™</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/p/p-f8j200" name="PowerHouse™ Charge Dock for Apple Watch + iPhone" target=""> PowerHouse™ Charge Dock for Apple Watch + iPhone</a> </li> 
+     <li title="" class="ga-navChildCategory"><a href="/us/p/P-F5L904/" name="QODE™ Ultimate Lite Keyboard Case for iPad 5th Generation (2017)" target=""> QODE™ Ultimate Lite Keyboard Case for iPad 5th Generation (2017)</a> </li> 
+     <li class="view-all-link"><a href="/us/best-sellers/" title="View All >" class="ga-navChildCategory view-all-link">View All</a></li> 
+    </ul> 
+    <!-- VIEW ALL LINK --> 
+   </div> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/factory-store" title="Sale" class="ga-navSubCategory ">Sale </a> </li> 
+  <li> 
+   <!-- Wemo, etc. --> <a href="/us/studentdiscount/" title="Student Discount" class="ga-navSubCategory ">Student Discount </a> </li> 
+ </ul> 
+</div>),37), (JsoupElement(<div id="global-search"> 
+ <form name="search_form" method="GET" action="/us/search"> 
+  <label class="" for="search"><i class="fa fa-search" aria-hidden="true"></i></label> 
+  <input id="search" class="input-text belkin-search-modal idleField" type="text" name="text" value="Search" autocomplete="off"> 
+ </form> 
+</div>),38), (JsoupElement(<div class="global-footer-sub-content-container"> 
+ <div class="global-footer-sub-content-legal"> 
+  <ul> 
+   <li> <a href="/us/sitemap" name="Site Map" target=""> Site Map</a> </li> 
+   <li> <a href="/us/privacypolicy/" name="Privacy Policy" target=""> Privacy Policy</a> </li> 
+   <li> <a href="/us/cookie-policy/" name="Cookie Policy" target=""> Cookie Policy</a> </li> 
+   <li> <a href="/us/end-user-license-agreement/" name="End-User License Agreement" target=""> End-User License Agreement</a> </li> 
+   <li> <a href="/us/security/" name="Security" target=""> Security</a> </li> 
+   <li> <a href="/us/terms-of-use/" name="Terms of Use" target=""> Terms of Use</a> </li> 
+   <li> <a href="/us/support-article?articleNum=51238" name="GPL Center" target=""> GPL Center</a> </li> 
+  </ul> 
+ </div> 
+ <!-- /footer-sub-links --> 
+ <div class="global-footer-sub-content-change-region"> 
+  <div class="country-selector"> 
+   <ul> 
+    <li> <h4> <a class="country-selector-link" href="#country-selector"><img src="/medias/sys_master/8822141091870/Flag_US_25x25.png" width="25" height="25" alt="United States"> <strong>United States</strong> </a> </h4> </li> 
+   </ul> 
+   <div id="country-selector-outer" style="position: relative"> 
+    <div id="country-selector" class="country-selector-inner"> 
+     <a id="country-btn-close" class="btn-close" href="#">Close Window</a> 
+     <h4> Select Your Location </h4> 
+     <div class="col"> 
+      <h5>Americas</h5> 
+      <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+       <ul> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/br/" name="Brazil" target="" class="br" style="font-weight:normal">Brazil</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="Canada" target="" class="ca" style="font-weight:normal">Canada</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/us/" name="United States" target="" class="us" style="font-weight:bold">United States</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="col"> 
+      <h5>Europe, Middle East &amp; Africa</h5> 
+      <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+       <ul> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/cz/" name="Czech Republic" target="" class="cz" style="font-weight:normal">Czech Republic</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/dk/" name="Denmark" target="" class="dk" style="font-weight:normal">Denmark</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/fi/" name="Finland" target="" class="fi" style="font-weight:normal">Finland</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/fr/" name="France" target="" class="fr" style="font-weight:normal">France</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/de/" name="Germany" target="" class="de" style="font-weight:normal">Germany</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/gr/" name="Greece" target="" class="gr" style="font-weight:normal">Greece</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/hu/" name="Hungary" target="" class="hu" style="font-weight:normal">Hungary</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/it/" name="Italy" target="" class="it" style="font-weight:normal">Italy</a> </li> 
+       </ul> 
+      </div> 
+      <div style="display:inline-block; vertical-align: top;"> 
+       <ul> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/nl/" name="Netherlands" target="" class="nl" style="font-weight:normal">Netherlands</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/no/" name="Norway" target="" class="no" style="font-weight:normal">Norway</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/pl/" name="Poland" target="" class="pl" style="font-weight:normal">Poland</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/ru/" name="Russia" target="" class="ru" style="font-weight:normal">Russia</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/es/" name="Spain" target="" class="es" style="font-weight:normal">Spain</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/se/" name="Sweden" target="" class="se" style="font-weight:normal">Sweden</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/tr/" name="Turkey" target="" class="tr" style="font-weight:normal">Turkey</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/uk" name="United Kingdom" target="" class="uk" style="font-weight:normal">United Kingdom</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="col"> 
+      <h5>Asia Pacific</h5> 
+      <div style="display:inline-block; vertical-align: top; margin-right:57px;"> 
+       <ul> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/au" name="Australia" target="" class="au" style="font-weight:normal">Australia</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/cn" name="China" target="" class="cn" style="font-weight:normal">China</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/" name="Hong Kong" target="" class="zh-hk" style="font-weight:normal">Hong Kong</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/hk/en" name="Hong Kong (English)" target="" class="en-hk" style="font-weight:normal">Hong Kong (English)</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/in/" name="India" target="" class="in" style="font-weight:normal">India</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/jp/" name="Japan" target="" class="jp" style="font-weight:normal">Japan</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/kr/" name="Korea" target="" class="kr" style="font-weight:normal">Korea</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/my" name="Malaysia" target="" class="my" style="font-weight:normal">Malaysia</a> </li> 
+       </ul> 
+      </div> 
+      <div style="display:inline-block; vertical-align: top;"> 
+       <ul> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/ph/" name="Philippines" target="" class="ph" style="font-weight:normal">Philippines</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/sg/" name="Singapore" target="" class="sg" style="font-weight:normal">Singapore</a> </li> 
+        <li><input type="hidden" value=""> <a href="http://www.belkin.com/th/" name="Thailand (English)" target="" class="en-th" style="font-weight:normal">Thailand (English)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="copyright">
+   <span>© 2018 Belkin International, Inc.</span>
+  </div> 
+ </div> 
+</div>),63), (JsoupElement(<div> 
+ <link rel="stylesheet" type="text/css" media="screen" href="/resources/css/padiact_apr-2017.css"> 
+</div>),24), (JsoupElement(<div style="clear: both;"></div>),47), (JsoupElement(<div class="col"> 
+ <h5>Support</h5> 
+ <ul> 
+  <li> <a href="/us/support/" name="Support" target=""> Support</a> </li> 
+  <li> <a href="/us/support-article?articleNum=80153" name="Online Order Help" target=""> Online Order Help</a> </li> 
+  <li> <a href="/us/register-product" name="Register a Product" target=""> Register a Product</a> </li> 
+  <li> <a href="/us/support/returns" name="Returns &amp; Claims" target=""> Returns &amp; Claims</a> </li> 
+  <li> <a href="/us/counterfeits/" name="Identify Counterfeits" target=""> Identify Counterfeits</a> </li> 
+  <li> <a href="/us/patents" name="Patents" target=""> Patents</a> </li> 
+ </ul> 
+</div>),55), (JsoupElement(<div id="email-signup1" class="default-modal"> 
+ <div class="email-signup-modal"> 
+  <h2>EMAIL SIGN-UP</h2> 
+  <p class="email-modal-copy">Sign up today for the latest news and product updates from Belkin.</p> 
+  <hr> 
+  <label for="email">Email</label> 
+  <input type="text" name="email" id="email"> 
+  <span class="error-msg" id="requrefield" style="display: none">This is a required field.</span> 
+  <span class="error-msg" id="emailvalidation" style="display: none">Email id is invalid.</span> 
+  <hr> 
+  <p class="email-modal-copy">Which products are you most interested in (Check all that apply).</p> 
+  <fieldset id="body"> 
+   <!-- Exact Target Email Changes Start --> 
+   <input type="hidden" id="emailGroupsUID" name="emailGroupsUID"> 
+   <ul class="checkbox-list" id="emailCheckboxList"> 
+    <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615">Please select one of below options</label> </li> 
+    <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615"></label> </li> 
+    <li> <input type="checkbox" id="blk_Apple_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Apple Device Accessories</label> </li> 
+    <li> <input type="checkbox" id="blk_Android_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Samsung and Android Device Accessories</label> </li> 
+    <li> <input type="checkbox" id="blk_Automation" class="footer form-checkbox"> <label for="edit-product-notifications">Home Automation</label> </li> 
+    <li> <input type="checkbox" id="blk_Networking" class="footer form-checkbox"> <label for="edit-product-notifications">Networking</label> </li> 
+    <li> <input type="checkbox" id="blk_Fitness" class="footer form-checkbox"> <label for="edit-product-notifications">Active and Fitness</label> </li> 
+    <li> <input type="checkbox" id="blk_Offers" class="footer form-checkbox"> <label for="edit-product-notifications">Exclusive Offers</label> </li> 
+    <li> <input type="checkbox" id="blk_Business" class="footer form-checkbox"> <label for="edit-product-notifications">Small Business</label> </li> 
+    <li> <input type="checkbox" id="blk_New_Products" class="footer form-checkbox"> <label for="edit-product-notifications">New Products, Updates and Tips</label> </li> 
+    <li> 
+     <hr> <input type="checkbox" id="subscribe_all" class="footer form-checkbox"> <label for="edit-product-notifications">Stay in the know- send me news, updates and special promotions (Select All)</label> </li> 
+   </ul> 
+   <a class="btn-pill-secondary" onclick="submitEmail(this,false)" id="emailsignup2">Submit</a> 
+   <!-- Exact Target Email Changes END--> 
+  </fieldset> 
+  <hr> 
+  <p class="disclaimer">Belkin will not sell or rent your email address. Check out our <a href="/us/privacypolicy" target="_blank"><u>Privacy policy</u></a> if you'd like to learn more.</p> 
+ </div> 
+ <!-- /section --> 
+</div>),25), (JsoupElement(<div id="black-mask" style="display: none;"></div>),4), (JsoupElement(<div class="visuallyhidden"> 
+ <a href="#content">skipToContent</a> 
+ <a href="#footer">skipToNavigation</a> 
+</div>),17), (JsoupElement(<div class="acc-lnks"> 
+ <ul> 
+  <li class="login-link"><a href="/us/login" id="loginButton">Sign In</a></li> 
+  <li><a href="/us/cart" class="icon-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a><span class="item-number">0</span> items</li> 
+  <script type="text/javascript">
+ var checkoutEnabled='true'
+</script> 
+ </ul> 
+</div>),40), (JsoupElement(<div class="close-icon"></div>),57), (JsoupElement(<div class="footer-signup"> 
+ <input id="footer-signup-input" type="email" name="footer-connect-with-belkin" placeholder="Sign up for exclusive deals &amp; more">
+ <button id="footer-signup-btn" type="submit" class="btn-pill-primary">SIGN UP &gt;</button> 
+ <div id="footer-signup-error" class="footer-signup-error" style="display:none;">
+  Please enter a valid email address.
+ </div> 
+ <a href="#email-signup1" class="email-signup emailModal">&nbsp;</a> 
+ <div id="email-signup1" class="default-modal"> 
+  <div class="email-signup-modal"> 
+   <h2>EMAIL SIGN-UP</h2> 
+   <p class="email-modal-copy">Sign up today for the latest news and product updates from Belkin.</p> 
+   <hr> 
+   <label for="email">Email</label> 
+   <input type="text" name="email" id="email"> 
+   <span class="error-msg" id="requrefield" style="display: none">This is a required field.</span> 
+   <span class="error-msg" id="emailvalidation" style="display: none">Email id is invalid.</span> 
+   <hr> 
+   <p class="email-modal-copy">Which products are you most interested in (Check all that apply).</p> 
+   <fieldset id="body"> 
+    <!-- Exact Target Email Changes Start --> 
+    <input type="hidden" id="emailGroupsUID" name="emailGroupsUID"> 
+    <ul class="checkbox-list" id="emailCheckboxList"> 
+     <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615">Please select one of below options</label> </li> 
+     <li class="error-msg-emailgroup" style="display:none;"> <label for="edit-product-notifications" style="color:#C52615"></label> </li> 
+     <li> <input type="checkbox" id="blk_Apple_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Apple Device Accessories</label> </li> 
+     <li> <input type="checkbox" id="blk_Android_Device" class="footer form-checkbox"> <label for="edit-product-notifications">Samsung and Android Device Accessories</label> </li> 
+     <li> <input type="checkbox" id="blk_Automation" class="footer form-checkbox"> <label for="edit-product-notifications">Home Automation</label> </li> 
+     <li> <input type="checkbox" id="blk_Networking" class="footer form-checkbox"> <label for="edit-product-notifications">Networking</label> </li> 
+     <li> <input type="checkbox" id="blk_Fitness" class="footer form-checkbox"> <label for="edit-product-notifications">Active and Fitness</label> </li> 
+     <li> <input type="checkbox" id="blk_Offers" class="footer form-checkbox"> <label for="edit-product-notifications">Exclusive Offers</label> </li> 
+     <li> <input type="checkbox" id="blk_Business" class="footer form-checkbox"> <label for="edit-product-notifications">Small Business</label> </li> 
+     <li> <input type="checkbox" id="blk_New_Products" class="footer form-checkbox"> <label for="edit-product-notifications">New Products, Updates and Tips</label> </li> 
+     <li> 
+      <hr> <input type="checkbox" id="subscribe_all" class="footer form-checkbox"> <label for="edit-product-notifications">Stay in the know- send me news, updates and special promotions (Select All)</label> </li> 
+    </ul> 
+    <a class="btn-pill-secondary" onclick="submitEmail(this,false)" id="emailsignup2">Submit</a> 
+    <!-- Exact Target Email Changes END--> 
+   </fieldset> 
+   <hr> 
+   <p class="disclaimer">Belkin will not sell or rent your email address. Check out our <a href="/us/privacypolicy" target="_blank"><u>Privacy policy</u></a> if you'd like to learn more.</p> 
+  </div> 
+  <!-- /section --> 
+ </div> 
+ <!-- /email-signup / default-modal --> 
+</div>),39), (JsoupElement(<div class="global-childnav"> 
+ <ul class="global-childnav-section"> 
+  <li class="childnav-header">Cases &amp; Armbands</li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cases-and-Armbands/c/Active-and-Armband-Cases" name="Armbands" target=""> Armbands</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cases-and-Armbands/c/WSCAPSPC/" name="Smartphone Cases" target=""> Smartphone Cases</a> </li> 
+  <li title="" class="ga-navChildCategory"><a href="/us/Products/Cases-and-Armbands/c/iPod-Cases" name="iPod Cases" target=""> iPod Cases</a> </li> 
+  <li class="view-all-link"><a href="/us/c/Cases-and-Armbands" title="View All" class="ga-navChildCategory view-all-link">View All</a></li> 
+ </ul> 
+ <!-- VIEW ALL LINK --> 
+</div>),53))
