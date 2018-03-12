@@ -23,4 +23,8 @@ object DomUtils {
 
   def fetchRoot(url:String):String = ???
   def formatUrls(rootUrl:String, urls:List[String]):List[String] = ???
+  def randomSampleUrls(n:Int):List[String] = ???
+
+
+  
 }
