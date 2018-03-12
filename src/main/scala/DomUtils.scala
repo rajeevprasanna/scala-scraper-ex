@@ -24,8 +24,9 @@ object DomUtils {
   def fetchRoot(fullURL:String):String = {
     val formatted = checkForProtocol(fullURL)
     val url = new URL(formatted)
-    val path = url.getFile().substring(0, url.getFile().lastIndexOf('/'))
-    url.getProtocol() + "://" + url.getHost()
+    val lastIndex = url.getFile().lastIndexOf('/')
+    val path = url.getFile().substring(0, if(lastIndex == -1)  0 else lastIndex)
+    url.getProtocol() + "://" + url.getHost() + path
   }
 
   def checkForProtocol(url:String):String = url.startsWith("http") match {
@@ -52,10 +53,16 @@ object DomUtils {
     })
   }
 
+  def getUrlExtension(url:String):String = {
+    val path = new URL(url).getPath
+    if(path.lastIndexOf(".") == -1) "" else path.substring(path.indexOf("."))
+  }
+
   def randomSampleUrls(n:Int, urls:List[String]):List[String] = {
     import scala.util.Random
-    val maxSamples = Math.max(n, urls.length)
-    Random.shuffle(urls).take(maxSamples)
+    val validUrls = urls.filter(el => el.endsWith(".html") || getUrlExtension(el) != "")
+    val maxSamples = Math.max(n, validUrls.length)
+    Random.shuffle(validUrls).take(maxSamples)
   }
 
   def commonPartsOfTemplate(urls:List[String]):Option[String] = {
