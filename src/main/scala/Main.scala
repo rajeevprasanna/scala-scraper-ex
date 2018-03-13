@@ -27,7 +27,15 @@ object Main extends App {
   val url = "http://www.belkin.com/us/support-search?q=document:rank&show=All"
   val doc = DomUtils.fetchDocument(url)
   val allHrefs = DomUtils.getUrlsFromDoc(doc)
-  allHrefs.foreach(println)
+
+  val formattedUrls = DomUtils.formatUrls(url, allHrefs)
+  val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
+  val randomSamples = DomUtils.randomSampleUrls(5, htmlUrls)
+  val commonHtml = DomUtils.commonPartsOfTemplate(randomSamples)
+
+
+  println(resourceUrls)
+  println(htmlUrls)
 }
 
 
