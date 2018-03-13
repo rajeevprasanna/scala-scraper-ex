@@ -26,7 +26,8 @@ object Main extends App {
 
 //  val url = "http://www.belkin.com/us/support-search?q=document:rank&show=All"
 //  val url = "https://www.vmware.com/in/products/horizon-apps.html"
-  val url = "https://www.citrix.com/products/netscaler-adc/"
+//  val url = "https://www.citrix.com/products/netscaler-adc/"
+  val url = "http://www.microchip.com/wwwproducts/en/en010668"
 
   val allFiles = Crawler.extractFiles(url, maxDepth, maxDownloadFiles)
   println(allFiles)

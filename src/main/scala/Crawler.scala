@@ -4,7 +4,7 @@ object Crawler {
 
   def extractUrls(commonTemplate:String, resourceUrl:String, url:String):(List[String], List[String]) = {
     val doc = DomUtils.fetchDocument(url)
-    val allHrefs = DomUtils.getUrlsFromDoc(doc)
+    val allHrefs = doc.map(DomUtils.getUrlsFromDoc(_)).getOrElse(Nil)
 
     val commonHTMLDom = DomUtils.parseString(commonTemplate)
     val commonUrls = DomUtils.getUrlsFromDoc(commonHTMLDom)
@@ -20,7 +20,7 @@ object Crawler {
 
   def extractFiles(url:String, maxDepth:Int, maxNeedFiles:Int):List[String] = {
     val doc = DomUtils.fetchDocument(url)
-    val allHrefs = DomUtils.getUrlsFromDoc(doc)
+    val allHrefs = doc.map(DomUtils.getUrlsFromDoc(_)).getOrElse(Nil)
 
     val formattedUrls = DomUtils.formatUrls(url, allHrefs)
     val (_, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
@@ -30,34 +30,40 @@ object Crawler {
     val commonHtml = DomUtils.commonPartsOfTemplate(randomSamples).getOrElse("")
 
     val filesQueue = scala.collection.mutable.Set[String]()
+    val processedUrls = scala.collection.mutable.Set[String]()
 
     var urlQueue1 = scala.collection.mutable.ListBuffer[String](url)
     var urlQueue2 = scala.collection.mutable.ListBuffer[String]()
     var flip = true
 
-    (1 to maxDepth).map(_ => {
+    (1 to maxDepth).foreach(_ => {
       if(filesQueue.size < maxNeedFiles){
         if(flip){
           urlQueue1.distinct.map(targetUrl => {
-            if(filesQueue.size < maxNeedFiles){
+            println(s"Going to process url => $targetUrl ")
+            if(filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)){
               val (pdfs, sameDomainUrls)= extractUrls(commonHtml, url, targetUrl)
               pdfs.map(filesQueue.add(_))
 
               sameDomainUrls.map(urlQueue2.append(_))
             }
+            processedUrls.add(targetUrl)
           })
           urlQueue1 = scala.collection.mutable.ListBuffer[String]()
+          flip = false
         }else{
-
           urlQueue2.distinct.map(targetUrl => {
-            if(filesQueue.size < maxNeedFiles){
+            println(s"Going to process url => $targetUrl ")
+            if(filesQueue.size < maxNeedFiles  && !processedUrls.contains(targetUrl)){
               val (pdfs, sameDomainUrls)= extractUrls(commonHtml, url, targetUrl)
               pdfs.map(filesQueue.add(_))
 
               sameDomainUrls.map(urlQueue1.append(_))
             }
+            processedUrls.add(targetUrl)
           })
           urlQueue2 = scala.collection.mutable.ListBuffer[String]()
+          flip = true
         }
       }
     })

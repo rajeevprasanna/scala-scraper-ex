@@ -14,13 +14,24 @@ object DomUtils {
 
   val browser = JsoupBrowser()
 
-  def fetchDocument(url:String):browser.DocumentType = browser.get(url)
+  val MAX_RETRY_COUNT = 5
+
+  def fetchDocument(url:String, hitCount:Int = 0):Option[browser.DocumentType] = {
+    val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
+    println(logMessage)
+
+    val resp = Try(browser.get(url)).toOption
+    resp match {
+      case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(url, hitCount + 1)
+      case _ => resp
+    }
+  }
 
   def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
 
   def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
       val aDoms = doc >> elementList("a")
-      aDoms.flatMap(e => Try(e.attrs("href")).toOption)
+      aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
   }
 
   def fetchRoot(fullURL:String):String = {
@@ -69,6 +80,7 @@ object DomUtils {
     val formattedSourceUrl = removeQueryString(sourceUrl)
     urls.flatMap(url => {
       url.trim match {
+        case x if x == "/" => None
         case x if x.startsWith("/") => Some(rootUrl + x)
         case x if x.startsWith("http") => Some(x)
         case x if x.startsWith("#") => None
