@@ -37,24 +37,27 @@ object Main extends App {
 
 
   val fileUrl  = "http://ww1.microchip.com/downloads/en/AppNotes/01326A.pdf"
+  val res = FileUtils.uploadFile(fileUrl)
+  println(res)
 
-  import org.apache.commons.io.IOUtils
-  import org.apache.commons.codec.digest.DigestUtils
-  def toBytes(url: URL):Array[Byte] = {
-    val input = url.openStream
-    try {
-      IOUtils.toByteArray(input)
-    }
-    finally {
-      input.close()
-    }
-  }
-  val BYTES_EMPTY = Array[Byte]()
-  val file_url = new URL(fileUrl)
-  val content:Array[Byte] = toBytes(file_url)
-  val sha256 = DigestUtils.sha256Hex(content)
-  val base64EncodedContent =  Base64.getEncoder().encode(content)
-  println(s"sha 256 hash => $sha256")
+//
+//  import org.apache.commons.io.IOUtils
+//  import org.apache.commons.codec.digest.DigestUtils
+//  def toBytes(url: URL):Array[Byte] = {
+//    val input = url.openStream
+//    try {
+//      IOUtils.toByteArray(input)
+//    }
+//    finally {
+//      input.close()
+//    }
+//  }
+//  val BYTES_EMPTY = Array[Byte]()
+//  val file_url = new URL(fileUrl)
+//  val content:Array[Byte] = toBytes(file_url)
+//  val sha256 = DigestUtils.sha256Hex(content)
+//  val base64EncodedContent =  Base64.getEncoder().encode(content)
+//  println(s"sha 256 hash => $sha256")
 }
 
 
