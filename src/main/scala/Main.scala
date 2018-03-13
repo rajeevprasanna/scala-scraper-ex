@@ -30,9 +30,10 @@ object Main extends App {
 
   val formattedUrls = DomUtils.formatUrls(url, allHrefs)
   val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
-  val randomSamples = DomUtils.randomSampleUrls(5, htmlUrls)
-  val commonHtml = DomUtils.commonPartsOfTemplate(randomSamples)
+  val sameDomainUrls = DomUtils.filterSubdomainUrls(url, htmlUrls)
 
+  val randomSamples = DomUtils.randomSampleUrls(5, sameDomainUrls)
+  val commonHtml = DomUtils.commonPartsOfTemplate(randomSamples)
 
   println(resourceUrls)
   println(htmlUrls)

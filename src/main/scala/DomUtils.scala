@@ -44,11 +44,16 @@ object DomUtils {
     resourceExtensions.contains(extension)
   })
 
-  def isSubDomain(resourceURL:String, url:String):Boolean = {
-    val host = new URL(url).getHost
-    
-    ???
+  def filterSubdomainUrls(resourceURL:String, urls:List[String]):List[String] = {
+    val resourceDomain = getDomain(resourceURL)
+    urls.filter(getDomain(_) == resourceDomain)
   }
+
+  def getDomain(url:String) = {
+    val hostName = new URL(url).getHost
+    hostName.split("\\.").tail.reduce(_+"."+_)
+  }
+
 
   def formatUrls(sourceUrl:String, urls:List[String]):List[String] = {
     val rootUrl = fetchRoot(sourceUrl)
@@ -65,12 +70,13 @@ object DomUtils {
 
   def getUrlExtension(url:String):String = {
     val path = new URL(url).getPath
-    if(path.lastIndexOf(".") == -1) "" else path.substring(path.indexOf(".")).toLowerCase()
+    val lastIndex = path.lastIndexOf(".")
+    if(lastIndex == -1) "" else path.substring(lastIndex).toLowerCase()
   }
 
   def randomSampleUrls(n:Int, urls:List[String]):List[String] = {
     import scala.util.Random
-    val maxSamples = Math.max(n, urls.length)
+    val maxSamples = Math.min(n, urls.length)
     Random.shuffle(urls).take(maxSamples)
   }
 
