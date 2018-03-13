@@ -16,6 +16,8 @@ object DomUtils {
 
   def fetchDocument(url:String):browser.DocumentType = browser.get(url)
 
+  def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
+
   def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
       val aDoms = doc >> elementList("a")
       aDoms.flatMap(e => Try(e.attrs("href")).toOption)
@@ -37,6 +39,13 @@ object DomUtils {
     val formatted = checkForProtocol(url)
     formatted.split("\\?").head
   }
+
+  def filterPDFUrls(urls:List[String]):List[String] =
+    urls.partition(url => {
+      val extension = getUrlExtension(url)
+      extension == ".pdf"
+    })._1
+
 
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
