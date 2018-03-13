@@ -35,10 +35,10 @@ object Main extends App {
 //  val allFiles = Crawler.extractFiles(url, maxDepth, maxDownloadFiles)
 //  println(allFiles)
 
-
-  val fileUrl  = "http://ww1.microchip.com/downloads/en/AppNotes/01326A.pdf"
-  val res = FileUtils.uploadFile(fileUrl)
-  println(res)
+//
+//  val fileUrl  = "http://ww1.microchip.com/downloads/en/AppNotes/01326A.pdf"
+//  val res = FileUtils.uploadFile(fileUrl)
+//  println(res)
 
 //
 //  import org.apache.commons.io.IOUtils
