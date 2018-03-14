@@ -6,7 +6,7 @@ import AppContext._
 import scala.concurrent.ExecutionContext.Implicits.global
 import SecureKeys._
 
-object BFRedisClient  extends App {
+object BFRedisClient {
 
   val redis = RedisClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
   val redisBlocking = RedisBlockingClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)

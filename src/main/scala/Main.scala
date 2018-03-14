@@ -27,12 +27,17 @@ object Main extends App {
   def startFileDownloader():Unit = {
       BFRedisClient.fetchResourceUrlsPayload().map(crawlPayloadOp => crawlPayloadOp match {
         case Some(payload) =>
-            val filesMatadata:List[FileMetaData] = payload.urls.flatMap(FileUtils.uploadResource(_))
-            BFService.uploadFilesMetadata(payload.resourceUrl, filesMatadata)
-            if(payload.completed) BFService.markProcessComplete(payload.resourceUrl)
+            val filteredUrls:Future[List[String]] = BFService.filterProcessedUrls(payload.resourceUrl, payload.urls)
+            filteredUrls.map(validUrls => {
+              val filesMatadata:List[FileMetaData] = validUrls.flatMap(FileUtils.uploadResource(_))
+              if(!filesMatadata.isEmpty) BFService.uploadFilesMetadata(payload.resourceUrl, filesMatadata)
+              if(payload.completed) BFService.markProcessComplete(payload.resourceUrl)
+              startFileDownloader()
+            })
 
         case None =>
-      }).map(_ => startFileDownloader())
+          startFileDownloader()
+      })
   }
 
   startWebCrawler()

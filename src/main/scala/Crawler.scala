@@ -43,7 +43,7 @@ object Crawler {
             if(filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)){
               val (pdfs, sameDomainUrls)= extractUrls(commonHtml, url, targetUrl)
               pdfs.map(filesQueue.add(_))
-              BFRedisClient.publishFileUrlsToRedis(pdfs, url, false)
+              if(!pdfs.isEmpty) BFRedisClient.publishFileUrlsToRedis(pdfs, url, false)
 
               sameDomainUrls.map(urlQueue2.append(_))
             }
@@ -57,7 +57,7 @@ object Crawler {
             if(filesQueue.size < maxNeedFiles  && !processedUrls.contains(targetUrl)){
               val (pdfs, sameDomainUrls)= extractUrls(commonHtml, url, targetUrl)
               pdfs.map(filesQueue.add(_))
-              BFRedisClient.publishFileUrlsToRedis(pdfs, url, false)
+              if(!pdfs.isEmpty) BFRedisClient.publishFileUrlsToRedis(pdfs, url, false)
 
               sameDomainUrls.map(urlQueue1.append(_))
             }
