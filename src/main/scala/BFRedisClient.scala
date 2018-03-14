@@ -2,6 +2,8 @@
 import redis.{RedisBlockingClient, RedisClient}
 import scala.concurrent.Future
 import scala.concurrent.duration._
+import AppContext._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object BFRedisClient  extends App {
 
@@ -10,6 +12,7 @@ object BFRedisClient  extends App {
   val USERNAME = "****************************************"
   val PASSWORD = "****************************************"
   val RESOURCE_URL_PAYLOAD_QUEUE = "****************************************"
+  val CRAWL_URL_QUEUE = "****************************************"
 
   val redis = RedisClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
   val redisBlocking = RedisBlockingClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
@@ -59,7 +62,7 @@ object BFRedisClient  extends App {
   }
   def fetchCrawlUrl():Future[Option[String]] = {
     import ResourceUrlPayloadJsonProtocol._
-    popElementFromRedis(RESOURCE_URL_PAYLOAD_QUEUE).flatMap(payloadOption => payloadOption match {
+    popElementFromRedis(CRAWL_URL_QUEUE).flatMap(payloadOption => payloadOption match {
       case Some(payloadStr) =>
         val payload:ResourceUrlPayload = JsonParser(payloadStr).convertTo[ResourceUrlPayload]
         Future{Some(payload.url)}

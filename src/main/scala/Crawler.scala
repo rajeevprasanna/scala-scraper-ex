@@ -1,4 +1,3 @@
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 
 object Crawler {
 

@@ -9,3 +9,5 @@ libraryDependencies += "com.github.etaty" %% "rediscala" % "1.8.0"
 libraryDependencies += "com.amazonaws" % "aws-java-sdk" % "1.3.11"
 libraryDependencies += "commons-io" % "commons-io" % "2.6"
 libraryDependencies += "io.spray" %%  "spray-json" % "1.3.3"
+libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.0.9"
+libraryDependencies += "org.typelevel" %% "cats" % "0.9.0",
