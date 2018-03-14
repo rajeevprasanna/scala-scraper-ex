@@ -7,11 +7,9 @@ import com.amazonaws.services.s3.model.ObjectMetadata
 import scala.collection.JavaConversions._
 import java.io.{ByteArrayInputStream, InputStream}
 
-object S3Utils {
+import SecureKeys._
 
-  val AWS_ACCESS_KEY = "****************************************"
-  val AWS_SECRET_KEY = "****************************************"
-  val BUCKET_NAME = "****************************************"
+object S3Utils {
 
   def uploadContent(fileName:String, fileUrl:String, content:Array[Byte]):String = {
     val yourAWSCredentials = new BasicAWSCredentials(AWS_ACCESS_KEY, AWS_SECRET_KEY)

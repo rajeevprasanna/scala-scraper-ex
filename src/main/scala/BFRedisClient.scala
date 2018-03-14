@@ -4,15 +4,9 @@ import scala.concurrent.Future
 import scala.concurrent.duration._
 import AppContext._
 import scala.concurrent.ExecutionContext.Implicits.global
+import SecureKeys._
 
 object BFRedisClient  extends App {
-
-  val HOST = "****************************************"
-  val PORT = 10443
-  val USERNAME = "****************************************"
-  val PASSWORD = "****************************************"
-  val RESOURCE_URL_PAYLOAD_QUEUE = "****************************************"
-  val CRAWL_URL_QUEUE = "****************************************"
 
   val redis = RedisClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
   val redisBlocking = RedisBlockingClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)

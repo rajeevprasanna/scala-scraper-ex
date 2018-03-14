@@ -11,13 +11,9 @@ import scala.util.{Failure, Success}
 import Models._
 
 import spray.json._
+import SecureKeys._
 
 object BFService {
-
-  val FILTER_ALREADY_CRAWLED_URLS = "****************************************"
-  val SAVE_FILE_META_DATA = "****************************************"
-  val MARK_CRAWL_COMPLETED_FOR_URL = "****************************************"
-  val BF_API_SECRET = "****************************************"
 
   implicit  def toByteString = (s:String) => ByteString(s)
 
