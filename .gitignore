@@ -2,6 +2,7 @@
 *.log
 .idea
 target
-project
+project/target
+project/project
 *.iws
 *.ipr

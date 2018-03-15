@@ -81,6 +81,7 @@ object DomUtils {
     urls.flatMap(url => {
       url.trim match {
         case x if x == "/" => None
+        case x if x.startsWith("//") => None
         case x if x.startsWith("/") => Some(rootUrl + x)
         case x if x.startsWith("http") => Some(x)
         case x if x.startsWith("#") => None
