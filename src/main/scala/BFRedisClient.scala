@@ -58,6 +58,7 @@ object BFRedisClient {
     import ResourceUrlPayloadJsonProtocol._
     popElementFromRedis(CRAWL_URL_QUEUE).flatMap(payloadOption => payloadOption match {
       case Some(payloadStr) =>
+        //TODO : check if it is valild URL
         val payload:ResourceUrlPayload = JsonParser(payloadStr).convertTo[ResourceUrlPayload]
         Future{Some(payload.url)}
 

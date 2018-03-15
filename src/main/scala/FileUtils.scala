@@ -16,6 +16,7 @@ object FileUtils {
 
   def uploadResource(url:String):Option[FileMetaData] = {
     println(s"uploading resource from url => $url")
+    //TODO: check content type is pdf or not
     getByteContent(url).map(content => {
       val fileName = extractFileName(url)
       val contentId = sha256Hexa(content)

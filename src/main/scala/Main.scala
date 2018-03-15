@@ -14,13 +14,15 @@ object Main extends App {
     BFRedisClient.fetchCrawlUrl().flatMap(urlOp => urlOp match {
       case Some(url) =>
         Crawler.extractFiles(url, maxDepth, maxDownloadFiles)
+        startWebCrawler()
         Future{}
 
       case None =>
         //TODO : Add delay function
         Thread.sleep(5000)
+        startWebCrawler()
         Future{}
-    }).map(_ => startWebCrawler())
+    })
   }
 
 
@@ -40,8 +42,8 @@ object Main extends App {
       })
   }
 
-  startWebCrawler()
-  startFileDownloader()
+  Future{startWebCrawler()}
+  Future{startFileDownloader()}
 }
 
 
