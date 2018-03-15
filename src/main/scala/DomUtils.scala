@@ -105,6 +105,6 @@ object DomUtils {
     val divList = urls.map(fetchDocument(_)).map(_ >> elementList("div")).map(divList => divList.map(_.toString)).map(_.toSet)
     val tuples = divList.sliding(2).toList.map(el => el.head.intersect(el.last))
     val patternCounter = tuples.groupBy(identity).map(el => (el, el._2.length)).toList
-    patternCounter.sortBy(_._2).head._1._1.headOption
+    Try(patternCounter.sortBy(_._2).head._1._1.head).toOption
   }
 }

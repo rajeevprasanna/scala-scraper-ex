@@ -72,6 +72,7 @@ object Crawler {
         }
       }
     })
+    println(s"Fetching completed for url => $url")
     BFRedisClient.publishFileUrlsToRedis(Nil, url, true)
     filesQueue.toList
   }
