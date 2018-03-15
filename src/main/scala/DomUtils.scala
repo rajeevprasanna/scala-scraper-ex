@@ -37,8 +37,9 @@ object DomUtils {
   def fetchRoot(fullURL:String):String = {
     val formatted = checkForProtocol(fullURL)
     val url = removeQueryString(formatted)
-    val url2 = new URL(url)
-    url.split(url2.getPath).head
+    val trimmed = url.toArray.reverse.dropWhile(_ == '/').reverse.mkString
+    val url2 = new URL(trimmed)
+    trimmed.split(url2.getPath).head
   }
 
   def checkForProtocol(url:String):String = url.startsWith("http") match {
@@ -70,6 +71,7 @@ object DomUtils {
   }
 
   def getDomain(url:String) = {
+//    println(s"Trying to get domain for url => $url")
     val hostName = new URL(url).getHost
     hostName.split("\\.").tail.reduce(_+"."+_)
   }
@@ -79,6 +81,7 @@ object DomUtils {
     val rootUrl = fetchRoot(sourceUrl)
     val formattedSourceUrl = removeQueryString(sourceUrl)
     urls.flatMap(url => {
+//      val formatted =
       url.trim match {
         case x if x == "/" => None
         case x if x.startsWith("//") => None
@@ -87,6 +90,8 @@ object DomUtils {
         case x if x.startsWith("#") => None
         case _ => Some(formattedSourceUrl + url)
       }
+//      println(s"given url => ${url.trim} and formatted url => ${formatted}")
+//      formatted
     }).distinct
   }
 
