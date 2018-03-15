@@ -60,7 +60,7 @@ object DomUtils {
 
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
-    val resourceExtensions = Set(".pdf", ".doc", "gif", "gif", "jpg", "jpg", "png", "png", "ico", "ico", "css", "css", "sit", "sit", "eps", "eps", "wmf", "wmf", "zip", "zip", "ppt", "ppt", "mpg", "mpg", "xls", "xls", "gz", "gz", "rpm", "rpm", "tgz", "tgz", "mov", "mov", "exe", "exe", "jpeg", "jpeg", "bmp", "bmp", "js", "js", "mp4", "mp3")
+    val resourceExtensions = Set(".pdf", ".doc", "gif", "gif", "jpg", "jpg", "png", "png", "ico", "ico", "css", "css", "sit", "sit", "eps", "eps", "wmf", "wmf", "zip", "zip", "ppt", "ppt", "mpg", "mpg", "xls", "xls", "gz", "gz", "rpm", "rpm", "tgz", "tgz", "mov", "mov", "exe", "exe", "jpeg", "jpeg", "bmp", "bmp", "js", "js", "mp4", "mp3", ".invalid")
     resourceExtensions.contains(extension)
   })
 
@@ -91,9 +91,15 @@ object DomUtils {
   }
 
   def getUrlExtension(url:String):String = {
-    val path = new URL(url).getPath
-    val lastIndex = path.lastIndexOf(".")
-    if(lastIndex == -1) "" else path.substring(lastIndex).toLowerCase()
+    Try(new URL(url).getPath).toOption match {
+      case Some(path) =>
+        val lastIndex = path.lastIndexOf(".")
+        if(lastIndex == -1) "" else path.substring(lastIndex).toLowerCase()
+
+      case None =>
+        println(s"url parsing failed while getting extension. url => $url")
+        ".invalid"
+    }
   }
 
   def randomSampleUrls(n:Int, urls:List[String]):List[String] = {
