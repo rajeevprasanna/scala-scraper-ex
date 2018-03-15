@@ -60,7 +60,7 @@ object DomUtils {
 
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
-    val resourceExtensions = Set(".pdf", ".doc", "gif", "gif", "jpg", "jpg", "png", "png", "ico", "ico", "css", "css", "sit", "sit", "eps", "eps", "wmf", "wmf", "zip", "zip", "ppt", "ppt", "mpg", "mpg", "xls", "xls", "gz", "gz", "rpm", "rpm", "tgz", "tgz", "mov", "mov", "exe", "exe", "jpeg", "jpeg", "bmp", "bmp", "js", "js")
+    val resourceExtensions = Set(".pdf", ".doc", "gif", "gif", "jpg", "jpg", "png", "png", "ico", "ico", "css", "css", "sit", "sit", "eps", "eps", "wmf", "wmf", "zip", "zip", "ppt", "ppt", "mpg", "mpg", "xls", "xls", "gz", "gz", "rpm", "rpm", "tgz", "tgz", "mov", "mov", "exe", "exe", "jpeg", "jpeg", "bmp", "bmp", "js", "js", "mp4", "mp3")
     resourceExtensions.contains(extension)
   })
 
