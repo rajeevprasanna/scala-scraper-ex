@@ -53,21 +53,24 @@ object BFService {
   private def respToString:(ResponseEntity => Future[String]) = (entity:ResponseEntity) => entity.dataBytes.runFold(ByteString.empty) { case (acc, b) => acc ++ b }.map(_.utf8String)
   def filterProcessedUrls(sourceUrl:String, urls:List[String]):Future[List[String]] = {
     println(s"filter processing for urls => $urls")
-
-    import ProcessedFilesPayloadJsonProtocol._
-    val filterProcessedFilesPayload:String = ProcessedFilesPayload(BF_API_SECRET, urls, sourceUrl).toJson.toString
-    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = FILTER_ALREADY_CRAWLED_URLS, entity = payload(filterProcessedFilesPayload)))
-    val result:Future[List[String]] = responseFuture
-      .flatMap(res => {
-        import FilteredUrlsProtocol._
-        val urlsResp:Future[List[String]] =
-        respToString(res.entity).flatMap(str => {
-          val urls: List[String] = JsonParser(str).convertTo[FilteredUrls].urls
-          println(s"urls after filtering => $urls")
-          Future{urls}
-        })
-        urlsResp
-      })
-    result
-  }
+    urls match {
+      case _ if urls.isEmpty => Future{Nil}
+      case _ =>
+          import ProcessedFilesPayloadJsonProtocol._
+          val filterProcessedFilesPayload:String = ProcessedFilesPayload(BF_API_SECRET, urls, sourceUrl).toJson.toString
+          val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = FILTER_ALREADY_CRAWLED_URLS, entity = payload(filterProcessedFilesPayload)))
+          val result:Future[List[String]] = responseFuture
+            .flatMap(res => {
+              import FilteredUrlsProtocol._
+              val urlsResp:Future[List[String]] =
+                respToString(res.entity).flatMap(str => {
+                  val urls: List[String] = JsonParser(str).convertTo[FilteredUrls].urls
+                  println(s"urls after filtering => $urls")
+                  Future{urls}
+                })
+              urlsResp
+            })
+          result
+      }
+    }
 }
