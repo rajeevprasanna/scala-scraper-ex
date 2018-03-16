@@ -120,7 +120,7 @@ object DomUtils {
           val patternCounter = commonUrlTuples.groupBy(identity).map(el => (el, el._2.length)).toList
           val uniqueElements = Try(patternCounter.sortBy(_._2).head._1._1).toOption
           val intersectingUrls = allUrlsList.tail.foldLeft(allUrlsList.head)((l, r) => l.intersect(r))
-          uniqueElements.getOrElse(Nil) ++ intersectingUrls
+          (uniqueElements.getOrElse(Nil) ++ intersectingUrls).distinct
 
     case _ => Nil
   }
