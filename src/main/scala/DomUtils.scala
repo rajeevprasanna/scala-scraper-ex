@@ -124,11 +124,7 @@ object DomUtils {
   def getCommonTemplateUrls(urls:List[String]):List[String] = urls.length match {
     case x if x > 4 =>
           val allUrlsList:List[List[String]] = urls.flatMap(url => DomUtils.fetchDocument(url).map(getUrlsFromDoc(_)))
-          val commonUrlTuples:List[List[String]] = allUrlsList.sliding(2).toList.map(el => el.head.intersect(el.last).sorted)
-          val patternCounter = commonUrlTuples.groupBy(identity).map(el => (el, el._2.length)).toList
-          val uniqueElements = Try(patternCounter.sortBy(_._2).head._1._1).toOption
-          val intersectingUrls = allUrlsList.tail.foldLeft(allUrlsList.head)((l, r) => l.intersect(r))
-          (uniqueElements.getOrElse(Nil) ++ intersectingUrls).distinct
+          allUrlsList.map(_.distinct).flatten.groupBy(identity).toList.filter(_._2.length >= 4).map(_._1)
 
     case _ => Nil
   }
