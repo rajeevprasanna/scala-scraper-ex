@@ -75,7 +75,12 @@ object DomUtils {
 
   def getDomain(url:String) = {
     val hostName = new URL(url).getHost
-    if(hostName.contains("."))  hostName.split("\\.").tail.reduce(_+"."+_) else ""
+    val dotCount = hostName.chars.filter(_ == '.').count
+    dotCount match {
+      case 0 => ""
+      case 1 => hostName
+      case _  =>  hostName.split("\\.").tail.reduce(_+"."+_)
+    }
   }
 
 
