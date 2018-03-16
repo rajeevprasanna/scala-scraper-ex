@@ -27,11 +27,11 @@ object Crawler {
         val (_, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
         val sameDomainUrls = DomUtils.filterSubdomainUrls(resourceUrl, htmlUrls)
 
-        val randomSamples = DomUtils.randomSampleUrls(5, sameDomainUrls)
+        val randomSamples = DomUtils.randomSampleUrls(15, sameDomainUrls)
         val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
         val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
 
-        println(s"For resource URL => $resourceUrl, found template urls are => $formattedTemplateLinks")
+        println(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
