@@ -39,7 +39,7 @@ object DomUtils {
     val url = removeQueryString(formatted)
     val trimmed = url.toArray.reverse.dropWhile(_ == '/').reverse.mkString
     val url2 = new URL(trimmed)
-    trimmed.split(url2.getPath).head
+    if(url2.getPath == "") trimmed else trimmed.split(url2.getPath).head
   }
 
   def checkForProtocol(url:String):String = url.startsWith("http") match {
@@ -67,13 +67,15 @@ object DomUtils {
 
   def filterSubdomainUrls(resourceURL:String, urls:List[String]):List[String] = {
     val resourceDomain = getDomain(resourceURL)
-    urls.filter(getDomain(_) == resourceDomain)
+    urls.filter(url => {
+      val d = getDomain(url)
+      d != "" && d == resourceDomain
+    })
   }
 
   def getDomain(url:String) = {
-//    println(s"Trying to get domain for url => $url")
     val hostName = new URL(url).getHost
-    hostName.split("\\.").tail.reduce(_+"."+_)
+    if(hostName.contains("."))  hostName.split("\\.").tail.reduce(_+"."+_) else ""
   }
 
 
@@ -85,12 +87,13 @@ object DomUtils {
       url.trim match {
         case x if x == "/" => None
         case x if x.startsWith("//") => None
-        case x if x.startsWith("/") => Some(rootUrl + x)
+        case x if x.startsWith("/")  => Some(rootUrl + x)
+        case x if x.startsWith("./")  => Some(rootUrl + x.tail)
         case x if x.startsWith("http") => Some(x)
         case x if x.startsWith("#") => None
         case _ => Some(formattedSourceUrl + "/" + url)
       }
-//      println(s"given url => ${url.trim} and formatted url => ${formatted}")
+//      println(s"given url => ${url.trim} and formatted url => ${formatted} and sourceUrl => $sourceUrl")
       formatted.map(u => u.replaceAll(" ", "%20"))
     }).distinct
   }
