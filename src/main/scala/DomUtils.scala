@@ -81,7 +81,7 @@ object DomUtils {
     val rootUrl = fetchRoot(sourceUrl)
     val formattedSourceUrl = removeQueryString(sourceUrl)
     urls.flatMap(url => {
-//      val formatted =
+      val formatted =
       url.trim match {
         case x if x == "/" => None
         case x if x.startsWith("//") => None
@@ -91,7 +91,7 @@ object DomUtils {
         case _ => Some(formattedSourceUrl + "/" + url)
       }
 //      println(s"given url => ${url.trim} and formatted url => ${formatted}")
-//      formatted
+      formatted.map(u => u.replaceAll(" ", "%20"))
     }).distinct
   }
 
