@@ -88,7 +88,7 @@ object DomUtils {
         case x if x.startsWith("/") => Some(rootUrl + x)
         case x if x.startsWith("http") => Some(x)
         case x if x.startsWith("#") => None
-        case _ => Some(formattedSourceUrl + url)
+        case _ => Some(formattedSourceUrl + "/" + url)
       }
 //      println(s"given url => ${url.trim} and formatted url => ${formatted}")
 //      formatted

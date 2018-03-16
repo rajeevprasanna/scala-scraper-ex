@@ -11,5 +11,5 @@ libraryDependencies += "io.spray" %%  "spray-json" % "1.3.3"
 libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.0.9"
 libraryDependencies += "org.typelevel" %% "cats" % "0.9.0"
 
-assemblyJarName in assembly := "scraper.jar"
+assemblyJarName in assembly := "scraper_16032018.jar"
 mainClass in assembly := Some("Main")
