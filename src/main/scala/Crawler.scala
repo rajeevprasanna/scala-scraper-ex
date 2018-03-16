@@ -4,14 +4,10 @@ import scala.util.Try
 
 object Crawler {
 
-  def extractUrls(commonTemplate:String, resourceUrl:String, url:String):(List[String], List[String]) = {
+  def extractUrls(commonTemplateUrls:List[String], resourceUrl:String, url:String):(List[String], List[String]) = {
     val doc = DomUtils.fetchDocument(url)
     val allHrefs = doc.map(DomUtils.getUrlsFromDoc(_)).getOrElse(Nil)
-
-    val commonHTMLDom = DomUtils.parseString(commonTemplate)
-    val commonUrls = DomUtils.getUrlsFromDoc(commonHTMLDom)
-
-    val validUrls = allHrefs.diff(commonUrls)
+    val validUrls = allHrefs.diff(commonTemplateUrls)
 
     val formattedUrls = DomUtils.formatUrls(url, validUrls)
     val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
@@ -31,7 +27,9 @@ object Crawler {
         val sameDomainUrls = DomUtils.filterSubdomainUrls(resourceUrl, htmlUrls)
 
         val randomSamples = DomUtils.randomSampleUrls(5, sameDomainUrls)
-        val commonHtml = DomUtils.commonPartsOfTemplate(randomSamples).getOrElse("")
+        val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
+
+        println(s"For resource URL => $resourceUrl, found template urls are => $templateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
@@ -46,7 +44,7 @@ object Crawler {
               urlQueue1.distinct.map(targetUrl => {
                 println(s"Going to process url => $targetUrl ")
                 if(filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)){
-                  val (pdfs, sameDomainUrls)= extractUrls(commonHtml, resourceUrl, targetUrl)
+                  val (pdfs, sameDomainUrls)= extractUrls(templateLinks, resourceUrl, targetUrl)
                   println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
                   pdfs.map(filesQueue.add(_))
                   if(!pdfs.isEmpty) {
@@ -63,7 +61,7 @@ object Crawler {
               urlQueue2.distinct.map(targetUrl => {
                 println(s"Going to process url => $targetUrl ")
                 if(filesQueue.size < maxNeedFiles  && !processedUrls.contains(targetUrl)){
-                  val (pdfs, sameDomainUrls)= extractUrls(commonHtml, resourceUrl, targetUrl)
+                  val (pdfs, sameDomainUrls)= extractUrls(templateLinks, resourceUrl, targetUrl)
                   println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
                   pdfs.map(filesQueue.add(_))
                   if(!pdfs.isEmpty) {

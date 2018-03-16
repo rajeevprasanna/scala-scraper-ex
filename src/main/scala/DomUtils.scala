@@ -113,10 +113,15 @@ object DomUtils {
     Random.shuffle(urls).take(maxSamples)
   }
 
-  def commonPartsOfTemplate(urls:List[String]):Option[String] = {
-    val divList = urls.map(fetchDocument(_)).map(_ >> elementList("div")).map(divList => divList.map(_.toString)).map(_.toSet)
-    val tuples = divList.sliding(2).toList.map(el => el.head.intersect(el.last))
-    val patternCounter = tuples.groupBy(identity).map(el => (el, el._2.length)).toList
-    Try(patternCounter.sortBy(_._2).head._1._1.head).toOption
+  def getCommonTemplateUrls(urls:List[String]):List[String] = urls.length match {
+    case x if x > 4 =>
+          val allUrlsList:List[List[String]] = urls.flatMap(url => DomUtils.fetchDocument(url).map(getUrlsFromDoc(_)))
+          val commonUrlTuples:List[List[String]] = allUrlsList.sliding(2).toList.map(el => el.head.intersect(el.last))
+          val patternCounter = commonUrlTuples.groupBy(identity).map(el => (el, el._2.length)).toList
+          val uniqueElements = Try(patternCounter.sortBy(_._2).head._1._1).toOption
+          val intersectingUrls = allUrlsList.tail.foldLeft(allUrlsList.head)((l, r) => l.intersect(r))
+          uniqueElements.getOrElse(Nil) ++ intersectingUrls
+
+    case _ => Nil
   }
 }
