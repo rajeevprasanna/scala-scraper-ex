@@ -42,6 +42,20 @@ object Main extends App {
       })
   }
 
+  //TODO: parallelise the calls
+  //Crawler 1:
+  Future{startWebCrawler()}
+  Future{startFileDownloader()}
+
+  //Crawler 2:
+  Future{startWebCrawler()}
+  Future{startFileDownloader()}
+
+  //Crawler 3:
+  Future{startWebCrawler()}
+  Future{startFileDownloader()}
+
+  //Crawler 4:
   Future{startWebCrawler()}
   Future{startFileDownloader()}
 }
