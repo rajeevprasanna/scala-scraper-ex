@@ -5,7 +5,7 @@ import scala.util.Try
 object Crawler {
 
   def extractUrls(commonTemplateUrls:List[String], resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
-    val doc = DomUtils.fetchDocument(url)
+    val doc = DomUtils.fetchDocument(url, isAjax)
     val allHrefs = doc.map(DomUtils.getUrlsFromDoc(_)).getOrElse(Nil)
     val formattedUrls = DomUtils.formatUrls(url, allHrefs)
 
@@ -20,7 +20,7 @@ object Crawler {
   def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):List[String] = {
     Try(new URL(resourceUrl)).toOption match {
       case Some(_) =>
-        val doc = DomUtils.fetchDocument(resourceUrl)
+        val doc = DomUtils.fetchDocument(resourceUrl, isAjax)
         val allHrefs = doc.map(DomUtils.getUrlsFromDoc(_)).getOrElse(Nil)
 
         val formattedUrls = DomUtils.formatUrls(resourceUrl, allHrefs)

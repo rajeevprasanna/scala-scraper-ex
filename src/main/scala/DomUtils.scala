@@ -36,7 +36,7 @@ object DomUtils {
 
   val MAX_RETRY_COUNT = 5
 
-  def fetchDocument(url:String, hitCount:Int = 0, isAjax:Boolean = false):Option[browser.DocumentType] = {
+  def fetchDocument(url:String, isAjax:Boolean, hitCount:Int = 0):Option[browser.DocumentType] = {
     val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
     println(logMessage)
 
@@ -53,7 +53,7 @@ object DomUtils {
     }
 
     resp match {
-      case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(url, hitCount + 1)
+      case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(url, isAjax, hitCount + 1)
       case _ => resp
     }
   }
@@ -154,7 +154,7 @@ object DomUtils {
 
   def getCommonTemplateUrls(urls:List[String]):List[String] = urls.length match {
     case x if x > 4 =>
-          val allUrlsList:List[List[String]] = urls.flatMap(url => DomUtils.fetchDocument(url).map(getUrlsFromDoc(_)))
+          val allUrlsList:List[List[String]] = urls.flatMap(url => DomUtils.fetchDocument(url, false).map(getUrlsFromDoc(_)))
           allUrlsList.map(_.distinct).flatten.groupBy(identity).toList.filter(_._2.length >= 4).map(_._1)
 
     case _ => Nil
