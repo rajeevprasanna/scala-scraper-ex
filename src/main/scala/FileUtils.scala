@@ -21,7 +21,7 @@ object FileUtils {
       val fileName = extractFileName(url)
       val contentId = sha256Hexa(content)
       val s3Id = uploadFileToS3(base64Encoded(content), url)
-      FileMetaData(fileName, contentId, s3Id, url)
+      FileMetaData(fileName, contentId, s3Id, url.trim)
     })
   }
 
