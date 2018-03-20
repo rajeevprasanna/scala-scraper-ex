@@ -50,17 +50,17 @@ object BFRedisClient {
       })
   }
 
-  case class ResourceUrlPayload(url:String)
+  case class ResourceUrlPayload(url:String, isAjax:Option[Boolean])
   object ResourceUrlPayloadJsonProtocol extends DefaultJsonProtocol {
-    implicit val resourcePayloadFormat = jsonFormat1(ResourceUrlPayload.apply)
+    implicit val resourcePayloadFormat = jsonFormat2(ResourceUrlPayload.apply)
   }
-  def fetchCrawlUrl():Future[Option[String]] = {
+  def fetchCrawlUrl():Future[Option[ResourceUrlPayload]] = {
     import ResourceUrlPayloadJsonProtocol._
     popElementFromRedis(CRAWL_URL_QUEUE).flatMap(payloadOption => payloadOption match {
       case Some(payloadStr) =>
         //TODO : check if it is valild URL
         val payload:ResourceUrlPayload = JsonParser(payloadStr).convertTo[ResourceUrlPayload]
-        Future{Some(payload.url)}
+        Future{Some(payload)}
 
       case _ => Future{None}
     })

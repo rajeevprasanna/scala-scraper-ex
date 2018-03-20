@@ -1,5 +1,6 @@
 import java.net.URL
 
+import Test.options
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 
 import scala.concurrent.duration._
@@ -7,20 +8,50 @@ import net.ruippeixotog.scalascraper.model._
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
+import io.github.bonigarcia.wdm.ChromeDriverManager
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
 
+import scala.collection.mutable
 import scala.util.Try
 
 object DomUtils {
 
   val browser = JsoupBrowser()
 
+
+  ChromeDriverManager.getInstance().setup()
+  val chromePrefs:mutable.Map[String, Any] = mutable.Map[String, Any]()
+  chromePrefs.put("profile.default_content_settings.popups", 0)
+  chromePrefs.put("download.default_directory", ".")
+  chromePrefs.put("Browser.setDownloadBehavior", "allow")
+
+  val options = new ChromeOptions()
+  options.setExperimentalOption("prefs", chromePrefs)
+  options.addArguments("--disable-extensions") //to disable browser extension popup
+  options.addArguments("test-type")
+  options.addArguments("disable-popup-blocking")
+
+  options.setHeadless(true)
+
   val MAX_RETRY_COUNT = 5
 
-  def fetchDocument(url:String, hitCount:Int = 0):Option[browser.DocumentType] = {
+  def fetchDocument(url:String, hitCount:Int = 0, isAjax:Boolean = false):Option[browser.DocumentType] = {
     val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
     println(logMessage)
 
-    val resp = Try(browser.get(url)).toOption
+    val resp = isAjax match {
+      case true =>
+        Try {
+          val driver = new ChromeDriver(options)
+          driver.get(url)
+          val dom = driver.getPageSource()
+          parseString(dom)
+        }.toOption
+
+      case false =>  Try(browser.get(url)).toOption
+    }
+
     resp match {
       case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(url, hitCount + 1)
       case _ => resp
