@@ -31,8 +31,8 @@ object DomUtils {
   options.addArguments("--disable-extensions") //to disable browser extension popup
   options.addArguments("test-type")
   options.addArguments("disable-popup-blocking")
-
   options.setHeadless(true)
+  val driver = new ChromeDriver(options)
 
   val MAX_RETRY_COUNT = 5
 
@@ -43,7 +43,6 @@ object DomUtils {
     val resp = isAjax match {
       case true =>
         Try {
-          val driver = new ChromeDriver(options)
           driver.get(url)
           val dom = driver.getPageSource()
           parseString(dom)
