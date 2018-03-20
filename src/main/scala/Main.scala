@@ -13,7 +13,7 @@ object Main extends App {
   def startWebCrawler():Unit = {
     BFRedisClient.fetchCrawlUrl().flatMap(urlOp => urlOp match {
       case Some(urlPayload) =>
-        Crawler.extractFiles(urlPayload.url, maxDepth, maxDownloadFiles, urlPayload.isAjax.getOrElse(false))
+        Crawler.extractFiles(urlPayload.url, maxDepth, maxDownloadFiles, urlPayload.is_ajax.getOrElse(false))
         startWebCrawler()
         Future{}
 

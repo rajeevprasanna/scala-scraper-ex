@@ -50,7 +50,7 @@ object BFRedisClient {
       })
   }
 
-  case class ResourceUrlPayload(url:String, isAjax:Option[Boolean])
+  case class ResourceUrlPayload(url:String, is_ajax:Option[Boolean])
   object ResourceUrlPayloadJsonProtocol extends DefaultJsonProtocol {
     implicit val resourcePayloadFormat = jsonFormat2(ResourceUrlPayload.apply)
   }
