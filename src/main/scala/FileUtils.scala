@@ -1,5 +1,5 @@
 import java.io.InputStream
-import java.net.URL
+import java.net.{HttpURLConnection, URL}
 import java.util.Base64
 
 import org.apache.commons.io.FilenameUtils
@@ -30,7 +30,9 @@ object FileUtils {
   private def uploadFileToS3(content:Array[Byte], url:String):String = S3Utils.uploadContent(extractFileName(url), url, content)
 
   private def getByteContent(url: String):Option[Array[Byte]] = {
-    val input:Option[InputStream] = Try(new URL(url).openStream).toOption
+    val httpcon = new URL(url).openConnection()
+    httpcon.addRequestProperty("User-Agent", "Mozilla/4.76")
+    val input:Option[InputStream] = Try(httpcon.getInputStream()).toOption
     try {
       input.map(IOUtils.toByteArray(_))
     }
