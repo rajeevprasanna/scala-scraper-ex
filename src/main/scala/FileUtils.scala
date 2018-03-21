@@ -1,6 +1,7 @@
 import java.io.InputStream
 import java.net.{HttpURLConnection, URL}
 import java.util.Base64
+import java.net.URLDecoder
 
 import org.apache.commons.io.FilenameUtils
 
@@ -43,5 +44,7 @@ object FileUtils {
 
   private def sha256Hexa(content:Array[Byte]):String = DigestUtils.sha256Hex(content)
   private def base64Encoded(content:Array[Byte]):Array[Byte] = Base64.getEncoder().encode(content)
-  private def extractFileName(url:String):String = FilenameUtils.getName(new URL(url).getPath())
+  private def extractFileName(url:String):String =
+    URLDecoder.decode(FilenameUtils.getName(new URL(url).getPath()), "utf-8")
+
 }
