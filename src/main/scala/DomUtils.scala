@@ -93,7 +93,7 @@ object DomUtils {
       extension == ".pdf"
     })._1
 
-  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".atom",.invalid")
+  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".atom",".invalid")
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
     resourceExtensions.contains(extension)
