@@ -10,7 +10,9 @@ object Crawler {
     val formattedUrls = DomUtils.formatUrls(url, allHrefs)
 
     val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
-    val validUrls = htmlUrls.diff(commonTemplateUrls)
+
+    //Removing the template logic
+    val validUrls = htmlUrls //.diff(commonTemplateUrls)
 
     val sameDomainUrls = DomUtils.filterSubdomainUrls(url, validUrls)
     (DomUtils.filterPDFUrls(resourceUrls), sameDomainUrls)
