@@ -65,7 +65,7 @@ object DomUtils {
   def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
 
   def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
-      val aDoms = doc >> elementList("a")
+      val aDoms = Try(doc >> elementList("a")).toOption.getOrElse(Nil)
       aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
   }
 
@@ -93,7 +93,7 @@ object DomUtils {
       extension == ".pdf"
     })._1
 
-  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".invalid")
+  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".atom",.invalid")
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
     resourceExtensions.contains(extension)
