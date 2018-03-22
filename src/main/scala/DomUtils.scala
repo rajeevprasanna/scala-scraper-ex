@@ -40,6 +40,11 @@ object DomUtils {
     val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
     println(logMessage)
 
+    val extension = getUrlExtension(url)
+    if(resourceExtensions.contains(extension)){
+      return None
+    }
+
     val resp = isAjax match {
       case true =>
         Try {
@@ -88,10 +93,9 @@ object DomUtils {
       extension == ".pdf"
     })._1
 
-
+  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".invalid")
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
-    val resourceExtensions = Set(".pdf", ".doc", "gif", "gif", "jpg", "jpg", "png", "png", "ico", "ico", "css", "css", "sit", "sit", "eps", "eps", "wmf", "wmf", "zip", "zip", "ppt", "ppt", "mpg", "mpg", "xls", "xls", "gz", "gz", "rpm", "rpm", "tgz", "tgz", "mov", "mov", "exe", "exe", "jpeg", "jpeg", "bmp", "bmp", "js", "js", "mp4", "mp3", "xml", ".invalid")
     resourceExtensions.contains(extension)
   })
 
