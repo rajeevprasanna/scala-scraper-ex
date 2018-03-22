@@ -117,6 +117,7 @@ object DomUtils {
   def formatUrls(sourceUrl:String, urls:List[String]):List[String] = {
     val rootUrl = fetchRoot(sourceUrl)
     val formattedSourceUrl = removeQueryString(sourceUrl)
+    val res =
     urls.flatMap(url => {
       val formatted =
       url.trim match {
@@ -131,6 +132,25 @@ object DomUtils {
 //      println(s"given url => ${url.trim} and formatted url => ${formatted} and sourceUrl => $sourceUrl")
       formatted.map(u => u.replaceAll(" ", "%20"))
     }).distinct
+
+    filterOtherLangUrls(res)
+  }
+
+  def filterOtherLangUrls(urls:List[String]):List[String] = {
+
+    def getDomainCountryExtension(u:String):String = {
+      val hostName = new URL(u).getHost
+      val lastIndex = hostName.lastIndexOf(".")
+      hostName.substring(lastIndex+1).toLowerCase()
+    }
+
+    def getCountryRoute(u:String):String = {
+      val path = new URL(u).getPath
+      if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
+    }
+
+    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","in",",co.in","jp","kr","my","ph","sg","th")
+    urls.filter(url => !invalidExtensions.contains(getDomainCountryExtension(url)) && !invalidExtensions.contains(getCountryRoute(url)))
   }
 
   def getUrlExtension(url:String):String = {
