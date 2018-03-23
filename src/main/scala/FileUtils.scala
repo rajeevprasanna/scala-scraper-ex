@@ -1,5 +1,5 @@
 import java.io.InputStream
-import java.net.{HttpURLConnection, URL}
+import java.net.URL
 import java.util.Base64
 import java.net.URLDecoder
 

@@ -1,10 +1,6 @@
-import spray.json.DefaultJsonProtocol
-import AppContext._
-
 
 object Models {
   import spray.json._
-  import DefaultJsonProtocol._
 
   case class FileMetaData(name:String, content_id:String, s3_id:String, url:String)
   object FileMetaDataJsonProtocol extends DefaultJsonProtocol {

@@ -1,13 +1,9 @@
 import java.net.URL
 
-import Test.options
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 
-import scala.concurrent.duration._
-import net.ruippeixotog.scalascraper.model._
+import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
 import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
