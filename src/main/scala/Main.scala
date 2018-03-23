@@ -44,6 +44,11 @@ object Main extends App {
 
 
   Future{startWebCrawler()}
+
+  Future{startFileDownloader()}
+  Future{startFileDownloader()}
+  Future{startFileDownloader()}
+  Future{startFileDownloader()}
   Future{startFileDownloader()}
 }
 

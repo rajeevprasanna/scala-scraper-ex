@@ -159,7 +159,7 @@ object DomUtils {
     }
 
     val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","in","co.in","jp","kr","my","ph","sg","th")
-    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:")
+    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:", "mailto:", "tel:")
     val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns
     def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
 
