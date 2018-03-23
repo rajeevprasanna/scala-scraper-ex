@@ -154,8 +154,11 @@ object DomUtils {
       if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
     }
 
-    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","in",",co.in","jp","kr","my","ph","sg","th")
-    urls.filter(url => !invalidExtensions.contains(getDomainCountryExtension(url)) && !invalidExtensions.contains(getCountryRoute(url)))
+    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","in","co.in","jp","kr","my","ph","sg","th")
+    val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/")
+    def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
+
+    urls.filter(url => !invalidExtensions.contains(getDomainCountryExtension(url)) && !invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
   }
 
   def getUrlExtension(url:String):String = {
