@@ -155,8 +155,8 @@ object DomUtils {
       }.getOrElse("")
     }
 
-    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","in","co.in","jp","kr","my","ph","sg","th", "ja_jp", "de_de")
-    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.","/news/", "/careers","/facilities/", "pinterest.","yahoo.")
+    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","jp","kr","my","ph","sg","th", "ja_jp", "de_de")
+    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.", "/careers","/facilities/", "pinterest.","yahoo.")
     val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns
     def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
 
