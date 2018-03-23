@@ -144,18 +144,23 @@ object DomUtils {
   def filterOtherLangUrls(urls:List[String]):List[String] = {
 
     def getDomainCountryExtension(u:String):String = {
-      val hostName = new URL(u).getHost
-      val lastIndex = hostName.lastIndexOf(".")
-      hostName.substring(lastIndex+1).toLowerCase()
+      Try {
+        val hostName = new URL(u).getHost
+        val lastIndex = hostName.lastIndexOf(".")
+        hostName.substring(lastIndex+1).toLowerCase()
+      }.toOption.getOrElse("")
     }
 
     def getCountryRoute(u:String):String = {
-      val path = new URL(u).getPath
-      if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
+      Try{
+        val path = new URL(u).getPath
+        if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
+      }.getOrElse("")
     }
 
     val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","in","co.in","jp","kr","my","ph","sg","th")
-    val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/")
+    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:")
+    val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns
     def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
 
     urls.filter(url => !invalidExtensions.contains(getDomainCountryExtension(url)) && !invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
