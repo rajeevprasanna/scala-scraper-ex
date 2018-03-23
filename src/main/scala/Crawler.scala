@@ -1,6 +1,8 @@
 import java.net.URL
 
 import scala.util.Try
+import cats._
+import cats.instances._
 
 object Crawler {
 
@@ -46,35 +48,40 @@ object Crawler {
           if(filesQueue.size < maxNeedFiles){
             if(flip){
               urlQueue1.distinct.map(targetUrl => {
-                println(s"Going to process url => $targetUrl ")
-                if(filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)){
-                  val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                  println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                  pdfs.map(filesQueue.add(_))
-                  if(!pdfs.isEmpty) {
-                    pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, false))
-                  }
+                if(filesQueue.size < maxNeedFiles){
+                  println(s"Going to process url => $targetUrl ")
+                  if(filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)){
+                    val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
+                    println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                    pdfs.map(filesQueue.add(_))
+                    if(!pdfs.isEmpty) {
+                      pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
+                    }
 
-                  sameDomainUrls.map(urlQueue2.append(_))
+                    sameDomainUrls.map(urlQueue2.append(_))
+                  }
+                  println(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
+                  processedUrls.add(targetUrl)
                 }
-                processedUrls.add(targetUrl)
               })
               urlQueue1 = scala.collection.mutable.ListBuffer[String]()
               flip = false
             }else{
               urlQueue2.distinct.map(targetUrl => {
-                println(s"Going to process url => $targetUrl ")
-                if(filesQueue.size < maxNeedFiles  && !processedUrls.contains(targetUrl)){
-                  val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                  println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                  pdfs.map(filesQueue.add(_))
-                  if(!pdfs.isEmpty) {
-                    pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, false))
+                if(filesQueue.size < maxNeedFiles){
+                  println(s"Going to process url => $targetUrl ")
+                  if(filesQueue.size < maxNeedFiles  && !processedUrls.contains(targetUrl)){
+                    val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
+                    println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                    pdfs.map(filesQueue.add(_))
+                    if(!pdfs.isEmpty) {
+                      pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
+                    }
+                    sameDomainUrls.map(urlQueue1.append(_))
                   }
-
-                  sameDomainUrls.map(urlQueue1.append(_))
+                  println(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
+                  processedUrls.add(targetUrl)
                 }
-                processedUrls.add(targetUrl)
               })
               urlQueue2 = scala.collection.mutable.ListBuffer[String]()
               flip = true
@@ -82,7 +89,7 @@ object Crawler {
           }
         })
         println(s"Fetching completed for url => $resourceUrl")
-        BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, true)
+        BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
         filesQueue.toList
 
       case _ => println(s"Added invalid URL => $resourceUrl")

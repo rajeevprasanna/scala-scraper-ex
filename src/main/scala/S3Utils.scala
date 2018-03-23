@@ -11,12 +11,12 @@ import SecureKeys._
 
 object S3Utils {
 
-  def uploadContent(fileName:String, fileUrl:String, content:Array[Byte]):String = {
+  def uploadContent(fileName:String, fileUrl:String, pageUrl:String, content:Array[Byte]):String = {
     val yourAWSCredentials = new BasicAWSCredentials(AWS_ACCESS_KEY, AWS_SECRET_KEY)
     val amazonS3Client = new AmazonS3Client(yourAWSCredentials)
     val s3_id = UUID.randomUUID().toString
 
-    val userMetadataMap = Map("filename" -> fileName, "fileurl" -> fileUrl)
+    val userMetadataMap = Map("filename" -> fileName, "fileurl" -> fileUrl, "pageurl" -> pageUrl)
     val metadata: ObjectMetadata = new ObjectMetadata()
     metadata.setUserMetadata(userMetadataMap)
 

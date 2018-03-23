@@ -15,20 +15,20 @@ import Models._
 object FileUtils {
 
 
-  def uploadResource(url:String):Option[FileMetaData] = {
+  def uploadResource(url:String, pageUrl:String):Option[FileMetaData] = {
     println(s"uploading resource to S3 from url => $url")
     //TODO: check content type is pdf or not
     getByteContent(url).map(content => {
       val fileName = extractFileName(url)
       val contentId = sha256Hexa(content)
-      val s3Id = uploadFileToS3(base64Encoded(content), url)
+      val s3Id = uploadFileToS3(base64Encoded(content), url, pageUrl)
       FileMetaData(fileName, contentId, s3Id, url.trim)
     })
   }
 
 
 
-  private def uploadFileToS3(content:Array[Byte], url:String):String = S3Utils.uploadContent(extractFileName(url), url, content)
+  private def uploadFileToS3(content:Array[Byte], fileUrl:String, pageUrl:String):String = S3Utils.uploadContent(extractFileName(fileUrl), fileUrl, pageUrl, content)
 
   private def getByteContent(url: String):Option[Array[Byte]] = {
     val httpcon = new URL(url).openConnection()

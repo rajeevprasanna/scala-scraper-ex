@@ -13,9 +13,9 @@ import cats.implicits._
 
 
 import spray.json._
-case class CrawlPayload(urls:List[String], resourceUrl:String, completed:Boolean)
+case class CrawlPayload(urls:List[String], resourceUrl:String, completed:Boolean, pageUrl:Option[String])
 object CrawlPayloadJsonProtocol extends DefaultJsonProtocol {
-  implicit val crawlPayloadFormat = jsonFormat3(CrawlPayload.apply)
+  implicit val crawlPayloadFormat = jsonFormat4(CrawlPayload.apply)
 }
 
 case class ResourceUrlPayload(url:String, is_ajax:Option[Boolean])
@@ -40,9 +40,9 @@ object BFRedisClient {
     p.future
   }
 
-  def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, isCompleted:Boolean):Boolean = {
+  def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean):Boolean = {
     import CrawlPayloadJsonProtocol._
-    val payload:String = CrawlPayload(urls, resourceUrl, isCompleted).toJson.toString()
+    val payload:String = CrawlPayload(urls, resourceUrl, isCompleted, pageUrl.some).toJson.toString()
     redis.rpush(RESOURCE_URL_PAYLOAD_QUEUE, payload)
     true
   }

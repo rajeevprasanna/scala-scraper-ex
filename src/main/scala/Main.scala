@@ -31,7 +31,7 @@ object Main extends App {
         case Some(payload) =>
             val filteredUrls:Future[List[String]] = BFService.filterProcessedUrls(payload.resourceUrl, payload.urls)
             filteredUrls.map(validUrls => {
-              val filesMatadata:List[FileMetaData] = validUrls.flatMap(FileUtils.uploadResource(_))
+              val filesMatadata:List[FileMetaData] = validUrls.flatMap(fileUrl => FileUtils.uploadResource(fileUrl, payload.pageUrl.getOrElse("")))
               if(!filesMatadata.isEmpty) BFService.uploadFilesMetadata(payload.resourceUrl, filesMatadata)
               if(payload.completed) BFService.markProcessComplete(payload.resourceUrl)
               startFileDownloader()
