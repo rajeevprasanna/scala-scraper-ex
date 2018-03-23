@@ -131,11 +131,12 @@ object DomUtils {
         case _ => Some(formattedSourceUrl + "/" + url)
       }
 //      println(s"given url => ${url.trim} and formatted url => ${formatted} and sourceUrl => $sourceUrl")
-      formatted.map(u => u.replaceAll(" ", "%20"))
+      formatted.map(u => u.replaceAll(" ", "%20")).map(formatUrl)
     }).distinct
-
     filterOtherLangUrls(res)
   }
+
+  def formatUrl = (url:String) => url.reverse.dropWhile(ch => ch == '/' || ch == '?').reverse
 
   def filterOtherLangUrls(urls:List[String]):List[String] = {
 
