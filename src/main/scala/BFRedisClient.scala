@@ -1,12 +1,27 @@
 
 import redis.{RedisBlockingClient, RedisClient}
-import scala.concurrent.Future
+
+import scala.concurrent.{Future, Promise}
 import scala.concurrent.duration._
 import AppContext._
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import SecureKeys._
+
 import cats._
 import cats.implicits._
+
+
+import spray.json._
+case class CrawlPayload(urls:List[String], resourceUrl:String, completed:Boolean, pageUrl:Option[String])
+object CrawlPayloadJsonProtocol extends DefaultJsonProtocol {
+  implicit val crawlPayloadFormat = jsonFormat4(CrawlPayload.apply)
+}
+
+case class ResourceUrlPayload(url:String, is_ajax:Option[Boolean])
+object ResourceUrlPayloadJsonProtocol extends DefaultJsonProtocol {
+  implicit val resourcePayloadFormat = jsonFormat2(ResourceUrlPayload.apply)
+}
 
 
 object BFRedisClient {
@@ -14,26 +29,15 @@ object BFRedisClient {
   val redis = RedisClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
   val redisBlocking = RedisBlockingClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
 
-  import spray.json._
-  import DefaultJsonProtocol._
-  case class CrawlPayload(urls:List[String], resourceUrl:String, completed:Boolean, pageUrl:Option[String])
-
-  object CrawlPayloadJsonProtocol extends DefaultJsonProtocol {
-    implicit val crawlPayloadFormat = jsonFormat4(CrawlPayload.apply)
-  }
-
   private def popElementFromRedis(queueName:String):Future[Option[String]] = {
-    val result:Future[Option[String]] =
-      redisBlocking.blpop(Seq(queueName), 5 seconds).map(result => {
-        result.map({
-          case (queue, payload) if queue == queueName =>
-            println(s"popped element from queue => $queue has work : ${payload.utf8String}")
-            payload.utf8String
-
-          case _ => ""
-        })
-      })
-    result
+    val p = Promise[Option[String]]()
+    Future{
+      for {
+        result <- redisBlocking.blpop(Seq(queueName), 5 seconds)
+        (queue, payload) <- result if queue == queueName
+      } p.success(payload.utf8String.some)
+    }
+    p.future
   }
 
   def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean):Boolean = {
@@ -44,29 +48,27 @@ object BFRedisClient {
   }
 
   def fetchResourceUrlsPayload():Future[Option[CrawlPayload]] = {
-    import CrawlPayloadJsonProtocol._
-    popElementFromRedis(RESOURCE_URL_PAYLOAD_QUEUE).flatMap(payloadOption => payloadOption match {
-      case Some(payloadStr) =>
-        val payload:CrawlPayload = JsonParser(payloadStr).convertTo[CrawlPayload]
-        Future{Some(payload)}
-
-      case _ => Future{None}
-    })
+      val p = Promise[Option[CrawlPayload]]()
+      Future{
+        import CrawlPayloadJsonProtocol._
+        for {
+          payloadOption <- popElementFromRedis(RESOURCE_URL_PAYLOAD_QUEUE)
+          payloadStr <- payloadOption
+        } p.success(JsonParser(payloadStr).convertTo[CrawlPayload].some)
+      }
+    p.future
   }
 
-  case class ResourceUrlPayload(url:String, is_ajax:Option[Boolean])
-  object ResourceUrlPayloadJsonProtocol extends DefaultJsonProtocol {
-    implicit val resourcePayloadFormat = jsonFormat2(ResourceUrlPayload.apply)
-  }
+
   def fetchCrawlUrl():Future[Option[ResourceUrlPayload]] = {
-    import ResourceUrlPayloadJsonProtocol._
-    popElementFromRedis(CRAWL_URL_QUEUE).flatMap(payloadOption => payloadOption match {
-      case Some(payloadStr) =>
-        //TODO : check if it is valild URL
-        val payload:ResourceUrlPayload = JsonParser(payloadStr).convertTo[ResourceUrlPayload]
-        Future{Some(payload)}
-
-      case _ => Future{None}
-    })
+    val p = Promise[Option[ResourceUrlPayload]]()
+    Future {
+      import ResourceUrlPayloadJsonProtocol._
+      for {
+        payloadOption <- popElementFromRedis(CRAWL_URL_QUEUE)
+        payloadStr <- payloadOption
+      } p.success(JsonParser(payloadStr).convertTo[ResourceUrlPayload].some)
+    }
+    p.future
   }
 }
