@@ -9,9 +9,11 @@ import java.io.{ByteArrayInputStream, InputStream}
 
 import SecureKeys._
 
+import scala.util.Try
+
 object S3Utils {
 
-  def uploadContent(fileName:String, fileUrl:String, pageUrl:String, content:Array[Byte]):String = {
+  def uploadContent(fileName:String, fileUrl:String, pageUrl:String, content:Array[Byte]):Option[String] = {
     val yourAWSCredentials = new BasicAWSCredentials(AWS_ACCESS_KEY, AWS_SECRET_KEY)
     val amazonS3Client = new AmazonS3Client(yourAWSCredentials)
     val s3_id = UUID.randomUUID().toString
@@ -20,10 +22,12 @@ object S3Utils {
     val metadata: ObjectMetadata = new ObjectMetadata()
     metadata.setUserMetadata(userMetadataMap)
 
-    val inputStream:InputStream = new ByteArrayInputStream(content, 0, content.length)
-    amazonS3Client.putObject(BUCKET_NAME, s3_id, inputStream, metadata)
-    println(s"uploaded file url => $fileUrl with key => $s3_id")
-    s3_id
+    Try {
+      val inputStream:InputStream = new ByteArrayInputStream(content, 0, content.length)
+      amazonS3Client.putObject(BUCKET_NAME, s3_id, inputStream, metadata)
+      println(s"uploaded file url => $fileUrl with key => $s3_id")
+      s3_id
+    }.toOption
   }
 
 }
