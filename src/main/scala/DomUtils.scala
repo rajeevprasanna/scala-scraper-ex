@@ -1,18 +1,20 @@
 import java.net.URL
 
-
+import com.typesafe.scalalogging.Logger
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
+import org.slf4j.LoggerFactory
 
 import scala.collection.mutable
 import scala.util.Try
 
 object DomUtils {
 
+  val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
   val browser = JsoupBrowser()
 
 
@@ -34,7 +36,7 @@ object DomUtils {
 
   def fetchDocument(url:String, isAjax:Boolean, hitCount:Int = 0):Option[browser.DocumentType] = {
     val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
-    println(logMessage)
+    logger.info(logMessage)
 
     val extension = getUrlExtension(url)
     if(resourceExtensions.contains(extension)){
@@ -170,7 +172,7 @@ object DomUtils {
         if(lastIndex == -1) "" else path.substring(lastIndex).toLowerCase()
 
       case None =>
-        println(s"url parsing failed while getting extension. url => $url")
+        logger.error(s"url parsing failed while getting extension. url => $url")
         ".invalid"
     }
   }
