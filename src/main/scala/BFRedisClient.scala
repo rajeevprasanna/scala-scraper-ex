@@ -34,8 +34,8 @@ object BFRedisClient {
     val p = Promise[Option[String]]()
     Future{
       for {
-        result <- redisBlocking.blpop(Seq(queueName), 5 seconds)
-        (queue, payload) <- result if queue == queueName
+        result <- redisBlocking.blpop(Seq(queueName), 3 seconds)
+        (_, payload) <- result
       } p.success(payload.utf8String.some)
     }
     p.future
@@ -55,7 +55,10 @@ object BFRedisClient {
       for {
         payloadOption <- popElementFromRedis(RESOURCE_URL_PAYLOAD_QUEUE)
         payloadStr <- payloadOption
-      } p.success(JsonParser(payloadStr).convertTo[CrawlPayload].some)
+      } {
+        val res = JsonParser(payloadStr).convertTo[CrawlPayload].some
+        p.success(res)
+      }
     }
     p.future
   }
@@ -68,7 +71,10 @@ object BFRedisClient {
       for {
         payloadOption <- popElementFromRedis(CRAWL_URL_QUEUE)
         payloadStr <- payloadOption
-      } p.success(JsonParser(payloadStr).convertTo[ResourceUrlPayload].some)
+      } {
+        val res = JsonParser(payloadStr).convertTo[ResourceUrlPayload].some
+        p.success(res)
+      }
     }
     p.future
   }

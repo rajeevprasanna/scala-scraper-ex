@@ -26,6 +26,10 @@ object Main extends App with LazyLogging {
       case Failure(_) =>
         logger.info(s"No crawl url in redis for crawl ")
         startWebCrawler()
+
+      case x =>
+        logger.error(s"seems reached invalid state => $x")
+        startWebCrawler()
     }
   }
 
@@ -49,11 +53,6 @@ object Main extends App with LazyLogging {
 
 
   Future{startWebCrawler()}
-
-  Future{startFileDownloader()}
-  Future{startFileDownloader()}
-  Future{startFileDownloader()}
-  Future{startFileDownloader()}
   Future{startFileDownloader()}
 }
 
