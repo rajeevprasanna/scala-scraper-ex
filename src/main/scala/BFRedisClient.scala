@@ -1,15 +1,24 @@
 
 import redis.{RedisBlockingClient, RedisClient}
+
 import scala.concurrent.Future
 import scala.concurrent.duration._
 import AppContext._
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import SecureKeys._
 import cats._
 import cats.implicits._
+import com.typesafe.scalalogging.Logger
+import org.slf4j.LoggerFactory
 
 
 object BFRedisClient {
+
+  val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
+  logger.debug("initializing redis client connection!!!")
+
+
 
   val redis = RedisClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
   val redisBlocking = RedisBlockingClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)

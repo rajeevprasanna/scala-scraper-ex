@@ -1,11 +1,14 @@
 import AppContext._
 import Models.FileMetaData
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-object Main extends App {
+object Main extends App with LazyLogging {
+
+  logger.debug("Starting crawling program...")
 
   val maxDepth = config.getInt("crawl.depth")
   val maxDownloadFiles = config.getInt("crawl.max_download_files")
