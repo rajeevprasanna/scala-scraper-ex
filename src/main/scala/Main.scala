@@ -20,8 +20,7 @@ object Main extends App with LazyLogging {
     Try(Await.result(BFRedisClient.fetchCrawlUrl(), 10 seconds)) match {
       case Success(Some(urlPayload)) =>
             logger.info(s"Going to start crawling for url => ${urlPayload.url} with ajax status => ${urlPayload.is_ajax}")
-            Crawler.extractFiles(urlPayload.url, maxDepth, maxDownloadFiles, urlPayload.is_ajax.getOrElse(false))
-            startWebCrawler()
+            Crawler.extractFiles(urlPayload.url, maxDepth, maxDownloadFiles, urlPayload.is_ajax.getOrElse(false)).map(_ => startWebCrawler())
 
       case Failure(_) =>
         logger.info(s"No crawl url in redis for crawl ")

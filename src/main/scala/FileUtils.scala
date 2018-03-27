@@ -26,8 +26,6 @@ object FileUtils {
     })
   }
 
-
-
   private def uploadFileToS3(content:Array[Byte], fileUrl:String, pageUrl:String):Option[String] = S3Utils.uploadContent(extractFileName(fileUrl), fileUrl, pageUrl, content)
 
   private def getByteContent(url: String):Option[Array[Byte]] = {

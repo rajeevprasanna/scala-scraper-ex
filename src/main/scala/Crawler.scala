@@ -7,6 +7,9 @@ import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 
 import scala.collection.mutable
+import scala.concurrent.Future
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object Crawler {
 
@@ -26,7 +29,7 @@ object Crawler {
   }
 
 
-  def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):List[String] = {
+  def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):Future[List[String]] = {
     Try(new URL(resourceUrl)).toOption match {
       case Some(_) =>
         val allHrefs = DomUtils.extractOutLinks(resourceUrl, isAjax)
@@ -83,10 +86,10 @@ object Crawler {
         })
         logger.info(s"Fetching completed for url => $resourceUrl")
         BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
-        filesQueue.toList
+        Future{filesQueue.toList}
 
       case _ => logger.info(s"Added invalid URL => $resourceUrl")
-                Nil
+                Future{Nil}
     }
   }
 }
