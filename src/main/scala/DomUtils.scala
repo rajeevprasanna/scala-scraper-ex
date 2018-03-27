@@ -15,57 +15,53 @@ import scala.util.Try
 object DomUtils {
 
   val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
-  val browser = JsoupBrowser()
-
-
   ChromeDriverManager.getInstance().setup()
-  val chromePrefs:mutable.Map[String, Any] = mutable.Map[String, Any]()
-  chromePrefs.put("profile.default_content_settings.popups", 0)
-  chromePrefs.put("download.default_directory", ".")
-  chromePrefs.put("Browser.setDownloadBehavior", "allow")
 
-  val options = new ChromeOptions()
-  options.setExperimentalOption("prefs", chromePrefs)
-  options.addArguments("--disable-extensions") //to disable browser extension popup
-  options.addArguments("test-type")
-  options.addArguments("disable-popup-blocking")
-  options.setHeadless(true)
-  val driver = new ChromeDriver(options)
+  val MAX_RETRY_COUNT = 3
 
-  val MAX_RETRY_COUNT = 5
+  def extractOutLinks(url:String, isAjax:Boolean, retryCount:Int = 0):List[String] = {
 
-  def fetchDocument(url:String, isAjax:Boolean, hitCount:Int = 0):Option[browser.DocumentType] = {
-    val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
-    logger.info(logMessage)
+    lazy val browser = JsoupBrowser()
+    lazy val driver = new ChromeDriver(getChromeOptions())
 
-    val extension = getUrlExtension(url)
-    if(resourceExtensions.contains(extension)){
-      return None
+    def fetchDocument(hitCount:Int):Option[browser.DocumentType] = {
+      val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
+      logger.info(logMessage)
+
+      val extension = getUrlExtension(url)
+      if(resourceExtensions.contains(extension)){
+        return None
+      }
+
+      val resp = isAjax match {
+        case true =>
+          Try {
+            driver.get(url)
+            val dom = driver.getPageSource()
+            parseString(dom)
+          }.toOption
+
+        case false =>  Try(browser.get(url)).toOption
+      }
+
+      resp match {
+        case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(hitCount + 1)
+        case _ => resp
+      }
     }
 
-    val resp = isAjax match {
-      case true =>
-        Try {
-          driver.get(url)
-          val dom = driver.getPageSource()
-          parseString(dom)
-        }.toOption
+    def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
 
-      case false =>  Try(browser.get(url)).toOption
-    }
-
-    resp match {
-      case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(url, isAjax, hitCount + 1)
-      case _ => resp
-    }
-  }
-
-  def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
-
-  def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
+    def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
       val aDoms = Try(doc >> elementList("a")).toOption.getOrElse(Nil)
       aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
+    }
+
+    val doc = fetchDocument(retryCount)
+    doc.map(getUrlsFromDoc(_)).getOrElse(Nil)
   }
+
+
 
   def fetchRoot(fullURL:String):String = {
     val formatted = checkForProtocol(fullURL)
@@ -185,9 +181,24 @@ object DomUtils {
 
   def getCommonTemplateUrls(urls:List[String]):List[String] = urls.length match {
     case x if x > 4 =>
-          val allUrlsList:List[List[String]] = urls.flatMap(url => DomUtils.fetchDocument(url, false).map(getUrlsFromDoc(_)))
+          val allUrlsList:List[List[String]] = urls.map(url => DomUtils.extractOutLinks(url, false))
           allUrlsList.map(_.distinct).flatten.groupBy(identity).toList.filter(_._2.length >= 4).map(_._1)
 
     case _ => Nil
+  }
+
+  private def getChromeOptions():ChromeOptions = {
+    val chromePrefs:mutable.Map[String, Any] = mutable.Map[String, Any]()
+    chromePrefs.put("profile.default_content_settings.popups", 0)
+    chromePrefs.put("download.default_directory", ".")
+    chromePrefs.put("Browser.setDownloadBehavior", "allow")
+
+    val options = new ChromeOptions()
+    options.setExperimentalOption("prefs", chromePrefs)
+    options.addArguments("--disable-extensions") //to disable browser extension popup
+    options.addArguments("test-type")
+    options.addArguments("disable-popup-blocking")
+    options.setHeadless(true)
+    options
   }
 }
