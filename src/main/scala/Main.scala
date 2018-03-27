@@ -1,9 +1,7 @@
-import java.util.concurrent.TimeoutException
 
 import AppContext._
 import Models.FileMetaData
 import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.net.UrlChecker.TimeoutException
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
@@ -13,7 +11,7 @@ import scala.util.{Failure, Success, Try}
 
 object Main extends App with LazyLogging {
 
-  logger.debug("Starting crawling program...")
+  logger.debug("Starting web crawling program...")
 
   val maxDepth = config.getInt("crawl.depth")
   val maxDownloadFiles = config.getInt("crawl.max_download_files")

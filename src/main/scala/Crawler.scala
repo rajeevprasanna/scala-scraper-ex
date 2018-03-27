@@ -3,8 +3,14 @@ import java.net.URL
 import scala.util.Try
 import cats._
 import cats.instances._
+import com.typesafe.scalalogging.Logger
+import org.slf4j.LoggerFactory
+
+import scala.collection.mutable
 
 object Crawler {
+
+  val logger = Logger(LoggerFactory.getLogger("crawler"))
 
   def extractUrls(commonTemplateUrls:List[String], resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
     val doc = DomUtils.fetchDocument(url, isAjax)
@@ -35,7 +41,7 @@ object Crawler {
         val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
         val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
 
-        println(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
+        logger.info(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
@@ -44,55 +50,44 @@ object Crawler {
         var urlQueue2 = scala.collection.mutable.ListBuffer[String]()
         var flip = true
 
+        def runCrawl(queue1:mutable.ListBuffer[String], queue2:mutable.ListBuffer[String], fQueue:mutable.Set[String], processedQueue:mutable.Set[String]):Unit =
+          queue1.distinct.map(targetUrl => {
+            if(fQueue.size < maxNeedFiles){
+              logger.info(s"Going to process url => $targetUrl ")
+              if(fQueue.size < maxNeedFiles && !processedQueue.contains(targetUrl)){
+                val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
+                logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                pdfs.map(filesQueue.add(_))
+                if(!pdfs.isEmpty) {
+                  pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
+                }
+                sameDomainUrls.map(queue2.append(_))
+              }
+              logger.info(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
+              processedQueue.add(targetUrl)
+            }
+          })
+
+
+
         (1 to maxDepth).foreach(_ => {
           if(filesQueue.size < maxNeedFiles){
             if(flip){
-              urlQueue1.distinct.map(targetUrl => {
-                if(filesQueue.size < maxNeedFiles){
-                  println(s"Going to process url => $targetUrl ")
-                  if(filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)){
-                    val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                    println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                    pdfs.map(filesQueue.add(_))
-                    if(!pdfs.isEmpty) {
-                      pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
-                    }
-
-                    sameDomainUrls.map(urlQueue2.append(_))
-                  }
-                  println(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
-                  processedUrls.add(targetUrl)
-                }
-              })
+              runCrawl(urlQueue1, urlQueue2, filesQueue, processedUrls)
               urlQueue1 = scala.collection.mutable.ListBuffer[String]()
               flip = false
             }else{
-              urlQueue2.distinct.map(targetUrl => {
-                if(filesQueue.size < maxNeedFiles){
-                  println(s"Going to process url => $targetUrl ")
-                  if(filesQueue.size < maxNeedFiles  && !processedUrls.contains(targetUrl)){
-                    val (pdfs, sameDomainUrls)= extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                    println(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                    pdfs.map(filesQueue.add(_))
-                    if(!pdfs.isEmpty) {
-                      pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
-                    }
-                    sameDomainUrls.map(urlQueue1.append(_))
-                  }
-                  println(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
-                  processedUrls.add(targetUrl)
-                }
-              })
+              runCrawl(urlQueue2, urlQueue1, filesQueue, processedUrls)
               urlQueue2 = scala.collection.mutable.ListBuffer[String]()
               flip = true
             }
           }
         })
-        println(s"Fetching completed for url => $resourceUrl")
+        logger.info(s"Fetching completed for url => $resourceUrl")
         BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
         filesQueue.toList
 
-      case _ => println(s"Added invalid URL => $resourceUrl")
+      case _ => logger.info(s"Added invalid URL => $resourceUrl")
                 Nil
     }
   }
