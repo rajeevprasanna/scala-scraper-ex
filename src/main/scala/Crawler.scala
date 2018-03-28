@@ -1,13 +1,7 @@
 import java.net.URL
 
-import akka.Done
-import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{Sink, Source}
-
 import scala.util.Try
-import cats._
-import cats.instances._
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 
@@ -20,10 +14,12 @@ object Crawler extends AppContext {
   val logger = Logger(LoggerFactory.getLogger("crawler"))
 
   def extractUrls(commonTemplateUrls:List[String], resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
-    val allHrefs = DomUtils.extractOutLinks(resourceUrl, isAjax)
+    val allHrefs = DomUtils.extractOutLinks(url, isAjax)
     val formattedUrls = DomUtils.formatUrls(url, allHrefs)
 
     val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
+
+    logger.debug(s"found html outlinks from page => $url, urls are => $htmlUrls and file urls are => $resourceUrls")
 
     //Removing the template logic
     val validUrls = htmlUrls //.diff(commonTemplateUrls)
@@ -65,7 +61,7 @@ object Crawler extends AppContext {
                                       if (!pdfs.isEmpty) {
                                         pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
                                       }
-//                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
+                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
                                       sameDomainUrls.map(queue2.append(_))
                                       logger.info(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
                                     processedUrls.add(targetUrl)
@@ -83,6 +79,7 @@ object Crawler extends AppContext {
         def crawl(depth:Int, queue1: mutable.ListBuffer[String]):Future[Unit] = depth match {
           case _ if depth > maxDepth =>
             logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
+            logger.debug(s"processed urls => $processedUrls")
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
             Future{} //Exit
 

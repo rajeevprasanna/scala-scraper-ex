@@ -85,7 +85,7 @@ object DomUtils {
     urls.partition(url => {
       val extension = getUrlExtension(url)
       extension == ".pdf"
-    })._1
+    })._1.map(removeQueryString(_))
 
   val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".atom",".invalid")
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
@@ -110,7 +110,6 @@ object DomUtils {
       case _  =>  hostName.split("\\.").tail.reduce(_+"."+_)
     }
   }
-
 
   def formatUrls(sourceUrl:String, urls:List[String]):List[String] = {
     val rootUrl = fetchRoot(sourceUrl)
