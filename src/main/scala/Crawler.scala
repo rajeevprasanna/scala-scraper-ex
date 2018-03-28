@@ -1,5 +1,10 @@
 import java.net.URL
 
+import akka.Done
+import akka.actor.ActorSystem
+import akka.stream.ActorMaterializer
+import akka.stream.scaladsl.{Sink, Source}
+
 import scala.util.Try
 import cats._
 import cats.instances._
@@ -7,11 +12,10 @@ import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 
 import scala.collection.mutable
-import scala.concurrent.Future
+import scala.concurrent.{Future, Promise}
 
-import scala.concurrent.ExecutionContext.Implicits.global
 
-object Crawler {
+object Crawler extends AppContext {
 
   val logger = Logger(LoggerFactory.getLogger("crawler"))
 
@@ -46,38 +50,49 @@ object Crawler {
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
+        val parallelCount = if(isAjax) 1 else 5
 
-        def runCrawl(queue1:mutable.ListBuffer[String], queue2:mutable.ListBuffer[String], fQueue:mutable.Set[String], processedQueue:mutable.Set[String], depth:Int):Future[Unit] = {
-          queue1.distinct.map(targetUrl => {
-            if (fQueue.size < maxNeedFiles) {
-              logger.info(s"Going to process url => $targetUrl at the depth => $depth")
-              if (fQueue.size < maxNeedFiles && !processedQueue.contains(targetUrl)) {
-                val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                pdfs.map(filesQueue.add(_))
-                if (!pdfs.isEmpty) {
-                  pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
-                }
-                sameDomainUrls.map(queue2.append(_))
-              }
-              logger.info(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} in the depth => $depth")
-              processedQueue.add(targetUrl)
-            }
-          })
-          Future{}
+        def runCrawl(queue1: mutable.ListBuffer[String], depth: Int): Future[mutable.ListBuffer[String]] = {
+            val queue2 = mutable.ListBuffer[String]()
+            val res:Future[_] = Source.fromIterator(() => queue1.toIterator).mapAsyncUnordered(parallelCount) { targetUrl: String => {
+                                val p = Promise[Unit]()
+                                Future{
+                                  if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)) {
+                                      logger.info(s"Going to process url => $targetUrl at the depth => $depth")
+                                      val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
+                                      logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                                      pdfs.map(filesQueue.add(_))
+                                      if (!pdfs.isEmpty) {
+                                        pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
+                                      }
+//                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
+                                      sameDomainUrls.map(queue2.append(_))
+                                      logger.info(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
+                                    processedUrls.add(targetUrl)
+                                  }else{
+                                    logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} or found processed Url => $targetUrl")
+                                  }
+                                  p.success(Unit)
+                                }
+                                p.future
+                              }
+          }.runWith(Sink.ignore)
+          res.map(_ => queue2)
         }
 
         def crawl(depth:Int, queue1: mutable.ListBuffer[String]):Future[Unit] = depth match {
-          case _ if depth == maxDepth => Future{} //Exit
+          case _ if depth > maxDepth =>
+            logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
+            BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
+            Future{} //Exit
+
+
           case _  if filesQueue.size < maxNeedFiles =>
-                        val queue2 = mutable.ListBuffer[String]()
-                        runCrawl(queue1, queue2, filesQueue, processedUrls, depth).map(_ => crawl(depth+1, queue2))
+                        logger.info(s"Going to depth => $depth for resource url => $resourceUrl")
+                        runCrawl(queue1, depth).map(queue2 => crawl(depth+1, queue2.distinct))
         }
 
-        crawl(0, mutable.ListBuffer[String](resourceUrl)).map(_ => {
-          logger.info(s"Fetching completed for url => $resourceUrl")
-          BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
-        })
+        crawl(0, mutable.ListBuffer[String](resourceUrl))
 
       case _ => logger.info(s"Added invalid URL => $resourceUrl")
                 Future{}

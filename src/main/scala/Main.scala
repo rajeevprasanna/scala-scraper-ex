@@ -1,15 +1,13 @@
 
-import AppContext._
 import Models.FileMetaData
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success, Try}
 
 
-object Main extends App with LazyLogging {
+object Main extends App with LazyLogging with AppContext {
 
   logger.debug("Starting web crawling program...")
 

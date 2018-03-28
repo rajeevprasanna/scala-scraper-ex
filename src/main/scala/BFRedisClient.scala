@@ -2,9 +2,7 @@ import redis.{RedisBlockingClient, RedisClient}
 
 import scala.concurrent.{Future, Promise}
 import scala.concurrent.duration._
-import AppContext._
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import SecureKeys._
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
@@ -22,7 +20,7 @@ object ResourceUrlPayloadJsonProtocol extends DefaultJsonProtocol {
 }
 
 
-object BFRedisClient {
+object BFRedisClient extends AppContext {
 
   val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
   logger.debug("initializing redis client connection!!!")

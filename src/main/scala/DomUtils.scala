@@ -18,11 +18,11 @@ object DomUtils {
   ChromeDriverManager.getInstance().setup()
 
   val MAX_RETRY_COUNT = 3
+  lazy val driver = new ChromeDriver(getChromeOptions()) //Using singleton instance
 
   def extractOutLinks(url:String, isAjax:Boolean, retryCount:Int = 0):List[String] = {
 
     lazy val browser = JsoupBrowser()
-    lazy val driver = new ChromeDriver(getChromeOptions())
 
     def fetchDocument(hitCount:Int):Option[browser.DocumentType] = {
       val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
@@ -154,7 +154,7 @@ object DomUtils {
     }
 
     val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","jp","kr","my","ph","sg","th", "ja_jp", "de_de", "br", "lat", "tw")
-    val blackListedURLPatterns = Set("community.", "/community/", "communities", "CommunityBlog", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.", "/careers","/facilities/", "pinterest.","yahoo.", "JPTraps")
+    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.", "/careers","/facilities/", "pinterest.","yahoo.", "JPTraps")
     val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns
     def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
 

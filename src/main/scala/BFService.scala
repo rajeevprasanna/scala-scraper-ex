@@ -3,7 +3,6 @@
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.HttpMethods.POST
 import akka.http.scaladsl.model._
-import AppContext._
 import akka.stream.ActorMaterializer
 import akka.util.ByteString
 
@@ -13,11 +12,9 @@ import Models._
 
 import spray.json._
 import SecureKeys._
-import scala.concurrent.ExecutionContext.Implicits.global
 
-object BFService {
 
-  implicit def materializer:ActorMaterializer = ActorMaterializer()
+object BFService extends AppContext {
 
   implicit  def toByteString = (s:String) => ByteString(s)
 
