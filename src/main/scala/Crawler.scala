@@ -47,10 +47,10 @@ object Crawler {
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
 
-        def runCrawl(queue1:mutable.ListBuffer[String], queue2:mutable.ListBuffer[String], fQueue:mutable.Set[String], processedQueue:mutable.Set[String]):Future[Unit] = {
+        def runCrawl(queue1:mutable.ListBuffer[String], queue2:mutable.ListBuffer[String], fQueue:mutable.Set[String], processedQueue:mutable.Set[String], depth:Int):Future[Unit] = {
           queue1.distinct.map(targetUrl => {
             if (fQueue.size < maxNeedFiles) {
-              logger.info(s"Going to process url => $targetUrl ")
+              logger.info(s"Going to process url => $targetUrl at the depth => $depth")
               if (fQueue.size < maxNeedFiles && !processedQueue.contains(targetUrl)) {
                 val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
                 logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
@@ -60,7 +60,7 @@ object Crawler {
                 }
                 sameDomainUrls.map(queue2.append(_))
               }
-              logger.info(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
+              logger.info(s"Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} in the depth => $depth")
               processedQueue.add(targetUrl)
             }
           })
@@ -71,7 +71,7 @@ object Crawler {
           case _ if depth == maxDepth => Future{} //Exit
           case _  if filesQueue.size < maxNeedFiles =>
                         val queue2 = mutable.ListBuffer[String]()
-                        runCrawl(queue1, queue2, filesQueue, processedUrls).map(_ => crawl(depth+1, queue2))
+                        runCrawl(queue1, queue2, filesQueue, processedUrls, depth).map(_ => crawl(depth+1, queue2))
         }
 
         crawl(0, mutable.ListBuffer[String](resourceUrl)).map(_ => {
