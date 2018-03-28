@@ -12,7 +12,10 @@ libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.0.9"
 libraryDependencies += "org.typelevel" %% "cats" % "0.9.0"
 libraryDependencies += "io.github.bonigarcia" % "webdrivermanager" % "2.1.0"
 libraryDependencies += "org.seleniumhq.selenium" % "selenium-chrome-driver" % "3.11.0"
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.8.0"
+libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.5.11"
 
 
-assemblyJarName in assembly := "scraper_16032018.jar"
+assemblyJarName in assembly := "scraper_23032018.jar"
 mainClass in assembly := Some("Main")
