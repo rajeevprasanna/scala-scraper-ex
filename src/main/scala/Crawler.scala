@@ -28,7 +28,7 @@ object Crawler extends AppContext {
     (DomUtils.filterPDFUrls(resourceUrls), sameDomainUrls)
   }
 
-
+  val MAX_CRAWL_PAGES = 20000
   def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):Future[Unit] = {
     Try(new URL(resourceUrl)).toOption match {
       case Some(_) =>
@@ -53,8 +53,8 @@ object Crawler extends AppContext {
             val res:Future[_] = Source.fromIterator(() => queue1.toIterator).mapAsyncUnordered(parallelCount) { targetUrl: String => {
                                 val p = Promise[Unit]()
                                 Future{
-                                  if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)) {
-                                      logger.info(s"Going to process url => $targetUrl at the depth => $depth")
+                                  if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl) && processedUrls.size < MAX_CRAWL_PAGES) {
+                                      logger.info(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth")
                                       val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
                                       logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
                                       pdfs.map(filesQueue.add(_))
