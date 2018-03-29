@@ -57,7 +57,7 @@ object Main extends App with LazyLogging with AppContext {
     }
   }
 
-//  Future{startWebCrawler()}
+  Future{startWebCrawler()}
   Future{startFileDownloader()}
 }
 
