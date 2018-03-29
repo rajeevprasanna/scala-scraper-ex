@@ -65,8 +65,10 @@ object Crawler extends AppContext {
                                       sameDomainUrls.map(queue2.append(_))
                                       logger.info(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
                                     processedUrls.add(targetUrl)
-                                  }else{
-                                    logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} or found processed Url => $targetUrl")
+                                  } else if(processedUrls.contains(targetUrl)){
+                                    logger.info(s"At depth => $depth, found processed Url => $targetUrl")
+                                  } else if(filesQueue.size > maxNeedFiles){
+                                    logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size}")
                                   }
                                   p.success(Unit)
                                 }
@@ -77,14 +79,13 @@ object Crawler extends AppContext {
         }
 
         def crawl(depth:Int, queue1: mutable.ListBuffer[String]):Future[Unit] = depth match {
-          case _ if depth > maxDepth =>
+          case _ if depth > maxDepth || filesQueue.size > maxNeedFiles  =>
             logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
             logger.debug(s"processed urls => $processedUrls")
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
             Future{} //Exit
 
-
-          case _  if filesQueue.size < maxNeedFiles =>
+          case _  =>
                         logger.info(s"Going to depth => $depth for resource url => $resourceUrl")
                         runCrawl(queue1, depth).map{queue2 =>
                           crawl(depth+1, queue2.distinct)
