@@ -48,8 +48,14 @@ object FileUtils extends AppContext {
         input.map(_.close())
       }
     }else{
-      logger.error(s"received content type different for url => $url")
-      None
+      val headerUrl = httpcon.getHeaderField("Location")
+      if(DomUtils.getUrlExtension(headerUrl) == ".pdf" && headerUrl != url){
+        logger.info(s"trying to download from redirect url => $headerUrl for actual url => $url")
+        getByteContent(headerUrl)
+      }else{
+        logger.error(s"received content type different for url => $url")
+        None
+      }
     }
   }
 
