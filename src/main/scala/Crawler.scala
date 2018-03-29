@@ -86,8 +86,8 @@ object Crawler extends AppContext {
 
           case _  if filesQueue.size < maxNeedFiles =>
                         logger.info(s"Going to depth => $depth for resource url => $resourceUrl")
-                        return runCrawl(queue1, depth).map{queue2 =>
-                          return crawl(depth+1, queue2.distinct)
+                        runCrawl(queue1, depth).map{queue2 =>
+                          crawl(depth+1, queue2.distinct)
                         }
         }
 

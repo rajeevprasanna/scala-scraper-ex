@@ -1,5 +1,6 @@
 
 import Models.FileMetaData
+import akka.stream.scaladsl.Source
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.duration._
@@ -32,13 +33,21 @@ object Main extends App with LazyLogging with AppContext {
 
 
   def startFileDownloader():Unit = {
+    def reduceMetadata = (list:List[Option[FileMetaData]], a2:Option[FileMetaData]) => list :+ a2
+
     Try(Await.result(BFRedisClient.fetchResourceUrlsPayload(), 10 seconds)) match {
       case Success(Some(payload)) =>
         val filteredUrls:Future[List[String]] = BFService.filterProcessedUrls(payload.resourceUrl, payload.urls)
         filteredUrls.map(validUrls => {
-          val filesMatadata:List[FileMetaData] = validUrls.flatMap(fileUrl => FileUtils.uploadResource(fileUrl, payload.pageUrl.getOrElse("")))
-          if(!filesMatadata.isEmpty) BFService.uploadFilesMetadata(payload.resourceUrl, filesMatadata)
-          if(payload.completed) BFService.markProcessComplete(payload.resourceUrl)
+          val filesMatadata:Future[List[Option[FileMetaData]]] = Source.fromIterator(() => validUrls.iterator)
+            .mapAsyncUnordered(5)(fileUrl => FileUtils.uploadResource(fileUrl, payload.pageUrl.getOrElse("")))
+              .runFold(List[Option[FileMetaData]]())(reduceMetadata)
+
+          filesMatadata.map(mt => {
+            val metaDataList = mt.flatten
+            if(!metaDataList.isEmpty) BFService.uploadFilesMetadata(payload.resourceUrl, metaDataList)
+            if(payload.completed) BFService.markProcessComplete(payload.resourceUrl)
+          })
           startFileDownloader()
         })
 
@@ -48,8 +57,7 @@ object Main extends App with LazyLogging with AppContext {
     }
   }
 
-
-  Future{startWebCrawler()}
+//  Future{startWebCrawler()}
   Future{startFileDownloader()}
 }
 
