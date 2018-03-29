@@ -49,6 +49,12 @@ object Crawler extends AppContext {
         val parallelCount = if(isAjax) 1 else 5
 
         def runCrawl(queue1: mutable.ListBuffer[String], depth: Int): Future[mutable.ListBuffer[String]] = {
+          //TODO:Invoking garbage collector. not the right way. cleanup this code
+            val r = Runtime.getRuntime()
+            logger.info(s"free memory before requesting gc => ${r.freeMemory()}")
+            r.gc()
+            logger.info(s"free memory after requesting gc => ${r.freeMemory()}")
+
             val queue2 = mutable.ListBuffer[String]()
             val res:Future[_] = Source.fromIterator(() => queue1.toIterator).mapAsyncUnordered(parallelCount) { targetUrl: String => {
                                 val p = Promise[Unit]()
