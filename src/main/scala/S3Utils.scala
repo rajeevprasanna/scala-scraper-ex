@@ -24,6 +24,7 @@ object S3Utils {
 
     val userMetadataMap = Map("filename" -> fileName, "fileurl" -> fileUrl, "pageurl" -> pageUrl)
     val metadata: ObjectMetadata = new ObjectMetadata()
+    metadata.setContentLength(content.length)
     metadata.setUserMetadata(userMetadataMap)
 
     Try {
