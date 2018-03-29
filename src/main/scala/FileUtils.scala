@@ -39,12 +39,17 @@ object FileUtils extends AppContext {
   private def getByteContent(url: String):Option[Array[Byte]] = {
     val httpcon = new URL(url).openConnection()
     httpcon.addRequestProperty("User-Agent", "Mozilla/4.76")
-    val input:Option[InputStream] = Try(httpcon.getInputStream()).toOption
-    try {
-      input.map(IOUtils.toByteArray(_))
-    }
-    finally {
-      input.map(_.close())
+    if(httpcon.getContentType == "application/pdf"){
+      val input:Option[InputStream] = Try(httpcon.getInputStream()).toOption
+      try {
+        input.map(IOUtils.toByteArray(_))
+      }
+      finally {
+        input.map(_.close())
+      }
+    }else{
+      logger.error(s"received content type different for url => $url")
+      None
     }
   }
 
