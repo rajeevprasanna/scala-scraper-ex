@@ -14,7 +14,7 @@ import scala.util.Try
 
 object DomUtils {
 
-  val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
+  val logger = Logger(LoggerFactory.getLogger("DomUtils"))
   ChromeDriverManager.getInstance().setup()
 
   val MAX_RETRY_COUNT = 3
