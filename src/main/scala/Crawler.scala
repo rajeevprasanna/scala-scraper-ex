@@ -60,7 +60,7 @@ object Crawler extends AppContext {
                                 val p = Promise[Unit]()
                                 Future{
                                   if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl) && processedUrls.size < MAX_CRAWL_PAGES) {
-                                      logger.info(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth")
+                                      logger.info(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
                                       val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
                                       logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
                                       pdfs.map(filesQueue.add(_))
@@ -69,7 +69,7 @@ object Crawler extends AppContext {
                                       }
                                       logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
                                       sameDomainUrls.map(queue2.append(_))
-                                      logger.info(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size}")
+                                      logger.info(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} downloaded files count => ${filesQueue.size}")
                                     processedUrls.add(targetUrl)
                                   } else if(processedUrls.contains(targetUrl)){
                                     logger.info(s"At depth => $depth, found processed Url => $targetUrl")
