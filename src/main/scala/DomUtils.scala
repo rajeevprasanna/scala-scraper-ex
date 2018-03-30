@@ -152,7 +152,7 @@ object DomUtils {
       }.getOrElse("")
     }
 
-    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","jp","kr","my","ph","sg","th", "ja_jp", "de_de", "br", "lat", "tw")
+    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","jp","kr","my","ph","sg","th", "ja_jp", "de_de", "br", "lat", "tw", "fr-fr", "de-de", "it-it", "ja-jp", "ko-kr", "nl-nl", "es-419", "sv-se", "es-es")
     val blackListedURLPatterns = Set("community.", "/community/", "communities", "CommunityBlog", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.", "/careers","/facilities/", "pinterest.","yahoo.", "JPTraps")
     val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns ++ invalidExtensions.map(_+".") //checking for patterns like jp.x.com etc
     def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
