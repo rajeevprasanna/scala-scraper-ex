@@ -122,7 +122,7 @@ object DomUtils {
       val formatted =
       url.trim match {
         case x if x == "/" => None
-        case x if x.contains("..") => Some(rootUrl + x.split("\\.\\.").last) //TODO: improve this by traversing line
+        case x if x.contains("..") => Try(rootUrl + x.split("\\.\\.").last).toOption //happens with .. //TODO: improve this by traversing line
         case x if x.startsWith("//") => None
         case x if x.startsWith("/")  => Some(rootUrl + x)
         case x if x.startsWith("./")  => Some(rootUrl + x.tail)
