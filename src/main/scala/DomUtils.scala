@@ -70,7 +70,7 @@ object DomUtils {
     val url = removeQueryString(formatted)
     val trimmed = url.toArray.filter(_ != '\\').reverse.dropWhile(_ == '/').reverse.mkString
     val url2 = new URL(trimmed)
-    if(url2.getPath == "") trimmed else trimmed.split(url2.getPath).head
+    if(url2.getPath == "") trimmed else trimmed.splitAt(trimmed.indexOf(url2.getPath))._1
   }
 
   def checkForProtocol(url:String):String = url.startsWith("http") match {
