@@ -18,7 +18,7 @@ object DomUtils {
   ChromeDriverManager.getInstance().setup()
 
   val MAX_RETRY_COUNT = 3
-  lazy val driver = new ChromeDriver(getChromeOptions()) //Using singleton instance
+  val URL_PATTERN_REGEX =  """(["'])https?:\/\/(.*?)(["'])""".r
 
   def extractOutLinks(url:String, isAjax:Boolean, retryCount:Int = 0):List[String] = {
 
@@ -36,6 +36,7 @@ object DomUtils {
       val resp = isAjax match {
         case true =>
           Try {
+            lazy val driver = new ChromeDriver(getChromeOptions()) //Using singleton instance
             driver.get(url)
             val dom = driver.getPageSource()
             parseString(dom)
@@ -52,11 +53,14 @@ object DomUtils {
 
     def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
 
+    def stripQuotes = (url:String) => url.toCharArray.filter(ch => ch != '\'' && ch != '\"').foldLeft("")((x,y) => x + String.valueOf(y))
+
     def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
       val aDoms = Try(doc >> elementList("a")).toOption.getOrElse(Nil)
-      aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
+      val hrefUrls = aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
+      val allUrls = Try(URL_PATTERN_REGEX.findAllMatchIn(doc.toString).toList.map(_.toString()).map(stripQuotes)).toOption.getOrElse(Nil)
+      (hrefUrls ++ allUrls).distinct
     }
-
     val doc = fetchDocument(retryCount)
     doc.map(getUrlsFromDoc(_)).getOrElse(Nil)
   }

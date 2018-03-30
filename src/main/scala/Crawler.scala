@@ -46,7 +46,7 @@ object Crawler extends AppContext {
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
-        val parallelCount = if(isAjax) 1 else 5
+        val parallelCount = if(isAjax) 3 else 5
 
         def runCrawl(queue1: mutable.ListBuffer[String], depth: Int): Future[mutable.ListBuffer[String]] = {
           //TODO:Invoking garbage collector. not the right way. cleanup this code
