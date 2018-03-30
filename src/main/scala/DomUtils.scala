@@ -66,7 +66,7 @@ object DomUtils {
   def fetchRoot(fullURL:String):String = {
     val formatted = checkForProtocol(fullURL)
     val url = removeQueryString(formatted)
-    val trimmed = url.toArray.reverse.dropWhile(_ == '/').reverse.mkString
+    val trimmed = url.toArray.filter(_ != '\\').reverse.dropWhile(_ == '/').reverse.mkString
     val url2 = new URL(trimmed)
     if(url2.getPath == "") trimmed else trimmed.split(url2.getPath).head
   }
