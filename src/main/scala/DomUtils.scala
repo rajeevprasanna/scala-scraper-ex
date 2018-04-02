@@ -203,6 +203,8 @@ object DomUtils {
     options.addArguments("--disable-extensions") //to disable browser extension popup
     options.addArguments("test-type")
     options.addArguments("disable-popup-blocking")
+    options.addArguments("disable-infobars")
+    options.addArguments("--disable-gpu")
     options.setHeadless(true)
     options
   }
