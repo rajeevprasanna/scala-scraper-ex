@@ -39,6 +39,7 @@ object DomUtils {
             lazy val driver = new ChromeDriver(getChromeOptions()) //Using singleton instance
             driver.get(url)
             val dom = driver.getPageSource()
+            driver.quit()
             parseString(dom)
           }.toOption
 
