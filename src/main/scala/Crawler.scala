@@ -91,6 +91,7 @@ object Crawler extends AppContext {
             logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
             logger.debug(s"processed urls => $processedUrls")
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
+            Main.crawlInProgress = false
             Future{} //Exit
 
           case _  =>

@@ -17,5 +17,5 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.8.0"
 libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.5.11"
 
 
-assemblyJarName in assembly := "scraper_30032018_refactored.jar"
+assemblyJarName in assembly := "scraper_02042018_refactored.jar"
 mainClass in assembly := Some("Main")
