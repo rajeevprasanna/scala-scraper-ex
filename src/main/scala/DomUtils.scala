@@ -29,7 +29,7 @@ object DomUtils {
       logger.info(logMessage)
 
       val extension = getUrlExtension(url)
-      if(resourceExtensions.contains(extension)){
+      if(ConfReader.resourceExtensions.contains(extension)){
         return None
       }
 
@@ -92,10 +92,10 @@ object DomUtils {
       extension == ".pdf"
     })._1.map(removeQueryString(_))
 
-  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".atom",".invalid")
+
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
-    resourceExtensions.contains(extension)
+    ConfReader.resourceExtensions.contains(extension)
   })
 
   def filterSubdomainUrls(resourceURL:String, urls:List[String]):List[String] = {
@@ -157,14 +157,9 @@ object DomUtils {
       }.getOrElse("")
     }
 
-    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","jp","kr","my","ph","sg","th",
-                                  "ja_jp", "de_de", "br", "lat", "tw", "fr-fr", "de-de", "it-it", "ja-jp", "ko-kr", "nl-nl", "es-419", "sv-se", "es-es",
-                                  "da-dk", "de-de", "fr-ca", "nb-no", "pl-pl", "pt-br", "fi-fi", "tr-tr", "ru-ru", "ru", "tr", "hi-in", "bn-in", "zh-cn", "zh-tw", "ko-kr")
-    val blackListedURLPatterns = Set("community.", "/community/", "communities", "CommunityBlog", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.", "/careers","/facilities/", "pinterest.","yahoo.", "JPTraps")
-    val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns ++ invalidExtensions.map(_+".") //checking for patterns like jp.x.com etc
-    def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
 
-    urls.filter(url => !invalidExtensions.contains(getDomainCountryExtension(url)) && !invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
+    def containsBlackListedUrl = (url:String) => ConfReader.blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
+    urls.filter(url => !ConfReader.invalidExtensions.contains(getDomainCountryExtension(url)) && !ConfReader.invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
   }
 
   def getUrlExtension(url:String):String = {

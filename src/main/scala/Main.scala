@@ -12,9 +12,6 @@ object Main extends App with LazyLogging with AppContext {
 
   logger.debug("Starting web crawling program...")
 
-  val maxDepth = config.getInt("crawl.depth")
-  val maxDownloadFiles = config.getInt("crawl.max_download_files")
-
   var crawlInProgress = false
 
   def startWebCrawler():Unit = {
@@ -23,7 +20,7 @@ object Main extends App with LazyLogging with AppContext {
         case Success(Some(urlPayload)) =>
           crawlInProgress = true
           logger.info(s"Going to start crawling for url => ${urlPayload.url} with ajax status => ${urlPayload.is_ajax}")
-          Try(Crawler.extractFiles(urlPayload.url, maxDepth, maxDownloadFiles, urlPayload.is_ajax.getOrElse(false)))
+          Try(Crawler.extractFiles(urlPayload.url, ConfReader.maxCrawlDepth, ConfReader.maxNeededFiles, urlPayload.is_ajax.getOrElse(false)))
 
         case Failure(_) =>
           logger.info(s"No crawl url in redis for crawl ")
