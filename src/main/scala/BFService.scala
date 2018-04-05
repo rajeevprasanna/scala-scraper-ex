@@ -9,7 +9,6 @@ import scala.concurrent.{Future, Promise}
 import scala.util.{Failure, Success, Try}
 import Models._
 import spray.json._
-import SecureKeys._
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 
@@ -37,16 +36,16 @@ object BFService extends AppContext {
   def uploadFilesMetadata(sourceUrl:String, files:List[FileMetaData]):Future[Unit] = {
     logger.debug(s"uploading file metadata => $files")
     val p = Promise[Unit]()
-    val filePersistencePayload:String = FilePersistencePayload(sourceUrl, files, BF_API_SECRET).toJson.toString
-    Http().singleRequest(HttpRequest(POST, uri = SAVE_FILE_META_DATA, entity = payload(filePersistencePayload))).onComplete(responseHandler(p, _))
+    val filePersistencePayload:String = FilePersistencePayload(sourceUrl, files, ConfReader.REST_API_SECRET).toJson.toString
+    Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_SAVE_FILE_META_DATA, entity = payload(filePersistencePayload))).onComplete(responseHandler(p, _))
     p.future
   }
 
   def markProcessComplete(sourceUrl:String):Future[Unit] = {
     logger.info(s"marking processing completion for url => $sourceUrl")
     val p = Promise[Unit]()
-    val urlProcessingCompletedPayload:String = ProcessingCompletePayload(BF_API_SECRET, List(sourceUrl)).toJson.toString
-    Http().singleRequest(HttpRequest(POST, uri = MARK_CRAWL_COMPLETED_FOR_URL, entity = payload(urlProcessingCompletedPayload))).onComplete(responseHandler(p, _))
+    val urlProcessingCompletedPayload:String = ProcessingCompletePayload(ConfReader.REST_API_SECRET, List(sourceUrl)).toJson.toString
+    Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_MARK_CRAWL_COMPLETED_FOR_URL, entity = payload(urlProcessingCompletedPayload))).onComplete(responseHandler(p, _))
     p.future
   }
 
@@ -60,8 +59,8 @@ object BFService extends AppContext {
     urls match {
       case _ if urls.isEmpty => p.success(Nil)
       case _ =>
-          val filterProcessedFilesPayload:String = ProcessedFilesPayload(BF_API_SECRET, urls, sourceUrl).toJson.toString
-          val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = FILTER_ALREADY_CRAWLED_URLS, entity = payload(filterProcessedFilesPayload)))
+          val filterProcessedFilesPayload:String = ProcessedFilesPayload(ConfReader.REST_API_SECRET, urls, sourceUrl).toJson.toString
+          val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_FILTER_ALREADY_CRAWLED_URLS, entity = payload(filterProcessedFilesPayload)))
           responseFuture.onComplete {
             case Success(res) => extractUrlList(res.entity).map(urls => p.success(urls))
             case Failure(ex) => logger.error(s"something wrong. error => ${ex.getLocalizedMessage}"); p.failure(ex)

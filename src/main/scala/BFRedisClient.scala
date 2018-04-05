@@ -3,7 +3,6 @@ import redis.{RedisBlockingClient, RedisClient}
 import scala.concurrent.{Future, Promise}
 import scala.concurrent.duration._
 
-import SecureKeys._
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
@@ -25,8 +24,8 @@ object BFRedisClient extends AppContext {
   val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
   logger.debug("initializing redis client connection!!!")
 
-  val redis = RedisClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
-  val redisBlocking = RedisBlockingClient(host = HOST, port=PORT, password = Some(PASSWORD), name = USERNAME)
+  val redis = RedisClient(host = ConfReader.REDIS_HOST, port=ConfReader.REDIS_PORT, password = Some(ConfReader.REDIS_PASSWORD), name = ConfReader.REDIS_USER_NAME)
+  val redisBlocking = RedisBlockingClient(host = ConfReader.REDIS_HOST, port=ConfReader.REDIS_PORT, password = Some(ConfReader.REDIS_PASSWORD), name = ConfReader.REDIS_USER_NAME)
 
   private def popElementFromRedis(queueName:String):Future[Option[String]] = {
     val p = Promise[Option[String]]()
@@ -42,7 +41,7 @@ object BFRedisClient extends AppContext {
   def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean):Boolean = {
     import CrawlPayloadJsonProtocol._
     val payload:String = CrawlPayload(urls, resourceUrl, isCompleted, pageUrl.some).toJson.toString()
-    redis.rpush(RESOURCE_URL_PAYLOAD_QUEUE, payload)
+    redis.rpush(ConfReader.REDIS_RESOURCE_URL_PAYLOAD_QUEUE, payload)
     true
   }
 
@@ -51,7 +50,7 @@ object BFRedisClient extends AppContext {
     Future{
       import CrawlPayloadJsonProtocol._
       for {
-        payloadOption <- popElementFromRedis(RESOURCE_URL_PAYLOAD_QUEUE)
+        payloadOption <- popElementFromRedis(ConfReader.REDIS_RESOURCE_URL_PAYLOAD_QUEUE)
         payloadStr <- payloadOption
       } {
         val res = JsonParser(payloadStr).convertTo[CrawlPayload].some
@@ -67,7 +66,7 @@ object BFRedisClient extends AppContext {
     Future {
       import ResourceUrlPayloadJsonProtocol._
       for {
-        payloadOption <- popElementFromRedis(CRAWL_URL_QUEUE)
+        payloadOption <- popElementFromRedis(ConfReader.REDIS_CRAWL_URL_QUEUE)
         payloadStr <- payloadOption
       } {
         val res = JsonParser(payloadStr).convertTo[ResourceUrlPayload].some

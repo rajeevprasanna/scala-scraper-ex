@@ -7,7 +7,6 @@ import com.amazonaws.services.s3.model.ObjectMetadata
 import scala.collection.JavaConversions._
 import java.io.{ByteArrayInputStream, InputStream}
 
-import SecureKeys._
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 
@@ -18,7 +17,7 @@ object S3Utils {
   val logger = Logger(LoggerFactory.getLogger("S3Utils"))
 
   def uploadContent(fileName:String, fileUrl:String, pageUrl:String, content:Array[Byte]):Option[String] = {
-    val yourAWSCredentials = new BasicAWSCredentials(AWS_ACCESS_KEY, AWS_SECRET_KEY)
+    val yourAWSCredentials = new BasicAWSCredentials(ConfReader.S3_ACCESS_KEY, ConfReader.S3_SECRET_KEY)
     val amazonS3Client = new AmazonS3Client(yourAWSCredentials)
     val s3_id = UUID.randomUUID().toString
 
@@ -29,7 +28,7 @@ object S3Utils {
 
     Try {
       val inputStream:InputStream = new ByteArrayInputStream(content, 0, content.length)
-      amazonS3Client.putObject(BUCKET_NAME, s3_id, inputStream, metadata)
+      amazonS3Client.putObject(ConfReader.S3_BUCKET_NAME, s3_id, inputStream, metadata)
       logger.info(s"uploaded file url => $fileUrl with key => $s3_id")
       s3_id
     }.toOption
