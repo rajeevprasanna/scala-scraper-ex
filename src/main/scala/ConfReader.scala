@@ -20,8 +20,8 @@ object ConfReader extends AppContext {
   val REDIS_PORT = config.getInt("redis.port")
   val REDIS_USER_NAME = config.getString("redis.username")
   val REDIS_PASSWORD = config.getString("redis.password")
-  val REDIS_CRAWL_URL_QUEUE = config.getString("redis.resource_url_payload_queue")
-  val REDIS_RESOURCE_URL_PAYLOAD_QUEUE = config.getString("redis.web_crawl_queue")
+  val REDIS_CRAWL_URL_QUEUE = config.getString("redis.web_crawl_queue")
+  val REDIS_RESOURCE_URL_PAYLOAD_QUEUE = config.getString("redis.resource_url_payload_queue")
 
   val S3_ACCESS_KEY = config.getString("s3.access_key")
   val S3_SECRET_KEY = config.getString("s3.secret_key")
