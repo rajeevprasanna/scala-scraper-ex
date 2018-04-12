@@ -5,6 +5,7 @@ import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import io.github.bonigarcia.wdm.ChromeDriverManager
+import org.apache.commons.io.FilenameUtils
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.slf4j.LoggerFactory
@@ -116,6 +117,12 @@ object DomUtils {
     }
   }
 
+  def removeResourceComponent(url: String): String = {
+    val lastPathComponent = FilenameUtils.getName(new URL(url).getPath())
+    val res = if(lastPathComponent.contains(".")) url.split(lastPathComponent).head  else url
+    if(res.last == '/') res else res + "/"
+  }
+
   def formatUrls(sourceUrl:String, urls:List[String]):List[String] = {
     val rootUrl = fetchRoot(sourceUrl)
     val formattedSourceUrl = removeQueryString(sourceUrl)
@@ -130,7 +137,7 @@ object DomUtils {
         case x if x.startsWith("./")  => Some(rootUrl + x.tail)
         case x if x.startsWith("http") => Some(x)
         case x if x.startsWith("#") => None
-        case _ => Some(formattedSourceUrl + "/" + url)
+        case _ => Some(removeResourceComponent(formattedSourceUrl)  + url)
       }
 //      println(s"given url => ${url.trim} and formatted url => ${formatted} and sourceUrl => $sourceUrl")
       formatted.map(u => u.replaceAll(" ", "%20")).map(formatUrl)
