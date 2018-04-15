@@ -49,14 +49,9 @@ object Crawler extends AppContext {
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
-        val parallelCount = if(isAjax) 1 else 8
+        val parallelCount = if(isAjax) 1 else 5
 
         def runCrawl(queue1: mutable.ListBuffer[String], depth: Int): Future[mutable.ListBuffer[String]] = {
-          //TODO:Invoking garbage collector. not the right way. cleanup this code
-            val r = Runtime.getRuntime()
-            logger.info(s"free memory before requesting gc => ${r.freeMemory()}")
-            r.gc()
-            logger.info(s"free memory after requesting gc => ${r.freeMemory()}")
 
             val queue2 = mutable.ListBuffer[String]()
             val res:Future[_] = Source.fromIterator(() => queue1.toIterator).mapAsyncUnordered(parallelCount) { targetUrl: String => {
@@ -96,11 +91,9 @@ object Crawler extends AppContext {
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
              Future{} //Exit
 
-          case _  =>
-                        logger.info(s"Going to depth => $depth for resource url => $resourceUrl")
-                        runCrawl(queue1, depth).flatMap { queue2 =>
-                          crawl(depth+1, queue2.distinct)
-                        }
+          case _  =>    logger.info(s"Going to depth => $depth for resource url => $resourceUrl")
+                        runCrawl(queue1, depth).flatMap(queue2 => crawl(depth+1, queue2.distinct))
+
         }
 
         crawl(0, mutable.ListBuffer[String](resourceUrl))
