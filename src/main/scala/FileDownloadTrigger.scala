@@ -32,7 +32,7 @@ object FileDownloadTrigger extends AppContext {
         })
 
       case Failure(_) =>
-        logger.info(s"No resource  url in redis for downloading")
+        logger.debug(s"No resource  url in redis for downloading")
         startFileDownloader()
     }
   }

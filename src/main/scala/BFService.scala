@@ -28,13 +28,13 @@ object BFService extends AppContext {
 
   def responseHandler = (p:Promise[Unit], f:Try[HttpResponse]) =>
     f match {
-      case Success(res) => logger.info(res.toString); p.success(Unit)
+      case Success(res) => logger.debug(res.toString); p.success(Unit)
       case Failure(ex)   => logger.error(s"something wrong. error => ${ex.getLocalizedMessage}"); p.failure(ex)
     }
 
 
   def uploadFilesMetadata(sourceUrl:String, files:List[FileMetaData]):Future[Unit] = {
-    logger.debug(s"uploading file metadata => $files")
+    logger.info(s"uploading file metadata => $files")
     val p = Promise[Unit]()
     val filePersistencePayload:String = FilePersistencePayload(sourceUrl, files, ConfReader.REST_API_SECRET).toJson.toString
     Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_SAVE_FILE_META_DATA, entity = payload(filePersistencePayload))).onComplete(responseHandler(p, _))
@@ -53,7 +53,7 @@ object BFService extends AppContext {
   private def extractUrlList:(ResponseEntity => Future[List[String]]) = (resp:ResponseEntity) => respToString(resp).map(JsonParser(_).convertTo[FilteredUrls].urls)
 
   def filterProcessedUrls(sourceUrl:String, urls:List[String]):Future[List[String]] = {
-    logger.debug(s"filter processing for urls => $urls")
+    logger.info(s"filter processing for urls => $urls")
     val p = Promise[List[String]]()
 
     urls match {

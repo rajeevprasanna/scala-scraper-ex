@@ -22,7 +22,7 @@ object ResourceUrlPayloadJsonProtocol extends DefaultJsonProtocol {
 object BFRedisClient extends AppContext {
 
   val logger = Logger(LoggerFactory.getLogger("BFRedisClient"))
-  logger.debug("initializing redis client connection!!!")
+  logger.info("initializing redis client connection!!!")
 
   val redis = RedisClient(host = ConfReader.REDIS_HOST, port=ConfReader.REDIS_PORT, password = Some(ConfReader.REDIS_PASSWORD), name = ConfReader.REDIS_USER_NAME)
   val redisBlocking = RedisBlockingClient(host = ConfReader.REDIS_HOST, port=ConfReader.REDIS_PORT, password = Some(ConfReader.REDIS_PASSWORD), name = ConfReader.REDIS_USER_NAME)

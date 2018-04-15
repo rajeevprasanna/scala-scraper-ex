@@ -19,7 +19,7 @@ object FileUtils extends AppContext {
   val logger = Logger(LoggerFactory.getLogger("FileUtils"))
 
   def uploadResource(url:String, pageUrl:String):Future[Option[FileMetaData]] = {
-    logger.info(s"uploading resource to S3 from url => $url")
+    logger.debug(s"uploading resource to S3 from url => $url")
     val p = Promise[Option[FileMetaData]]()
     Future{
       //TODO: check content type is pdf or not
@@ -50,7 +50,7 @@ object FileUtils extends AppContext {
     }else{
       val headerUrl = httpcon.getHeaderField("Location")
       if(DomUtils.getUrlExtension(headerUrl) == ".pdf" && headerUrl != url){
-        logger.info(s"trying to download from redirect url => $headerUrl for actual url => $url")
+        logger.debug(s"trying to download from redirect url => $headerUrl for actual url => $url")
         getByteContent(headerUrl)
       }else{
         logger.error(s"received content type different for url => $url")

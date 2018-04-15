@@ -45,7 +45,7 @@ object Crawler extends AppContext {
         val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
         val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
 
-        logger.info(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
+        logger.debug(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
@@ -59,21 +59,21 @@ object Crawler extends AppContext {
                                 Future{
                                   Try{
                                     if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl) && processedUrls.size < ConfReader.maxCrawlPages) {
-                                      logger.info(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
+                                      logger.debug(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
                                       val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                                      logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                                      logger.debug(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
                                       pdfs.map(filesQueue.add(_))
                                       if (!pdfs.isEmpty) {
                                         pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
                                       }
                                       logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
                                       sameDomainUrls.map(queue2.append(_))
-                                      logger.info(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} downloaded files count => ${filesQueue.size}")
+                                      logger.debug(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} downloaded files count => ${filesQueue.size}")
                                       processedUrls.add(targetUrl)
-                                    } else if(processedUrls.contains(targetUrl)){
-                                      logger.info(s"At depth => $depth, found processed Url => $targetUrl")
-                                    } else if(filesQueue.size > maxNeedFiles){
-                                      logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size}")
+                                    } else if(processedUrls.contains(targetUrl)) {
+                                      logger.debug(s"At depth => $depth, found processed Url => $targetUrl")
+                                    } else if(filesQueue.size > maxNeedFiles) {
+                                      logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} for resourceUrl => $resourceUrl")
                                     }
                                   }
                                   p.success(Unit)
@@ -87,7 +87,6 @@ object Crawler extends AppContext {
         def crawl(depth:Int, queue1: mutable.ListBuffer[String]):Future[Unit] = depth match {
           case _ if depth > maxDepth || filesQueue.size > maxNeedFiles  =>
             logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
-            logger.debug(s"processed urls => $processedUrls")
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
              Future{} //Exit
 
@@ -98,7 +97,7 @@ object Crawler extends AppContext {
 
         crawl(0, mutable.ListBuffer[String](resourceUrl))
 
-      case _ => logger.info(s"Added invalid URL => $resourceUrl")
+      case _ => logger.error(s"Added invalid URL => $resourceUrl")
                 Future{}
     }
   }

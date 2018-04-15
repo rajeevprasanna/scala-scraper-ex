@@ -29,7 +29,7 @@ object DomUtils {
 
     def fetchDocument(hitCount:Int):Option[browser.DocumentType] = {
       val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
-      logger.info(logMessage)
+      logger.debug(logMessage)
 
       val extension = getUrlExtension(url)
       if(ConfReader.resourceExtensions.contains(extension)){

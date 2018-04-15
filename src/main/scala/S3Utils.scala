@@ -11,6 +11,7 @@ import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 
 import scala.util.Try
+import ExtensionUtils._
 
 object S3Utils {
 
@@ -29,9 +30,9 @@ object S3Utils {
     Try {
       val inputStream:InputStream = new ByteArrayInputStream(content, 0, content.length)
       amazonS3Client.putObject(ConfReader.S3_BUCKET_NAME, s3_id, inputStream, metadata)
-      logger.info(s"uploaded file url => $fileUrl with key => $s3_id")
+      logger.debug(s"uploaded file url => $fileUrl with key => $s3_id")
       s3_id
-    }.toOption
+    }.processTry(s"error in uploading file to S3. url => $fileUrl and pageUrl => $pageUrl")
   }
 
 }
