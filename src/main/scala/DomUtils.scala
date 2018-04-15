@@ -60,7 +60,7 @@ object DomUtils {
     def stripQuotes = (url:String) => url.toCharArray.filter(ch => ch != '\'' && ch != '\"').foldLeft("")((x,y) => x + String.valueOf(y))
 
     def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
-      val aDoms = Try(doc >> elementList("a")).processTry(s"Error in extracting a tags from doc").getOrElse(Nil)
+      val aDoms = Try(doc >> elementList("a")).processTry(s"Error in extracting a tags from doc. doc => $doc").getOrElse(Nil)
       val hrefUrls = aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
       val allUrls = Try(URL_PATTERN_REGEX.findAllMatchIn(doc.toString).toList.map(_.toString()).map(stripQuotes)).processTry(s"Error in finding matches of regular expression with document => ${doc.toString}").getOrElse(Nil)
       (hrefUrls ++ allUrls).distinct
@@ -161,10 +161,9 @@ object DomUtils {
     def getCountryRoute(u:String):String = {
       Try{
         val path = new URL(u).getPath
-        if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
+        if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("").toLowerCase() else ""
       }.processTry(s"error in getCountryRoute => $u").getOrElse("")
     }
-
 
     def containsBlackListedUrl = (url:String) => ConfReader.blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
     urls.filter(url => !ConfReader.invalidExtensions.contains(getDomainCountryExtension(url)) && !ConfReader.invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
