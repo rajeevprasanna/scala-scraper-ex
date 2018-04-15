@@ -14,6 +14,9 @@ object ConfReader extends AppContext {
 
   val parallelCrawlingThreads = config.getInt("crawl.parallel_crawl_sources")
 
+  val ajaxParallelCount = config.getInt("crawl.ajax_parallel_count")
+  val nonAjaxParallelCount = config.getInt("crawl.non_ajax_parallel_count")
+
   val API_EP_FILTER_ALREADY_CRAWLED_URLS = config.getString("api.ep.filter_already_crawled_urls")
   val API_EP_SAVE_FILE_META_DATA = config.getString("api.ep.save_file_meta_data")
   val API_EP_MARK_CRAWL_COMPLETED_FOR_URL = config.getString("api.ep.mark_crawl_completed_for_url")

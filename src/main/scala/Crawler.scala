@@ -49,7 +49,7 @@ object Crawler extends AppContext {
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
-        val parallelCount = if(isAjax) 1 else 5
+        val parallelCount = if(isAjax) ConfReader.ajaxParallelCount else ConfReader.nonAjaxParallelCount
 
         def runCrawl(queue1: mutable.ListBuffer[String], depth: Int): Future[mutable.ListBuffer[String]] = {
 
