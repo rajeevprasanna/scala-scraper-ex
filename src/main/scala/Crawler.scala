@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory
 import scala.collection.mutable
 import scala.concurrent.{Future, Promise}
 
+import ExtensionUtils._
+
 
 object Crawler extends AppContext {
 
@@ -31,9 +33,7 @@ object Crawler extends AppContext {
 
   def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):Future[Unit] = {
 
-    println(s"got resource url => $resourceUrl")
-
-    Try(new URL(resourceUrl)).toOption match {
+    Try(new URL(resourceUrl)).processTry(s"Error in resourceUrl parsing. url => $resourceUrl") match {
       case Some(_) =>
         val allHrefs = DomUtils.extractOutLinks(resourceUrl, isAjax)
 
