@@ -11,7 +11,9 @@ import org.openqa.selenium.chrome.ChromeOptions
 import org.slf4j.LoggerFactory
 
 import scala.collection.mutable
-import scala.util.Try
+import scala.util.{Failure, Success, Try}
+
+import ExtensionUtils._
 
 object DomUtils {
 
@@ -42,9 +44,9 @@ object DomUtils {
             val dom = driver.getPageSource()
             driver.quit()
             parseString(dom)
-          }.toOption
+          }.processTry(s"Error in getting ajax page source with url => $url")
 
-        case false =>  Try(browser.get(url)).toOption
+        case false =>  Try(browser.get(url)).processTry(s"Error in getting page source with url => $url")
       }
 
       resp match {
@@ -58,9 +60,9 @@ object DomUtils {
     def stripQuotes = (url:String) => url.toCharArray.filter(ch => ch != '\'' && ch != '\"').foldLeft("")((x,y) => x + String.valueOf(y))
 
     def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
-      val aDoms = Try(doc >> elementList("a")).toOption.getOrElse(Nil)
+      val aDoms = Try(doc >> elementList("a")).processTry(s"Error in extracting a tags from doc").getOrElse(Nil)
       val hrefUrls = aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
-      val allUrls = Try(URL_PATTERN_REGEX.findAllMatchIn(doc.toString).toList.map(_.toString()).map(stripQuotes)).toOption.getOrElse(Nil)
+      val allUrls = Try(URL_PATTERN_REGEX.findAllMatchIn(doc.toString).toList.map(_.toString()).map(stripQuotes)).processTry(s"Error in finding matches of regular expression with document => ${doc.toString}").getOrElse(Nil)
       (hrefUrls ++ allUrls).distinct
     }
     val doc = fetchDocument(retryCount)
@@ -131,7 +133,7 @@ object DomUtils {
       val formatted =
       url.trim match {
         case x if x == "/" => None
-        case x if x.contains("..") => Try(rootUrl + x.split("\\.\\.").last).toOption //happens with '..' //TODO: improve this by traversing line
+        case x if x.contains("..") => Try(rootUrl + x.split("\\.\\.").last).processTry(s"error in splitting url => $rootUrl and x => $x") //happens with '..' //TODO: improve this by traversing line
         case x if x.startsWith("//") => None
         case x if x.startsWith("/")  => Some(rootUrl + x)
         case x if x.startsWith("./")  => Some(rootUrl + x.tail)
@@ -139,7 +141,6 @@ object DomUtils {
         case x if x.startsWith("#") => None
         case _ => Some(removeResourceComponent(formattedSourceUrl)  + url)
       }
-//      println(s"given url => ${url.trim} and formatted url => ${formatted} and sourceUrl => $sourceUrl")
       formatted.map(u => u.replaceAll(" ", "%20")).map(formatUrl)
     }).distinct
     filterOtherLangUrls(res)
@@ -154,14 +155,14 @@ object DomUtils {
         val hostName = new URL(u).getHost
         val lastIndex = hostName.lastIndexOf(".")
         hostName.substring(lastIndex+1).toLowerCase()
-      }.toOption.getOrElse("")
+      }.processTry(s"Got error in extracting country domain. u => $u").getOrElse("")
     }
 
     def getCountryRoute(u:String):String = {
       Try{
         val path = new URL(u).getPath
         if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
-      }.getOrElse("")
+      }.processTry(s"error in getCountryRoute => $u").getOrElse("")
     }
 
 
@@ -170,7 +171,7 @@ object DomUtils {
   }
 
   def getUrlExtension(url:String):String = {
-    Try(new URL(url).getPath).toOption match {
+    Try(new URL(url).getPath).processTry(s"error in getUrlExtension. url => $url") match {
       case Some(path) =>
         val lastIndex = path.lastIndexOf(".")
         if(lastIndex == -1) "" else path.substring(lastIndex).toLowerCase()
