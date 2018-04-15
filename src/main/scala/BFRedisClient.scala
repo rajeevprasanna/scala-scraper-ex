@@ -31,7 +31,7 @@ object BFRedisClient extends AppContext {
     val p = Promise[Option[String]]()
     Future{
       for {
-        result <- redisBlocking.blpop(Seq(queueName), 3 seconds)
+        result <- redisBlocking.blpop(Seq(queueName), 1 seconds)
         (_, payload) <- result
       } p.success(payload.utf8String.some)
     }
@@ -61,15 +61,15 @@ object BFRedisClient extends AppContext {
   }
 
 
-  def fetchCrawlUrl():Future[Option[ResourceUrlPayload]] = {
-    val p = Promise[Option[ResourceUrlPayload]]()
+  def fetchCrawlUrl():Future[ResourceUrlPayload] = {
+    val p = Promise[ResourceUrlPayload]()
     Future {
       import ResourceUrlPayloadJsonProtocol._
       for {
         payloadOption <- popElementFromRedis(ConfReader.REDIS_CRAWL_URL_QUEUE)
         payloadStr <- payloadOption
       } {
-        val res = JsonParser(payloadStr).convertTo[ResourceUrlPayload].some
+        val res = JsonParser(payloadStr).convertTo[ResourceUrlPayload]
         p.success(res)
       }
     }

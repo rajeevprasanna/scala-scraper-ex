@@ -28,8 +28,11 @@ object Crawler extends AppContext {
     (DomUtils.filterPDFUrls(resourceUrls), sameDomainUrls)
   }
 
-  val MAX_CRAWL_PAGES = 20000
+
   def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):Future[Unit] = {
+
+    println(s"got resource url => $resourceUrl")
+
     Try(new URL(resourceUrl)).toOption match {
       case Some(_) =>
         val allHrefs = DomUtils.extractOutLinks(resourceUrl, isAjax)
@@ -60,7 +63,7 @@ object Crawler extends AppContext {
                                 val p = Promise[Unit]()
                                 Future{
                                   Try{
-                                    if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl) && processedUrls.size < MAX_CRAWL_PAGES) {
+                                    if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl) && processedUrls.size < ConfReader.maxCrawlPages) {
                                       logger.info(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
                                       val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
                                       logger.info(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
@@ -91,12 +94,11 @@ object Crawler extends AppContext {
             logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
             logger.debug(s"processed urls => $processedUrls")
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
-            Main.crawlInProgress = false
-            Future{} //Exit
+             Future{} //Exit
 
           case _  =>
                         logger.info(s"Going to depth => $depth for resource url => $resourceUrl")
-                        runCrawl(queue1, depth).map{queue2 =>
+                        runCrawl(queue1, depth).flatMap { queue2 =>
                           crawl(depth+1, queue2.distinct)
                         }
         }

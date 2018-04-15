@@ -10,6 +10,9 @@ object ConfReader extends AppContext {
 
   val maxCrawlDepth = config.getInt("crawl.depth")
   val maxNeededFiles = config.getInt("crawl.max_download_files")
+  val maxCrawlPages = config.getInt("crawl.max_crawl_pages")
+
+  val parallelCrawlingThreads = config.getInt("crawl.parallel_crawl_sources")
 
   val API_EP_FILTER_ALREADY_CRAWLED_URLS = config.getString("api.ep.filter_already_crawled_urls")
   val API_EP_SAVE_FILE_META_DATA = config.getString("api.ep.save_file_meta_data")
