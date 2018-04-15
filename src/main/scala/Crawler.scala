@@ -32,6 +32,7 @@ object Crawler extends AppContext {
 
 
   def extractFiles(resourceUrl:String, maxDepth:Int, maxNeedFiles:Int, isAjax:Boolean):Future[Unit] = {
+    logger.info(s"Going to start crawling for resourceUrl => $resourceUrl")
 
     Try(new URL(resourceUrl)).processTry(s"Error in resourceUrl parsing. url => $resourceUrl") match {
       case Some(_) =>
