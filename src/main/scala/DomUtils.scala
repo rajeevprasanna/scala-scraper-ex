@@ -60,7 +60,7 @@ object DomUtils {
     def stripQuotes = (url:String) => url.toCharArray.filter(ch => ch != '\'' && ch != '\"').foldLeft("")((x,y) => x + String.valueOf(y))
 
     def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
-      val aDoms = Try(doc >> elementList("a")).processTry(s"Error in extracting a tags from doc. doc => $doc").getOrElse(Nil)
+      val aDoms = Try(doc >> elementList("a")).getOrElse(Nil) //not logging error because there are different content types like xml which are not parsable. so suppressing error
       val hrefUrls = aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
       val allUrls = Try(URL_PATTERN_REGEX.findAllMatchIn(doc.toString).toList.map(_.toString()).map(stripQuotes)).processTry(s"Error in finding matches of regular expression with document => ${doc.toString}").getOrElse(Nil)
       (hrefUrls ++ allUrls).distinct
