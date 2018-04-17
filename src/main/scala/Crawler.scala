@@ -21,7 +21,7 @@ object Crawler extends AppContext {
 
     val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
 
-    logger.debug(s"found html outlinks from page => $url, urls are => $htmlUrls and file urls are => $resourceUrls")
+//    logger.debug(s"found html outlinks from page => $url, urls are => $htmlUrls and file urls are => $resourceUrls")
 
     //Removing the template logic
     val validUrls = htmlUrls //.diff(commonTemplateUrls)
@@ -46,7 +46,7 @@ object Crawler extends AppContext {
         val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
         val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
 
-        logger.debug(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
+//        logger.debug(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
@@ -67,7 +67,7 @@ object Crawler extends AppContext {
                                       if (!pdfs.isEmpty) {
                                         pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
                                       }
-                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
+//                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
                                       sameDomainUrls.map(queue2.append(_))
                                       logger.debug(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} downloaded files count => ${filesQueue.size}")
                                       processedUrls.add(targetUrl)
