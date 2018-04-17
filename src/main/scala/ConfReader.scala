@@ -13,6 +13,7 @@ object ConfReader extends AppContext {
   val maxCrawlPages = config.getInt("crawl.max_crawl_pages")
 
   val parallelCrawlingThreads = config.getInt("crawl.parallel_crawl_sources")
+  val parallelDownloadingThreads = config.getInt("crawl.parallel_download_files")
 
   val ajaxParallelCount = config.getInt("crawl.ajax_parallel_count")
   val nonAjaxParallelCount = config.getInt("crawl.non_ajax_parallel_count")

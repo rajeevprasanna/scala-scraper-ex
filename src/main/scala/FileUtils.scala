@@ -49,11 +49,11 @@ object FileUtils extends AppContext {
       }
     }else{
       val headerUrl = httpcon.getHeaderField("Location")
-      if(DomUtils.getUrlExtension(headerUrl) == ".pdf" && headerUrl != url){
+      if(headerUrl != null && DomUtils.getUrlExtension(headerUrl) == ".pdf" &&  headerUrl != url){
         logger.debug(s"trying to download from redirect url => $headerUrl for actual url => $url")
         getByteContent(headerUrl)
       }else{
-        logger.error(s"received content type different for url => $url")
+        logger.error(s"received content type different for url => $url and headerUrl => $headerUrl")
         None
       }
     }
