@@ -11,6 +11,8 @@ import scala.util.Try
 import Models._
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
+import URLExtensions._
+
 
 import scala.concurrent.{Future, Promise}
 
@@ -49,7 +51,7 @@ object FileUtils extends AppContext {
       }
     }else{
       val headerUrl = httpcon.getHeaderField("Location")
-      if(headerUrl != null && DomUtils.getUrlExtension(headerUrl) == ".pdf" &&  headerUrl != url){
+      if(headerUrl != null && headerUrl.isPdfUrl &&  headerUrl != url){
         logger.debug(s"trying to download from redirect url => $headerUrl for actual url => $url")
         getByteContent(headerUrl)
       }else{

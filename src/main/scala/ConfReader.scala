@@ -11,6 +11,8 @@ object ConfReader extends AppContext {
   val maxCrawlDepth = config.getInt("crawl.depth")
   val maxNeededFiles = config.getInt("crawl.max_download_files")
   val maxCrawlPages = config.getInt("crawl.max_crawl_pages")
+  val maxRetryCount = config.getInt("crawl.max_retry_count")
+  val urlPatternRegex = config.getString("crawl.url_pattern_regex").r
 
   val parallelCrawlingThreads = config.getInt("crawl.parallel_crawl_sources")
   val parallelDownloadingThreads = config.getInt("crawl.parallel_download_files")
@@ -33,4 +35,5 @@ object ConfReader extends AppContext {
   val S3_ACCESS_KEY = config.getString("s3.access_key")
   val S3_SECRET_KEY = config.getString("s3.secret_key")
   val S3_BUCKET_NAME = config.getString("s3.bucket_name")
+
 }

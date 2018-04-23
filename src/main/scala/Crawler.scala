@@ -9,6 +9,7 @@ import scala.collection.mutable
 import scala.concurrent.{Future, Promise}
 
 import ExtensionUtils._
+import URLExtensions._
 
 
 object Crawler extends AppContext {
@@ -26,7 +27,7 @@ object Crawler extends AppContext {
     //Removing the template logic
     val validUrls = htmlUrls //.diff(commonTemplateUrls)
 
-    val sameDomainUrls = DomUtils.filterSubdomainUrls(url, validUrls)
+    val sameDomainUrls = url.filterSubDomainUrls(validUrls)
     (DomUtils.filterPDFUrls(resourceUrls), sameDomainUrls)
   }
 
@@ -40,7 +41,7 @@ object Crawler extends AppContext {
 
         val formattedUrls = DomUtils.formatUrls(resourceUrl, allHrefs)
         val (_, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
-        val sameDomainUrls = DomUtils.filterSubdomainUrls(resourceUrl, htmlUrls)
+        val sameDomainUrls = resourceUrl.filterSubDomainUrls(htmlUrls)
 
         val randomSamples = DomUtils.randomSampleUrls(15, sameDomainUrls)
         val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
