@@ -47,7 +47,7 @@ object Crawler extends AppContext {
         val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
         val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
 
-//        logger.debug(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
+        logger.trace(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
@@ -60,25 +60,27 @@ object Crawler extends AppContext {
                                 val p = Promise[Unit]()
                                 Future{
                                   Try{
-                                    if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl) && processedUrls.size < ConfReader.maxCrawlPages) {
-                                      logger.debug(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
-                                      val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
-                                      logger.debug(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                                      val newPdfs = pdfs.toSet.diff(filesQueue)
-                                      newPdfs.map(filesQueue.add(_))
-                                      if (!newPdfs.isEmpty) {
-                                        newPdfs.grouped(10).map(c => BFRedisClient.publishFileUrlsToRedis(c.toList, resourceUrl, targetUrl, false))
+                                    if(processedUrls.size < ConfReader.maxCrawlPages){
+                                      if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)) {
+                                        logger.debug(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
+                                        val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
+                                        logger.debug(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                                        val newPdfs = pdfs.toSet.diff(filesQueue)
+                                        newPdfs.map(filesQueue.add(_))
+                                        if (!newPdfs.isEmpty) {
+                                          newPdfs.grouped(10).map(c => BFRedisClient.publishFileUrlsToRedis(c.toList, resourceUrl, targetUrl, false))
+                                        }
+                                        logger.trace(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
+                                        sameDomainUrls.map(queue2.append(_))
+                                        logger.debug(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} downloaded files count => ${filesQueue.size}")
+                                        processedUrls.add(targetUrl)
+                                      } else if(processedUrls.contains(targetUrl)) {
+                                        logger.debug(s"At depth => $depth, found processed Url => $targetUrl")
+                                      } else if(filesQueue.size > maxNeedFiles) {
+                                        logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} for resourceUrl => $resourceUrl")
                                       }
-//                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
-                                      sameDomainUrls.map(queue2.append(_))
-                                      logger.debug(s"At depth => $depth, Total number of processed urls for resource url => $resourceUrl with count => ${processedUrls.size} downloaded files count => ${filesQueue.size}")
-                                      processedUrls.add(targetUrl)
-                                    } else if(processedUrls.contains(targetUrl)) {
-                                      logger.debug(s"At depth => $depth, found processed Url => $targetUrl")
-                                    } else if(filesQueue.size > maxNeedFiles) {
-                                      logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} for resourceUrl => $resourceUrl")
                                     }
-                                  }
+                                  }.processTry(s"Error in processing source urls in runCrawl method.")
                                   p.success(Unit)
                                 }
                                 p.future
@@ -88,7 +90,7 @@ object Crawler extends AppContext {
         }
 
         def crawl(depth:Int, queue1: mutable.ListBuffer[String]):Future[Unit] = depth match {
-          case _ if depth > maxDepth || filesQueue.size > maxNeedFiles  =>
+          case _ if depth > maxDepth || filesQueue.size > maxNeedFiles || processedUrls.size >= ConfReader.maxCrawlPages  =>
             logger.info(s"Fetching completed for url => $resourceUrl with total files count => ${filesQueue.size}")
             BFRedisClient.publishFileUrlsToRedis(Nil, resourceUrl, resourceUrl, true)
              Future{} //Exit
