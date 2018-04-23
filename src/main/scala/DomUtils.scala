@@ -69,12 +69,16 @@ object DomUtils {
     doc.map(getUrlsFromDoc(_)).getOrElse(Nil)
   }
 
-
+  def removeRouteParams(fullUrl:String):String = fullUrl match {
+    case x if x.contains("#") => x.split("#").headOption.getOrElse("")
+    case _ => fullUrl
+  }
 
   def fetchRoot(fullURL:String):String = {
     val formatted = checkForProtocol(fullURL)
     val url = removeQueryString(formatted)
-    val trimmed = url.toArray.filter(_ != '\\').reverse.dropWhile(_ == '/').reverse.mkString
+    val removeHashPath = removeRouteParams(url)
+    val trimmed = removeHashPath.toArray.filter(_ != '\\').reverse.dropWhile(_ == '/').reverse.mkString
     val url2 = new URL(trimmed)
     if(url2.getPath == "") trimmed else trimmed.splitAt(trimmed.indexOf(url2.getPath))._1
   }
@@ -127,7 +131,8 @@ object DomUtils {
 
   def formatUrls(sourceUrl:String, urls:List[String]):List[String] = {
     val rootUrl = fetchRoot(sourceUrl)
-    val formattedSourceUrl = removeQueryString(sourceUrl)
+    val removeRoute = removeRouteParams(sourceUrl)
+    val formattedSourceUrl = removeQueryString(removeRoute)
     val res =
     urls.flatMap(url => {
       val formatted =
