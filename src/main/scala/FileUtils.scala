@@ -19,7 +19,7 @@ object FileUtils extends AppContext {
   val logger = Logger(LoggerFactory.getLogger("FileUtils"))
 
   def uploadResource(url:String, pageUrl:String):Future[Option[FileMetaData]] = {
-    logger.debug(s"uploading resource to S3 from url => $url")
+    logger.debug(s"triggering resource upload process to S3 from url => $url")
     val p = Promise[Option[FileMetaData]]()
     Future{
       //TODO: check content type is pdf or not
