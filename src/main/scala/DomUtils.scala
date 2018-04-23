@@ -1,74 +1,84 @@
 import java.net.URL
 
-
+import com.typesafe.scalalogging.Logger
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import io.github.bonigarcia.wdm.ChromeDriverManager
+import org.apache.commons.io.FilenameUtils
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
+import org.slf4j.LoggerFactory
 
 import scala.collection.mutable
 import scala.util.Try
 
+import ExtensionUtils._
+
 object DomUtils {
 
-  val browser = JsoupBrowser()
-
-
+  val logger = Logger(LoggerFactory.getLogger("DomUtils"))
   ChromeDriverManager.getInstance().setup()
-  val chromePrefs:mutable.Map[String, Any] = mutable.Map[String, Any]()
-  chromePrefs.put("profile.default_content_settings.popups", 0)
-  chromePrefs.put("download.default_directory", ".")
-  chromePrefs.put("Browser.setDownloadBehavior", "allow")
 
-  val options = new ChromeOptions()
-  options.setExperimentalOption("prefs", chromePrefs)
-  options.addArguments("--disable-extensions") //to disable browser extension popup
-  options.addArguments("test-type")
-  options.addArguments("disable-popup-blocking")
-  options.setHeadless(true)
-  val driver = new ChromeDriver(options)
+  val MAX_RETRY_COUNT = 3
+  val URL_PATTERN_REGEX =  """(["'])https?:\/\/(.*?)(["'])""".r
 
-  val MAX_RETRY_COUNT = 5
+  def extractOutLinks(url:String, isAjax:Boolean, retryCount:Int = 0):List[String] = {
 
-  def fetchDocument(url:String, isAjax:Boolean, hitCount:Int = 0):Option[browser.DocumentType] = {
-    val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
-    println(logMessage)
+    lazy val browser = JsoupBrowser()
 
-    val extension = getUrlExtension(url)
-    if(resourceExtensions.contains(extension)){
-      return None
+    def fetchDocument(hitCount:Int):Option[browser.DocumentType] = {
+      val logMessage = if(hitCount == 0)  s"Fetching URL => $url" else s"Retrying fetch ${hitCount}th time for url => $url"
+      logger.debug(logMessage)
+
+      val extension = getUrlExtension(url)
+      if(ConfReader.resourceExtensions.contains(extension)){
+        return None
+      }
+
+      val resp = isAjax match {
+        case true =>
+          Try {
+            lazy val driver = new ChromeDriver(getChromeOptions()) //Using singleton instance
+            driver.get(url)
+            val dom = driver.getPageSource()
+            driver.quit()
+            parseString(dom)
+          }.processTry(s"Error in getting ajax page source with url => $url")
+
+        case false =>  Try(browser.get(url)).processTry(s"Error in getting page source with url => $url")
+      }
+
+      resp match {
+        case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(hitCount + 1)
+        case _ => resp
+      }
     }
 
-    val resp = isAjax match {
-      case true =>
-        Try {
-          driver.get(url)
-          val dom = driver.getPageSource()
-          parseString(dom)
-        }.toOption
+    def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
 
-      case false =>  Try(browser.get(url)).toOption
-    }
+    def stripQuotes = (url:String) => url.toCharArray.filter(ch => ch != '\'' && ch != '\"').foldLeft("")((x,y) => x + String.valueOf(y))
 
-    resp match {
-      case None if hitCount >= MAX_RETRY_COUNT => fetchDocument(url, isAjax, hitCount + 1)
-      case _ => resp
+    def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
+      val aDoms = Try(doc >> elementList("a")).getOrElse(Nil) //not logging error because there are different content types like xml which are not parsable. so suppressing error
+      val hrefUrls = aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
+      val allUrls = Try(URL_PATTERN_REGEX.findAllMatchIn(doc.toString).toList.map(_.toString()).map(stripQuotes)).processTry(s"Error in finding matches of regular expression with document => ${doc.toString}").getOrElse(Nil)
+      (hrefUrls ++ allUrls).distinct
     }
+    val doc = fetchDocument(retryCount)
+    doc.map(getUrlsFromDoc(_)).getOrElse(Nil)
   }
 
-  def parseString(dom:String):browser.DocumentType = browser.parseString(dom)
-
-  def getUrlsFromDoc(doc:browser.DocumentType):List[String] = {
-      val aDoms = Try(doc >> elementList("a")).toOption.getOrElse(Nil)
-      aDoms.flatMap(e => Try(e.attrs("href")).toOption).filter(_ != null)
+  def removeRouteParams(fullUrl:String):String = fullUrl match {
+    case x if x.contains("#") => x.split("#").headOption.getOrElse("")
+    case _ => fullUrl
   }
 
   def fetchRoot(fullURL:String):String = {
     val formatted = checkForProtocol(fullURL)
     val url = removeQueryString(formatted)
-    val trimmed = url.toArray.filter(_ != '\\').reverse.dropWhile(_ == '/').reverse.mkString
+    val removeHashPath = removeRouteParams(url)
+    val trimmed = removeHashPath.toArray.filter(_ != '\\').reverse.dropWhile(_ == '/').reverse.mkString
     val url2 = new URL(trimmed)
     if(url2.getPath == "") trimmed else trimmed.splitAt(trimmed.indexOf(url2.getPath))._1
   }
@@ -87,12 +97,12 @@ object DomUtils {
     urls.partition(url => {
       val extension = getUrlExtension(url)
       extension == ".pdf"
-    })._1
+    })._1.map(removeQueryString(_))
 
-  val resourceExtensions = Set(".pdf", ".doc", ".gif", ".jpg", ".png", ".ico", ".css", ".sit", ".eps", ".wmf", ".zip", ".ppt", ".mpg", ".xls", ".gz", ".rpm", ".tgz", ".mov", ".exe", ".jpeg", ".bmp", ".js", ".mp4", ".mp3", ".xml", ".atom",".invalid")
+
   def extractResourceUrls(urls:List[String]):(List[String], List[String]) = urls.partition(url => {
     val extension = getUrlExtension(url)
-    resourceExtensions.contains(extension)
+    ConfReader.resourceExtensions.contains(extension)
   })
 
   def filterSubdomainUrls(resourceURL:String, urls:List[String]):List[String] = {
@@ -113,24 +123,29 @@ object DomUtils {
     }
   }
 
+  def removeResourceComponent(url: String): String = {
+    val lastPathComponent = FilenameUtils.getName(new URL(url).getPath())
+    val res = if(lastPathComponent.contains(".")) url.split(lastPathComponent).head  else url
+    if(res.last == '/') res else res + "/"
+  }
 
   def formatUrls(sourceUrl:String, urls:List[String]):List[String] = {
     val rootUrl = fetchRoot(sourceUrl)
-    val formattedSourceUrl = removeQueryString(sourceUrl)
+    val removeRoute = removeRouteParams(sourceUrl)
+    val formattedSourceUrl = removeQueryString(removeRoute)
     val res =
     urls.flatMap(url => {
       val formatted =
       url.trim match {
         case x if x == "/" => None
-        case x if x.contains("..") => Try(rootUrl + x.split("\\.\\.").last).toOption //happens with .. //TODO: improve this by traversing line
+        case x if x.contains("..") => Try(rootUrl + x.split("\\.\\.").last).processTry(s"error in splitting url => $rootUrl and x => $x") //happens with '..' //TODO: improve this by traversing line
         case x if x.startsWith("//") => None
         case x if x.startsWith("/")  => Some(rootUrl + x)
         case x if x.startsWith("./")  => Some(rootUrl + x.tail)
         case x if x.startsWith("http") => Some(x)
         case x if x.startsWith("#") => None
-        case _ => Some(formattedSourceUrl + "/" + url)
+        case _ => Some(removeResourceComponent(formattedSourceUrl)  + url)
       }
-//      println(s"given url => ${url.trim} and formatted url => ${formatted} and sourceUrl => $sourceUrl")
       formatted.map(u => u.replaceAll(" ", "%20")).map(formatUrl)
     }).distinct
     filterOtherLangUrls(res)
@@ -145,32 +160,28 @@ object DomUtils {
         val hostName = new URL(u).getHost
         val lastIndex = hostName.lastIndexOf(".")
         hostName.substring(lastIndex+1).toLowerCase()
-      }.toOption.getOrElse("")
+      }.processTry(s"Got error in extracting country domain. u => $u").getOrElse("")
     }
 
     def getCountryRoute(u:String):String = {
       Try{
         val path = new URL(u).getPath
-        if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("") else ""
-      }.getOrElse("")
+        if(path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("").toLowerCase() else ""
+      }.processTry(s"error in getCountryRoute => $u").getOrElse("")
     }
 
-    val invalidExtensions = Set("cz","dk","fi","fr","de","gr","hu","it","nl","no","pl","ru","es","se","tr","uk","au","cn","hk","jp","kr","my","ph","sg","th", "ja_jp", "de_de", "br", "lat", "tw")
-    val blackListedURLPatterns = Set("community.", "/community/", "communities", "discussions.", "forums/", "javascript:", "mailto:", "tel:", "careers.", "google.","instagram.","linkedin.","tumblr.","twitter.","fb.","facebook.","youtube.", "/careers","/facilities/", "pinterest.","yahoo.", "JPTraps")
-    val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns
-    def containsBlackListedUrl = (url:String) => blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
-
-    urls.filter(url => !invalidExtensions.contains(getDomainCountryExtension(url)) && !invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
+    def containsBlackListedUrl = (url:String) => ConfReader.blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
+    urls.filter(url => !ConfReader.invalidExtensions.contains(getDomainCountryExtension(url)) && !ConfReader.invalidExtensions.contains(getCountryRoute(url)) && !containsBlackListedUrl(url))
   }
 
   def getUrlExtension(url:String):String = {
-    Try(new URL(url).getPath).toOption match {
+    Try(new URL(url).getPath).processTry(s"error in getUrlExtension. url => $url") match {
       case Some(path) =>
         val lastIndex = path.lastIndexOf(".")
         if(lastIndex == -1) "" else path.substring(lastIndex).toLowerCase()
 
       case None =>
-        println(s"url parsing failed while getting extension. url => $url")
+        logger.error(s"url parsing failed while getting extension. url => $url")
         ".invalid"
     }
   }
@@ -183,9 +194,26 @@ object DomUtils {
 
   def getCommonTemplateUrls(urls:List[String]):List[String] = urls.length match {
     case x if x > 4 =>
-          val allUrlsList:List[List[String]] = urls.flatMap(url => DomUtils.fetchDocument(url, false).map(getUrlsFromDoc(_)))
+          val allUrlsList:List[List[String]] = urls.map(url => DomUtils.extractOutLinks(url, false))
           allUrlsList.map(_.distinct).flatten.groupBy(identity).toList.filter(_._2.length >= 4).map(_._1)
 
     case _ => Nil
+  }
+
+  private def getChromeOptions():ChromeOptions = {
+    val chromePrefs:mutable.Map[String, Any] = mutable.Map[String, Any]()
+    chromePrefs.put("profile.default_content_settings.popups", 0)
+    chromePrefs.put("download.default_directory", ".")
+    chromePrefs.put("Browser.setDownloadBehavior", "allow")
+
+    val options = new ChromeOptions()
+    options.setExperimentalOption("prefs", chromePrefs)
+    options.addArguments("--disable-extensions") //to disable browser extension popup
+    options.addArguments("test-type")
+    options.addArguments("disable-popup-blocking")
+    options.addArguments("disable-infobars")
+    options.addArguments("--disable-gpu")
+    options.setHeadless(true)
+    options
   }
 }

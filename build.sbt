@@ -16,5 +16,5 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.8.0"
 libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.5.11"
 
-assemblyJarName in assembly := "scraper_16032018.jar"
+assemblyJarName in assembly := "scraper_17042018_2.jar"
 mainClass in assembly := Some("Main")

@@ -3,22 +3,22 @@
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.HttpMethods.POST
 import akka.http.scaladsl.model._
-import AppContext._
-import akka.stream.ActorMaterializer
 import akka.util.ByteString
 
-import scala.concurrent.Future
-import scala.util.{Failure, Success}
+import scala.concurrent.{Future, Promise}
+import scala.util.{Failure, Success, Try}
 import Models._
-
 import spray.json._
-import SecureKeys._
-import scala.concurrent.ExecutionContext.Implicits.global
+import com.typesafe.scalalogging.Logger
+import org.slf4j.LoggerFactory
 
-object BFService {
+import FilePersistencePayloadJsonProtocol._
+import ProcessingCompletePayloadJsonProtocol._
+import FilteredUrlsProtocol._
+import ProcessedFilesPayloadJsonProtocol._
 
-  implicit def materializer:ActorMaterializer = ActorMaterializer()
-
+object BFService extends AppContext {
+  val logger = Logger(LoggerFactory.getLogger("BFService"))
   implicit  def toByteString = (s:String) => ByteString(s)
 
   private def payload(params:String) = HttpEntity.Strict(
@@ -26,51 +26,46 @@ object BFService {
     data = params
   )
 
-  def uploadFilesMetadata(sourceUrl:String, files:List[FileMetaData]):Unit = {
-    println(s"uploading file metadata => $files")
-    import FilePersistencePayloadJsonProtocol._
-    val filePersistencePayload:String = FilePersistencePayload(sourceUrl, files, BF_API_SECRET).toJson.toString
-    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = SAVE_FILE_META_DATA, entity = payload(filePersistencePayload)))
-    responseFuture
-      .onComplete {
-        case Success(res) => println(res)
-        case Failure(_)   => sys.error("something wrong")
-      }
+  def responseHandler = (p:Promise[Unit], f:Try[HttpResponse]) =>
+    f match {
+      case Success(res) => logger.debug(res.toString); p.success(Unit)
+      case Failure(ex)   => logger.error(s"something wrong. error => ${ex.getLocalizedMessage}"); p.failure(ex)
+    }
+
+
+  def uploadFilesMetadata(sourceUrl:String, files:List[FileMetaData]):Future[Unit] = {
+    logger.info(s"uploading file metadata => $files")
+    val p = Promise[Unit]()
+    val filePersistencePayload:String = FilePersistencePayload(sourceUrl, files, ConfReader.REST_API_SECRET).toJson.toString
+    Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_SAVE_FILE_META_DATA, entity = payload(filePersistencePayload))).onComplete(responseHandler(p, _))
+    p.future
   }
 
-  def markProcessComplete(sourceUrl:String):Unit = {
-    println(s"marking processing completion for url => $sourceUrl")
-    import ProcessingCompletePayloadJsonProtocol._
-    val urlProcessingCompletedPayload:String = ProcessingCompletePayload(BF_API_SECRET, List(sourceUrl)).toJson.toString
-    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = MARK_CRAWL_COMPLETED_FOR_URL, entity = payload(urlProcessingCompletedPayload)))
-    responseFuture
-      .onComplete {
-        case Success(res) => println(res)
-        case Failure(_)   => sys.error("something wrong")
-      }
+  def markProcessComplete(sourceUrl:String):Future[Unit] = {
+    logger.info(s"marking processing completion for url => $sourceUrl")
+    val p = Promise[Unit]()
+    val urlProcessingCompletedPayload:String = ProcessingCompletePayload(ConfReader.REST_API_SECRET, List(sourceUrl)).toJson.toString
+    Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_MARK_CRAWL_COMPLETED_FOR_URL, entity = payload(urlProcessingCompletedPayload))).onComplete(responseHandler(p, _))
+    p.future
   }
 
   private def respToString:(ResponseEntity => Future[String]) = (entity:ResponseEntity) => entity.dataBytes.runFold(ByteString.empty) { case (acc, b) => acc ++ b }.map(_.utf8String)
+  private def extractUrlList:(ResponseEntity => Future[List[String]]) = (resp:ResponseEntity) => respToString(resp).map(JsonParser(_).convertTo[FilteredUrls].urls)
+
   def filterProcessedUrls(sourceUrl:String, urls:List[String]):Future[List[String]] = {
-    println(s"filter processing for urls => $urls")
+    logger.info(s"filter processing for urls => $urls")
+    val p = Promise[List[String]]()
+
     urls match {
-      case _ if urls.isEmpty => Future{Nil}
+      case _ if urls.isEmpty => p.success(Nil)
       case _ =>
-          import ProcessedFilesPayloadJsonProtocol._
-          val filterProcessedFilesPayload:String = ProcessedFilesPayload(BF_API_SECRET, urls, sourceUrl).toJson.toString
-          val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = FILTER_ALREADY_CRAWLED_URLS, entity = payload(filterProcessedFilesPayload)))
-          val result:Future[List[String]] = responseFuture
-            .flatMap(res => {
-              import FilteredUrlsProtocol._
-              val urlsResp:Future[List[String]] =
-                respToString(res.entity).flatMap(str => {
-                  val urls: List[String] = JsonParser(str).convertTo[FilteredUrls].urls
-                  println(s"urls after filtering => $urls")
-                  Future{urls}
-                })
-              urlsResp
-            })
-          result
-      }
+          val filterProcessedFilesPayload:String = ProcessedFilesPayload(ConfReader.REST_API_SECRET, urls, sourceUrl).toJson.toString
+          val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(POST, uri = ConfReader.API_EP_FILTER_ALREADY_CRAWLED_URLS, entity = payload(filterProcessedFilesPayload)))
+          responseFuture.onComplete {
+            case Success(res) => extractUrlList(res.entity).map(urls => p.success(urls))
+            case Failure(ex) => logger.error(s"something wrong. error => ${ex.getLocalizedMessage}"); p.failure(ex)
+          }
     }
+    p.future
+  }
 }
