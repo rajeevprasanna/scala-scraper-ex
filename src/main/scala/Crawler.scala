@@ -63,9 +63,10 @@ object Crawler extends AppContext {
                                       logger.debug(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
                                       val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
                                       logger.debug(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
-                                      pdfs.map(filesQueue.add(_))
-                                      if (!pdfs.isEmpty) {
-                                        pdfs.grouped(10).toList.map(c => BFRedisClient.publishFileUrlsToRedis(c, resourceUrl, targetUrl, false))
+                                      val newPdfs = pdfs.toSet.diff(filesQueue)
+                                      newPdfs.map(filesQueue.add(_))
+                                      if (!newPdfs.isEmpty) {
+                                        newPdfs.grouped(10).map(c => BFRedisClient.publishFileUrlsToRedis(c.toList, resourceUrl, targetUrl, false))
                                       }
 //                                      logger.debug(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
                                       sameDomainUrls.map(queue2.append(_))
