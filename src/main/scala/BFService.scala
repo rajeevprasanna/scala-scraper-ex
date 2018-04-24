@@ -18,7 +18,7 @@ import FilteredUrlsProtocol._
 import ProcessedFilesPayloadJsonProtocol._
 
 object BFService extends AppContext {
-  val logger = Logger(LoggerFactory.getLogger("BFService"))
+  implicit val logger = Logger(LoggerFactory.getLogger("BFService"))
   implicit  def toByteString = (s:String) => ByteString(s)
 
   private def payload(params:String) = HttpEntity.Strict(

@@ -16,7 +16,7 @@ import URLExtensions._
 
 object DomUtils {
 
-  val logger = Logger(LoggerFactory.getLogger("DomUtils"))
+  implicit val logger = Logger(LoggerFactory.getLogger("DomUtils"))
   ChromeDriverManager.getInstance().setup()
 
 

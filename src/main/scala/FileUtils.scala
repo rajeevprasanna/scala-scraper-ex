@@ -19,7 +19,7 @@ import scala.concurrent.{Future, Promise}
 
 object FileUtils extends AppContext {
 
-  val logger = Logger(LoggerFactory.getLogger("FileUtils"))
+  implicit val logger = Logger(LoggerFactory.getLogger("FileUtils"))
 
   def uploadResource(url:String, pageUrl:String):Future[Option[FileMetaData]] = {
     logger.debug(s"triggering resource upload process to S3 from url => $url")

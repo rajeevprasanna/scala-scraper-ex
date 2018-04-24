@@ -18,7 +18,7 @@ import ExtensionUtils._
 
 object FileDownloadTrigger extends AppContext {
 
-  val logger = Logger(LoggerFactory.getLogger("FileDownloadTrigger"))
+  implicit val logger = Logger(LoggerFactory.getLogger("FileDownloadTrigger"))
 
   def fileDownloader() = {
     val pollInterval = FiniteDuration.apply(1, TimeUnit.MILLISECONDS)

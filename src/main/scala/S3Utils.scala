@@ -15,7 +15,7 @@ import ExtensionUtils._
 
 object S3Utils {
 
-  val logger = Logger(LoggerFactory.getLogger("S3Utils"))
+  implicit val logger = Logger(LoggerFactory.getLogger("S3Utils"))
 
   def uploadContent(fileName:String, fileUrl:String, pageUrl:String, content:Array[Byte]):Option[String] = {
     val yourAWSCredentials = new BasicAWSCredentials(ConfReader.S3_ACCESS_KEY, ConfReader.S3_SECRET_KEY)

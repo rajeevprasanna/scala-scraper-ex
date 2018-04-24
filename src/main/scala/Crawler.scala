@@ -14,7 +14,7 @@ import URLExtensions._
 
 object Crawler extends AppContext {
 
-  val logger = Logger(LoggerFactory.getLogger("crawler"))
+  implicit val logger = Logger(LoggerFactory.getLogger("Crawler"))
 
   def extractUrls(commonTemplateUrls:List[String], resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
     val allHrefs = DomUtils.extractOutLinks(url, isAjax)
