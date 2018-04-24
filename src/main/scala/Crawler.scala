@@ -68,7 +68,7 @@ object Crawler extends AppContext {
                                         val newPdfs = pdfs.toSet.diff(filesQueue)
                                         newPdfs.map(filesQueue.add(_))
                                         if (!newPdfs.isEmpty) {
-                                          newPdfs.grouped(10).map(c => BFRedisClient.publishFileUrlsToRedis(c.toList, resourceUrl, targetUrl, false))
+                                          newPdfs.grouped(10).foreach(c => BFRedisClient.publishFileUrlsToRedis(c.toList, resourceUrl, targetUrl, false))
                                         }
                                         logger.trace(s"same domain urls extracted from page => $targetUrl are => $sameDomainUrls")
                                         sameDomainUrls.map(queue2.append(_))

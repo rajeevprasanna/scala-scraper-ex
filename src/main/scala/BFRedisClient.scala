@@ -38,11 +38,15 @@ object BFRedisClient extends AppContext {
     p.future
   }
 
-  def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean):Boolean = {
-    import CrawlPayloadJsonProtocol._
-    val payload:String = CrawlPayload(urls, resourceUrl, isCompleted, pageUrl.some).toJson.toString()
-    redis.rpush(ConfReader.REDIS_RESOURCE_URL_PAYLOAD_QUEUE, payload)
-    true
+  def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean):Future[Boolean] = {
+    val p = Promise[Boolean]()
+    Future {
+      import CrawlPayloadJsonProtocol._
+      val payload:String = CrawlPayload(urls, resourceUrl, isCompleted, pageUrl.some).toJson.toString()
+      redis.rpush(ConfReader.REDIS_RESOURCE_URL_PAYLOAD_QUEUE, payload)
+      p.success(true)
+    }
+    p.future
   }
 
   def fetchResourceUrlsPayload():Future[CrawlPayload] = {
