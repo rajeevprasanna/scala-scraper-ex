@@ -12,6 +12,7 @@ import Models._
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 import URLExtensions._
+import ExtensionUtils._
 
 
 import scala.concurrent.{Future, Promise}
@@ -39,26 +40,30 @@ object FileUtils extends AppContext {
   private def uploadFileToS3(content:Array[Byte], fileUrl:String, pageUrl:String):Option[String] = S3Utils.uploadContent(extractFileName(fileUrl), fileUrl, pageUrl, content)
 
   private def getByteContent(url: String):Option[Array[Byte]] = {
-    val httpcon = new URL(url).openConnection()
-    httpcon.addRequestProperty("User-Agent", "Mozilla/4.76")
-    if(httpcon.getContentType == "application/pdf"){
-      val input:Option[InputStream] = Try(httpcon.getInputStream()).toOption
-      try {
-        input.map(IOUtils.toByteArray(_))
-      }
-      finally {
-        input.map(_.close())
-      }
-    }else{
-      val headerUrl = httpcon.getHeaderField("Location")
-      if(headerUrl != null && headerUrl.isPdfUrl &&  headerUrl != url){
-        logger.debug(s"trying to download from redirect url => $headerUrl for actual url => $url")
-        getByteContent(headerUrl)
+
+    def getContent():Option[Array[Byte]] = {
+      val httpcon = new URL(url).openConnection()
+      httpcon.addRequestProperty("User-Agent", "Mozilla/4.76")
+      if(httpcon.getContentType == "application/pdf"){
+        val input:Option[InputStream] = Try(httpcon.getInputStream()).toOption
+        try {
+          input.map(IOUtils.toByteArray(_))
+        }
+        finally {
+          input.map(_.close())
+        }
       }else{
-        logger.error(s"received content type different for url => $url and headerUrl => $headerUrl")
-        None
+        val headerUrl = httpcon.getHeaderField("Location")
+        if(headerUrl != null && headerUrl.isPdfUrl &&  headerUrl != url){
+          logger.debug(s"trying to download from redirect url => $headerUrl for actual url => $url")
+          getByteContent(headerUrl)
+        }else{
+          logger.error(s"received content type different for url => $url and headerUrl => $headerUrl")
+          None
+        }
       }
     }
+    Try(getContent()).processTry(s"Error in fetching content from url => $url").getOrElse(None)
   }
 
   private def sha256Hexa(content:Array[Byte]):String = DigestUtils.sha256Hex(content)
