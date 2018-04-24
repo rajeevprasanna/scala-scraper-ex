@@ -87,10 +87,7 @@ object DomUtils {
     filterOtherLangUrls(res)
   }
 
-  def filterOtherLangUrls(urls:List[String]):List[String] =
-    urls.filter(url => !ConfReader.invalidExtensions.contains(url.domainCountryExtension) && !ConfReader.invalidExtensions.contains(url.countryRoute) && !url.isBlackListedUrlPattern)
-
-
+  def filterOtherLangUrls(urls:List[String]):List[String] =  urls.filter(url => !url.isBlackListedUrlPattern)
 
   def randomSampleUrls(n:Int, urls:List[String]):List[String] = {
     import scala.util.Random

@@ -3,10 +3,13 @@ import collection.JavaConverters._
 
 object ConfReader extends AppContext {
 
-  val blackListedURLPatterns = config.getStringList("crawl.blacklistedUrlPatterns").asScala.toSet
-  val invalidExtensions = config.getStringList("crawl.invalidExtensions").asScala.toSet
+  private val blackListedURLPatterns = config.getStringList("crawl.blacklistedUrlPatterns").asScala.toSet
+  private val invalidExtensions = config.getStringList("crawl.invalidExtensions").asScala.toSet
   val resourceExtensions = config.getStringList("crawl.resourceExtensions").asScala.toSet
-  val blackListedcountryExtensions = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns ++ invalidExtensions.map(_+".") //checking for patterns like jp.x.com etc
+
+  val blacklistedCountryPrefixes = invalidExtensions.map(_+".") //checking for patterns like jp.x.com etc
+  val blacklistedCountrySuffixes = invalidExtensions.map("."+_) //checking for patterns like x.jp etc
+  val blackListedPatterns = invalidExtensions.map("/"+_+"/") ++ blackListedURLPatterns //checking for patterns like /jp/, /fr/ etc
 
   val maxCrawlDepth = config.getInt("crawl.depth")
   val maxNeededFiles = config.getInt("crawl.max_download_files")

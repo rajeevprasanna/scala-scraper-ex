@@ -21,11 +21,10 @@ object URLExtensions {
     lazy val stripRouteParams =  url.split("#").headOption.getOrElse(url)
     lazy val stripQuotes = url.toCharArray.filter(ch => ch != '\'' && ch != '\"').foldLeft("")((x,y) => x + String.valueOf(y))
 
+    lazy val hostName:String = url.getHost
+
     def formatUrl = () => url.reverse.dropWhile(ch => ch == '/' || ch == '?').reverse
-    def filterSubDomainUrls(urls:List[String]):List[String] =
-      urls.filter(u => {
-        u.domain != "" && u.domain == domain
-      })
+    def filterSubDomainUrls(urls:List[String]):List[String] = urls.filter(u => u.domain != "" && u.domain == domain)
 
     lazy val rootUrl = {
       val baseUrl = url.stripQueryString.stripRouteParams
@@ -57,13 +56,10 @@ object URLExtensions {
         hostName.substring(lastIndex+1).toLowerCase()
       }.processTry(s"Got error in extracting country domain. u => $url").getOrElse("")
 
-    lazy val countryRoute =
-      Try {
-        val path = url.getPath
-        if (path.contains("/")) path.split("/").filter(_ != "").headOption.getOrElse("").toLowerCase() else ""
-      }.processTry(s"error in getCountryRoute => $url").getOrElse("")
-
-    lazy val isBlackListedUrlPattern = ConfReader.blackListedcountryExtensions.map(url.contains(_)).collectFirst({case x if x == true => x}).getOrElse(false)
+    private def setOr = (s:Set[Boolean]) => s.reduce(_ || _)
+    lazy val isBlackListedUrlPattern = setOr(ConfReader.blacklistedCountryPrefixes.map(hostName.startsWith(_))) ||
+                                          setOr(ConfReader.blacklistedCountrySuffixes.map(hostName.endsWith(_))) ||
+                                          setOr(ConfReader.blackListedPatterns.map(url.contains(_)))
 
 
     lazy val extension =
