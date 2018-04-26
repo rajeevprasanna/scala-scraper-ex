@@ -83,7 +83,7 @@ object DomUtils {
         case _ => Some(sourceUrl.stripRouteParams.stripQueryString.stripResourceComponent  + url)
       }
       formatted.map(u => u.trim.replaceAll(" ", "%20").formatUrl())
-    }).distinct
+    }).distinct.filter(_.isValid)
     filterOtherLangUrls(res)
   }
 

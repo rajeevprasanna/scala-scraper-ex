@@ -9,7 +9,7 @@ object ExtensionUtils {
         case Success(el:T) => Some(el)
 
         case Failure(error) =>
-          logger.error(s"error => $errorMsg. error trace =>  ${error.toString}")
+          logger.error(s"error => $errorMsg. error trace =>  ${error.getStackTrace.mkString("\n")}")
           None
       }
   }

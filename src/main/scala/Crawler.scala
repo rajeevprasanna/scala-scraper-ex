@@ -19,14 +19,7 @@ object Crawler extends AppContext {
   def extractUrls(resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
     val allHrefs = DomUtils.extractOutLinks(url, isAjax)
     val formattedUrls = DomUtils.formatUrls(url, allHrefs)
-
-    val (resourceUrls, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
-
-//    logger.debug(s"found html outlinks from page => $url, urls are => $htmlUrls and file urls are => $resourceUrls")
-
-    //Removing the template logic
-    val validUrls = htmlUrls //.diff(commonTemplateUrls)
-
+    val (resourceUrls, validUrls) = DomUtils.extractResourceUrls(formattedUrls)
     val sameDomainUrls = url.filterSubDomainUrls(validUrls)
     (DomUtils.filterPDFUrls(resourceUrls), sameDomainUrls)
   }
@@ -37,19 +30,6 @@ object Crawler extends AppContext {
 
     Try(new URL(resourceUrl)).processTry(s"Error in resourceUrl parsing. url => $resourceUrl") match {
       case Some(_) =>
-        val allHrefs = DomUtils.extractOutLinks(resourceUrl, isAjax)
-
-        val formattedUrls = DomUtils.formatUrls(resourceUrl, allHrefs)
-        val (_, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
-        val sameDomainUrls = resourceUrl.filterSubDomainUrls(htmlUrls)
-
-//        Commenting code to identify template url link patterns
-//        val randomSamples = DomUtils.randomSampleUrls(15, sameDomainUrls)
-//        val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
-//        val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
-
-//        logger.trace(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
-
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
         val parallelCount = if(isAjax) ConfReader.ajaxParallelCount else ConfReader.nonAjaxParallelCount
