@@ -16,7 +16,7 @@ object Crawler extends AppContext {
 
   implicit val logger = Logger(LoggerFactory.getLogger("Crawler"))
 
-  def extractUrls(commonTemplateUrls:List[String], resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
+  def extractUrls(resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
     val allHrefs = DomUtils.extractOutLinks(url, isAjax)
     val formattedUrls = DomUtils.formatUrls(url, allHrefs)
 
@@ -43,11 +43,12 @@ object Crawler extends AppContext {
         val (_, htmlUrls) = DomUtils.extractResourceUrls(formattedUrls)
         val sameDomainUrls = resourceUrl.filterSubDomainUrls(htmlUrls)
 
-        val randomSamples = DomUtils.randomSampleUrls(15, sameDomainUrls)
-        val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
-        val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
+//        Commenting code to identify template url link patterns
+//        val randomSamples = DomUtils.randomSampleUrls(15, sameDomainUrls)
+//        val templateLinks = DomUtils.getCommonTemplateUrls(randomSamples)
+//        val formattedTemplateLinks = DomUtils.formatUrls(resourceUrl, templateLinks)
 
-        logger.trace(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
+//        logger.trace(s"For resource URL => $resourceUrl, out of random samples => $randomSamples, found template urls are => $formattedTemplateLinks")
 
         val filesQueue = scala.collection.mutable.Set[String]()
         val processedUrls = scala.collection.mutable.Set[String]()
@@ -63,7 +64,7 @@ object Crawler extends AppContext {
                                     if(processedUrls.size < ConfReader.maxCrawlPages){
                                       if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)) {
                                         logger.debug(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
-                                        val (pdfs, sameDomainUrls) = extractUrls(formattedTemplateLinks, resourceUrl, targetUrl, isAjax)
+                                        val (pdfs, sameDomainUrls) = extractUrls(resourceUrl, targetUrl, isAjax)
                                         logger.debug(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
                                         val newPdfs = pdfs.toSet.diff(filesQueue)
                                         newPdfs.map(filesQueue.add(_))
