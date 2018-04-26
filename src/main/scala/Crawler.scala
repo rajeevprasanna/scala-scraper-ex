@@ -80,7 +80,7 @@ object Crawler extends AppContext {
                                         logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} for resourceUrl => $resourceUrl")
                                       }
                                     }
-                                  }.processTry(s"Error in processing source urls in runCrawl method.")
+                                  }.processTry(s"Error in processing source urls in runCrawl method with targetUrl => $targetUrl")
                                   p.success(Unit)
                                 }
                                 p.future
