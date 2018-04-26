@@ -9,7 +9,7 @@ object ExtensionUtils {
         case Success(el:T) => Some(el)
 
         case Failure(error) =>
-          logger.error(s"error => $errorMsg. error trace =>  ${error.getLocalizedMessage}")
+          logger.error(s"error => $errorMsg. error trace =>  ${error.toString}")
           None
       }
   }
