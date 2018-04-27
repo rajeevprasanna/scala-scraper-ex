@@ -31,7 +31,7 @@ object BFRedisClient extends AppContext {
     val p = Promise[Option[String]]()
     Future{
       for {
-        result <- redisBlocking.blpop(Seq(queueName), 100 milliseconds)
+        result <- redisBlocking.blpop(Seq(queueName), 1 second)
         (_, payload) <- result
       } p.success(payload.utf8String.some)
     }
