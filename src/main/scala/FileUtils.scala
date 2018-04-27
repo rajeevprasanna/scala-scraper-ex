@@ -58,7 +58,7 @@ object FileUtils extends AppContext {
           logger.debug(s"trying to download from redirect url => $headerUrl for actual url => $url")
           getByteContent(headerUrl)
         }else{
-          logger.error(s"received content type different for url => $url and headerUrl => $headerUrl")
+          logger.warn(s"received content type different for url => $url and headerUrl => $headerUrl")
           None
         }
       }

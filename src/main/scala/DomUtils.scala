@@ -20,7 +20,7 @@ object DomUtils {
   ChromeDriverManager.getInstance().setup()
 
 
-  def extractOutLinks(url:String, isAjax:Boolean, retryCount:Int = 0):List[String] = {
+  def extractOutLinks(resourceUrl:String, url:String, isAjax:Boolean, retryCount:Int = 0):List[String] = {
 
     lazy val browser = JsoupBrowser()
 
@@ -40,9 +40,10 @@ object DomUtils {
             val dom = driver.getPageSource()
             driver.quit()
             parseString(dom)
-          }.processTry(s"Error in getting ajax page source with url => $url")
+          }.processTry(s"Error in getting ajax page source with url => $url and resource Url => $resourceUrl")
 
-        case false =>  Try(browser.get(url)).processTry(s"Error in getting page source with url => $url")
+        case false =>  Try(browser.get(url)).toOption
+        //.processTry(s"Error in getting page source with url => $url and resource Url => $resourceUrl") //it won't support formats like json etc. so suppressing logs
       }
 
       resp match {
@@ -88,20 +89,6 @@ object DomUtils {
   }
 
   def filterOtherLangUrls(urls:List[String]):List[String] =  urls.filter(url => !url.isBlackListedUrlPattern)
-
-  def randomSampleUrls(n:Int, urls:List[String]):List[String] = {
-    import scala.util.Random
-    val maxSamples = Math.min(n, urls.length)
-    Random.shuffle(urls).take(maxSamples)
-  }
-
-  def getCommonTemplateUrls(urls:List[String]):List[String] = urls.length match {
-    case x if x > 4 =>
-          val allUrlsList:List[List[String]] = urls.map(url => DomUtils.extractOutLinks(url, false))
-          allUrlsList.map(_.distinct).flatten.groupBy(identity).toList.filter(_._2.length >= 4).map(_._1)
-
-    case _ => Nil
-  }
 
   private def getChromeOptions():ChromeOptions = {
     val chromePrefs:mutable.Map[String, Any] = mutable.Map[String, Any]()

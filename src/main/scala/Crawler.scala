@@ -16,11 +16,11 @@ object Crawler extends AppContext {
 
   implicit val logger = Logger(LoggerFactory.getLogger("Crawler"))
 
-  def extractUrls(resourceUrl:String, url:String, isAjax:Boolean):(List[String], List[String]) = {
-    val allHrefs = DomUtils.extractOutLinks(url, isAjax)
-    val formattedUrls = DomUtils.formatUrls(url, allHrefs)
+  def extractUrls(resourceUrl:String, pageUrl:String, isAjax:Boolean):(List[String], List[String]) = {
+    val allHrefs = DomUtils.extractOutLinks(resourceUrl, pageUrl, isAjax)
+    val formattedUrls = DomUtils.formatUrls(pageUrl, allHrefs)
     val (resourceUrls, validUrls) = DomUtils.extractResourceUrls(formattedUrls)
-    val sameDomainUrls = url.filterSubDomainUrls(validUrls)
+    val sameDomainUrls = pageUrl.filterSubDomainUrls(validUrls)
     (DomUtils.filterPDFUrls(resourceUrls), sameDomainUrls)
   }
 
@@ -45,7 +45,7 @@ object Crawler extends AppContext {
                                       if (filesQueue.size < maxNeedFiles && !processedUrls.contains(targetUrl)) {
                                         logger.debug(s"Going to process ${if(isAjax) "ajax" else  ""} url => $targetUrl at the depth => $depth. downloaded files count => ${filesQueue.size}")
                                         val (pdfs, sameDomainUrls) = extractUrls(resourceUrl, targetUrl, isAjax)
-                                        logger.debug(s"extracted pdf urls from resource url => $resourceUrl, pdfs => $pdfs")
+                                        logger.debug(s"extracted pdf urls from resource url => $resourceUrl, targetUrl => $targetUrl, pdfs => $pdfs")
                                         val newPdfs = pdfs.toSet.diff(filesQueue)
                                         newPdfs.map(filesQueue.add(_))
                                         if (!newPdfs.isEmpty) {
@@ -61,7 +61,7 @@ object Crawler extends AppContext {
                                         logger.info(s"At depth => $depth, Already fetched required files. count => ${filesQueue.size} for resourceUrl => $resourceUrl")
                                       }
                                     }
-                                  }.processTry(s"Error in processing source urls in runCrawl method with targetUrl => $targetUrl")
+                                  }.processTry(s"Error in processing source urls in runCrawl method with targetUrl => $targetUrl from resourceUrl => $resourceUrl")
                                   p.success(Unit)
                                 }
                                 p.future
