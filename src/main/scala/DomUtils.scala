@@ -83,8 +83,8 @@ object DomUtils {
         case x if x.startsWith("#") => None
         case _ => Some(sourceUrl.stripRouteParams.stripQueryString.stripResourceComponent  + url)
       }
-      formatted.map(u => u.trim.replaceAll(" ", "%20").formatUrl())
-    }).distinct.filter(_.isValid)
+      formatted.filter(_.isValid).map(u => u.trim.replaceAll(" ", "%20")).map(_.formatUrl())
+    }).distinct
     filterOtherLangUrls(res)
   }
 

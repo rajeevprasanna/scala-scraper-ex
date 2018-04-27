@@ -23,7 +23,7 @@ object URLExtensions {
 
     lazy val hostName:String = url.getHost
 
-    lazy val isValid:Boolean = Try(url).toOption != None
+    lazy val isValid:Boolean = Try(new URL(url)).toOption != None
 
     def formatUrl = () => url.reverse.dropWhile(ch => ch == '/' || ch == '?').reverse
     def filterSubDomainUrls(urls:List[String]):List[String] = urls.filter(u => u.domain != "" && u.domain == domain)
