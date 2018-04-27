@@ -73,7 +73,7 @@ object DomUtils {
     urls.flatMap(url => {
       val formatted =
       url.trim match {
-        case x if x == "/" => None
+        case x if x == "/" || x.startsWith("...") => None //There are some URLs which contains just dots. invalid patterns
         case x if x.contains("..") => Try(sourceUrl.rootUrl + x.split("\\.\\.").last).processTry(s"error in splitting url => $sourceUrl.rootUrl and x => $x") //happens with '..' //TODO: improve this by traversing line
         case x if x.startsWith("//") => None
         case x if x.startsWith("/")  => Some(sourceUrl.rootUrl + x)
