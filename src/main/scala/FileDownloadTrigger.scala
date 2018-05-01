@@ -28,8 +28,8 @@ object FileDownloadTrigger extends AppContext {
     res.run()
   }
 
-  private def getFileMetadata(urls:List[String], pageUrl:String):Future[List[Option[FileMetaData]]] = Source.fromIterator(() => urls.iterator)
-            .mapAsyncUnordered(5)(fileUrl => FileUtils.uploadResource(fileUrl, pageUrl))
+  private def getFileMetadata(urls:List[String], pageUrl:String, seedUrl:String, retryCount:Int):Future[List[Option[FileMetaData]]] = Source.fromIterator(() => urls.iterator)
+            .mapAsyncUnordered(5)(fileUrl => FileUtils.uploadResource(fileUrl, pageUrl, retryCount, seedUrl))
             .runFold(List[Option[FileMetaData]]())(reduceMetadata)
 
   private def reduceMetadata = (list:List[Option[FileMetaData]], a2:Option[FileMetaData]) => list :+ a2
@@ -39,7 +39,7 @@ object FileDownloadTrigger extends AppContext {
     Future{
         val filteredUrls:Future[List[String]] = BFService.filterProcessedUrls(payload.resourceUrl, payload.urls)
         val finalResult:Future[_] = filteredUrls.flatMap(validUrls => {
-          val filesMetadata:Future[List[Option[FileMetaData]]] = getFileMetadata(validUrls, payload.pageUrl.getOrElse(""))
+          val filesMetadata:Future[List[Option[FileMetaData]]] = getFileMetadata(validUrls, payload.pageUrl.getOrElse(""), payload.resourceUrl, payload.retryCount.getOrElse(0))
           filesMetadata.flatMap(mt => {
             val metaDataList = mt.flatten
             val uploadStatus:Future[_] = if(!metaDataList.isEmpty) BFService.uploadFilesMetadata(payload.resourceUrl, metaDataList) else Future.successful()

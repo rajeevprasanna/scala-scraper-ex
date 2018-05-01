@@ -8,9 +8,9 @@ import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
 import spray.json._
 
-case class CrawlPayload(urls:List[String], resourceUrl:String, completed:Boolean, pageUrl:Option[String])
+case class CrawlPayload(urls:List[String], resourceUrl:String, completed:Boolean, pageUrl:Option[String], retryCount:Option[Int])
 object CrawlPayloadJsonProtocol extends DefaultJsonProtocol {
-  implicit val crawlPayloadFormat = jsonFormat4(CrawlPayload.apply)
+  implicit val crawlPayloadFormat = jsonFormat5(CrawlPayload.apply)
 }
 
 case class ResourceUrlPayload(url:String, is_ajax:Option[Boolean])
@@ -38,11 +38,11 @@ object BFRedisClient extends AppContext {
     p.future
   }
 
-  def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean):Future[Boolean] = {
+  def publishFileUrlsToRedis(urls:List[String], resourceUrl:String, pageUrl:String, isCompleted:Boolean, retryCount:Int = 0):Future[Boolean] = {
     val p = Promise[Boolean]()
     Future {
       import CrawlPayloadJsonProtocol._
-      val payload:String = CrawlPayload(urls, resourceUrl, isCompleted, pageUrl.some).toJson.toString()
+      val payload:String = CrawlPayload(urls, resourceUrl, isCompleted, pageUrl.some, retryCount.some).toJson.toString()
       redis.rpush(ConfReader.REDIS_RESOURCE_URL_PAYLOAD_QUEUE, payload)
       p.success(true)
     }
