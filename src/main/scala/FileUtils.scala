@@ -21,18 +21,25 @@ object FileUtils extends AppContext {
 
   implicit val logger = Logger(LoggerFactory.getLogger("FileUtils"))
 
-  def uploadResource(url:String, pageUrl:String):Future[Option[FileMetaData]] = {
-    logger.debug(s"triggering resource upload process to S3 from url => $url")
+  def uploadResource(url:String, pageUrl:String, retryCount:Int, seedUrl:String):Future[Option[FileMetaData]] = {
+    logger.debug(s"triggering resource upload process to S3 from url => $url with retry count => $retryCount")
     val p = Promise[Option[FileMetaData]]()
     Future{
       //TODO: check content type is pdf or not
-      val metadata = getByteContent(url).flatMap(content => {
+      getByteContent(url).flatMap(content => {
         val fileName = extractFileName(url)
         val contentId = sha256Hexa(content)
-        val res:Option[FileMetaData] = uploadFileToS3(base64Encoded(content), url, pageUrl).map(s3Id => FileMetaData(fileName, contentId, s3Id, url.trim))
+        val res: Option[FileMetaData] = uploadFileToS3(base64Encoded(content), url, pageUrl).map(s3Id => FileMetaData(fileName, contentId, s3Id, url.trim))
         res
-      })
-      p.success(metadata)
+      }) match {
+        case Some(metadata) =>      p.success(Some(metadata))
+        case _ if retryCount < 3 => BFRedisClient.publishFileUrlsToRedis(List(url), seedUrl, pageUrl, false, retryCount+1)
+                                    p.success(None)
+
+        case _ =>
+          logger.error(s"Failed to download content from url => $url from page => $pageUrl and seedUrl => $seedUrl")
+          p.success(None)
+      }
     }
     p.future
   }
